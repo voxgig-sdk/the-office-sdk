@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "episode": {
+      "EPISODE00": {
+        "air_date": "s64",
+        "episode": "s65",
+        "id": "EPISODE00",
+        "main_character": [],
+        "recurring_character": [],
+        "season_id": "SEASON01",
+        "series_episode_number": 106,
+        "summary": "s6b",
+        "supporting_character": [],
+        "title": "s6d"
+      },
+      "EPISODE01": {
+        "air_date": "sc8",
+        "episode": "sc9",
+        "id": "EPISODE01",
+        "main_character": [],
+        "recurring_character": [],
+        "season_id": "SEASON01",
+        "series_episode_number": 206,
+        "summary": "scf",
+        "supporting_character": [],
+        "title": "sd1"
+      },
+      "EPISODE02": {
+        "air_date": "s12c",
+        "episode": "s12d",
+        "id": "EPISODE02",
+        "main_character": [],
+        "recurring_character": [],
+        "season_id": "SEASON01",
+        "series_episode_number": 306,
+        "summary": "s133",
+        "supporting_character": [],
+        "title": "s135"
+      }
+    }
+  },
+  "new": {
+    "episode": {
+      "episode_ref01": {
+        "air_date": "s190",
+        "episode": "s191",
+        "main_character": [],
+        "recurring_character": [],
+        "season_id": "SEASON01",
+        "series_episode_number": 406,
+        "summary": "s197",
+        "supporting_character": [],
+        "title": "s199"
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+# Entity: season
+
+main: kit: entity: season: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "end_date"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "number"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "start_date"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "season"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/seasons"
+          parts: [
+            "seasons"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

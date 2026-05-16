@@ -1,0 +1,19 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: "An API for The Office TV show"
+      servers: [
+        {
+          url: "https://www.theofficeapi.dev/api"
+        }
+      ]
+      title: "The Office API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

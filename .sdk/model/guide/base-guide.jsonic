@@ -1,0 +1,29 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 3
+  metrics: count: path: 4
+  metrics: count: method: 4
+
+  entity: character: {
+    path: "/character/{id}": {
+      op: load: method: *GET
+    }
+    path: "/characters": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: episode: {
+    path: "/episodes": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: season: {
+    path: "/seasons": {
+      op: list: method: *GET
+    }
+  }
+
+}

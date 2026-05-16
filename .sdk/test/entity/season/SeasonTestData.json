@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "season": {
+      "SEASON00": {
+        "end_date": "s28",
+        "id": "SEASON00",
+        "number": 42,
+        "start_date": "s2b"
+      },
+      "SEASON01": {
+        "end_date": "s50",
+        "id": "SEASON01",
+        "number": 82,
+        "start_date": "s53"
+      },
+      "SEASON02": {
+        "end_date": "s78",
+        "id": "SEASON02",
+        "number": 122,
+        "start_date": "s7b"
+      }
+    }
+  },
+  "new": {
+    "season": {
+      "season_ref01": {
+        "end_date": "sa0",
+        "number": 162,
+        "start_date": "sa3"
+      }
+    }
+  }
+}

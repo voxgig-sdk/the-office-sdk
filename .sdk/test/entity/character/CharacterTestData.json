@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "character": {
+      "CHARACTER00": {
+        "actor": "s64",
+        "episode": [],
+        "first_appearance": "s66",
+        "gender": "s67",
+        "id": "CHARACTER00",
+        "job": [],
+        "last_appearance": "s6a",
+        "marital": "s6b",
+        "name": "s6c",
+        "workplace": []
+      },
+      "CHARACTER01": {
+        "actor": "sc8",
+        "episode": [],
+        "first_appearance": "sca",
+        "gender": "scb",
+        "id": "CHARACTER01",
+        "job": [],
+        "last_appearance": "sce",
+        "marital": "scf",
+        "name": "sd0",
+        "workplace": []
+      },
+      "CHARACTER02": {
+        "actor": "s12c",
+        "episode": [],
+        "first_appearance": "s12e",
+        "gender": "s12f",
+        "id": "CHARACTER02",
+        "job": [],
+        "last_appearance": "s132",
+        "marital": "s133",
+        "name": "s134",
+        "workplace": []
+      }
+    }
+  },
+  "new": {
+    "character": {
+      "character_ref01": {
+        "actor": "s190",
+        "episode": [],
+        "first_appearance": "s192",
+        "gender": "s193",
+        "job": [],
+        "last_appearance": "s196",
+        "marital": "s197",
+        "name": "s198",
+        "workplace": []
+      }
+    }
+  }
+}

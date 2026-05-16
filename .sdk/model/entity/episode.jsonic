@@ -1,0 +1,130 @@
+# Entity: episode
+
+main: kit: entity: episode: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "air_date"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "episode"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "main_character"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "recurring_character"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "season_id"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "series_episode_number"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "summary"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "supporting_character"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "title"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "episode"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "false"
+                kind: "query"
+                name: "include_character"
+                orig: "include_character"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 10
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "season"
+                orig: "season"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/episodes"
+          parts: [
+            "episodes"
+          ]
+          select: {
+            exist: [
+              "include_character"
+              "limit"
+              "page"
+              "season"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

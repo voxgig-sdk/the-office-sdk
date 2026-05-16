@@ -1,0 +1,22 @@
+# BasicEpisodeFlow
+
+main: kit: flow: BasicEpisodeFlow:
+{
+  entity: "episode",
+  kind: "basic",
+  name: "BasicEpisodeFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "episode_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEpisodeFlow"
+}
