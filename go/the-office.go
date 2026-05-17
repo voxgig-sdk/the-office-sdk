@@ -1,10 +1,10 @@
 package voxgigtheofficesdk
 
 import (
-	"github.com/voxgig-sdk/the-office-sdk/core"
-	"github.com/voxgig-sdk/the-office-sdk/entity"
-	"github.com/voxgig-sdk/the-office-sdk/feature"
-	_ "github.com/voxgig-sdk/the-office-sdk/utility"
+	"github.com/voxgig-sdk/the-office-sdk/go/core"
+	"github.com/voxgig-sdk/the-office-sdk/go/entity"
+	"github.com/voxgig-sdk/the-office-sdk/go/feature"
+	_ "github.com/voxgig-sdk/the-office-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

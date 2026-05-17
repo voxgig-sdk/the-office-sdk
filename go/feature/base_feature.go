@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/the-office-sdk/core"
+	"github.com/voxgig-sdk/the-office-sdk/go/core"
 )
 
 type BaseFeature struct {

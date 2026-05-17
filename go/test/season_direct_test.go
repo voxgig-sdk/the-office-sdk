@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/the-office-sdk"
-	"github.com/voxgig-sdk/the-office-sdk/core"
+	sdk "github.com/voxgig-sdk/the-office-sdk/go"
+	"github.com/voxgig-sdk/the-office-sdk/go/core"
 )
 
 func TestSeasonDirect(t *testing.T) {
