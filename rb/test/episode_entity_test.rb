@@ -83,7 +83,6 @@ def episode_basic_setup(extra)
     "THEOFFICE_TEST_EPISODE_ENTID" => idmap,
     "THEOFFICE_TEST_LIVE" => "FALSE",
     "THEOFFICE_TEST_EXPLAIN" => "FALSE",
-    "THEOFFICE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +94,6 @@ def episode_basic_setup(extra)
   if env["THEOFFICE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["THEOFFICE_APIKEY"],
       },
       extra || {},
     ])

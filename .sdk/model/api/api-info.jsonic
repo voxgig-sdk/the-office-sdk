@@ -12,8 +12,24 @@ main: {
       ]
       title: "The Office API"
       version: "1.0.0"
+      tagline: "Browse characters, episodes, and seasons from the US TV series The Office"
+      homepage: "https://www.theofficeapi.dev"
+      docs_url: "https://www.theofficeapi.dev/api"
+      about_md: `The Office API is a small, community-run REST service that exposes structured data about the US TV series *The Office*. It is documented at [theofficeapi.dev](https://www.theofficeapi.dev) and is currently described as being in early development.
+
+What you get from the API:
+
+- A list of episodes with air dates and descriptions (\`GET /api/episodes\`)
+- A list of seasons (\`GET /api/seasons\`)
+- A list of characters (\`GET /api/characters\`) and lookup of an individual character by id (\`GET /api/character/:id\`)
+
+The documented endpoints have CORS enabled, so the API can be called directly from browser-based clients. No authentication scheme, rate limit, or license is published on the docs site at the time of writing.`
+      entity_desc: {
+        character: "A person from the show, with list and by-id access at `GET /api/characters` and `GET /api/character/:id`."
+        episode: "An individual episode, including air date and description, listed at `GET /api/episodes`."
+        season: "A season of the show, listed at `GET /api/seasons`."
+      }
+      auth: false
     }
   }
-}
-
 }

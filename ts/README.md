@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { TheOfficeSDK } from 'the-office'
 
-const client = new TheOfficeSDK({
-  apikey: process.env.THE-OFFICE_APIKEY,
-})
+const client = new TheOfficeSDK({})
 ```
 
 ### 2. List characters
@@ -94,7 +92,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new TheOfficeSDK({ apikey: '...' })
+const client = new TheOfficeSDK()
 const testClient = client.tester()
 ```
 
@@ -130,7 +128,6 @@ const logger = {
 }
 
 const client = new TheOfficeSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -141,7 +138,6 @@ Create a `.env.local` file at the project root:
 
 ```
 THE-OFFICE_TEST_LIVE=TRUE
-THE-OFFICE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -159,7 +155,6 @@ cd ts && npm test
 
 ```ts
 new TheOfficeSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -170,7 +165,6 @@ new TheOfficeSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

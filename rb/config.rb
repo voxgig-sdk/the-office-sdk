@@ -15,9 +15,6 @@ module TheOfficeConfig
       },
       "options" => {
         "base" => "https://www.theofficeapi.dev/api",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
