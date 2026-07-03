@@ -10,7 +10,7 @@ The Lua SDK for the TheOffice API — an entity-oriented client using Lua conven
 
 ## Install
 ```bash
-luarocks install the-office-sdk
+luarocks install voxgig-sdk-the-office
 ```
 
 If the module is not yet published, add the source directory to

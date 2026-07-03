@@ -10,7 +10,7 @@ The Python SDK for the TheOffice API — an entity-oriented client following Pyt
 
 ## Install
 ```bash
-pip install the-office-sdk
+pip install voxgig-sdk-the-office
 ```
 
 Or install from source:

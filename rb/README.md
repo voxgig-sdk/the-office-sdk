@@ -10,13 +10,13 @@ The Ruby SDK for the TheOffice API — an entity-oriented client using idiomatic
 
 ## Install
 ```bash
-gem install the-office-sdk
+gem install voxgig-sdk-the-office
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "the-office-sdk"
+gem "voxgig-sdk-the-office"
 ```
 
 Then run:

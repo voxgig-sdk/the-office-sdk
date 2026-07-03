@@ -8,12 +8,14 @@ source = {
   dir = "the-office-sdk/lua"
 }
 description = {
-  summary = "TheOffice SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the The Office public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/the-office-sdk",
+  issues_url = "https://github.com/voxgig-sdk/the-office-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "the-office" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

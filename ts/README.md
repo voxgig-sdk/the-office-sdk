@@ -10,7 +10,7 @@ The TypeScript SDK for the TheOffice API — a type-safe, entity-oriented client
 
 ## Install
 ```bash
-npm install the-office
+npm install @voxgig-sdk/the-office
 ```
 ## Tutorial: your first API call
 
