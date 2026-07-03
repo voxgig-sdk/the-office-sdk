@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'THEOFFICE_TEST_EPISODE_ENTID': {},
     'THEOFFICE_TEST_LIVE': 'FALSE',
+    'THEOFFICE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.THEOFFICE_TEST_LIVE
 
   if (live) {
     const client = new TheOfficeSDK({
+      apikey: env.THEOFFICE_APIKEY,
     })
 
     let idmap: any = env['THEOFFICE_TEST_EPISODE_ENTID']

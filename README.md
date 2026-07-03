@@ -1,20 +1,8 @@
 # TheOffice SDK
 
-Browse characters, episodes, and seasons from the US TV series The Office
+The Office API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About The Office API
-
-The Office API is a small, community-run REST service that exposes structured data about the US TV series *The Office*. It is documented at [theofficeapi.dev](https://www.theofficeapi.dev) and is currently described as being in early development.
-
-What you get from the API:
-
-- A list of episodes with air dates and descriptions (`GET /api/episodes`)
-- A list of seasons (`GET /api/seasons`)
-- A list of characters (`GET /api/characters`) and lookup of an individual character by id (`GET /api/character/:id`)
-
-The documented endpoints have CORS enabled, so the API can be called directly from browser-based clients. No authentication scheme, rate limit, or license is published on the docs site at the time of writing.
 
 ## Try it
 
@@ -48,29 +36,31 @@ gem install the-office-sdk
 luarocks install the-office-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { TheOfficeSDK } from 'the-office'
 
-const client = new TheOfficeSDK({})
+const client = new TheOfficeSDK({
+  apikey: process.env.THE-OFFICE_APIKEY,
+})
 
 // List all characters
 const characters = await client.Character().list()
+console.log(characters.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,9 +90,9 @@ The API exposes 3 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Character** | A person from the show, with list and by-id access at `GET /api/characters` and `GET /api/character/:id`. | `/characters` |
-| **Episode** | An individual episode, including air date and description, listed at `GET /api/episodes`. | `/episodes` |
-| **Season** | A season of the show, listed at `GET /api/seasons`. | `/seasons` |
+| **Character** |  | `/characters` |
+| **Episode** |  | `/episodes` |
+| **Season** |  | `/seasons` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -112,17 +102,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from theoffice_sdk import TheOfficeSDK
 
-client = TheOfficeSDK({})
+client = TheOfficeSDK({
+    "apikey": os.environ.get("THE-OFFICE_APIKEY"),
+})
 
 # List all characters
-characters, err = client.Character(None).list(None, None)
+characters, err = client.Character().list()
+print(characters)
 
 # Load a specific character
-character, err = client.Character(None).load(
-    {"id": "example_id"}, None
-)
+character, err = client.Character().load({"id": "example_id"})
+print(character)
 ```
 
 ### PHP
@@ -131,15 +124,17 @@ character, err = client.Character(None).load(
 <?php
 require_once 'theoffice_sdk.php';
 
-$client = new TheOfficeSDK([]);
+$client = new TheOfficeSDK([
+    "apikey" => getenv("THE-OFFICE_APIKEY"),
+]);
 
 // List all characters
-[$characters, $err] = $client->Character(null)->list(null, null);
+[$characters, $err] = $client->Character()->list();
+print_r($characters);
 
 // Load a specific character
-[$character, $err] = $client->Character(null)->load(
-    ["id" => "example_id"], null
-);
+[$character, $err] = $client->Character()->load(["id" => "example_id"]);
+print_r($character);
 ```
 
 ### Golang
@@ -147,10 +142,13 @@ $client = new TheOfficeSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/the-office-sdk/go"
 
-client := sdk.NewTheOfficeSDK(map[string]any{})
+client := sdk.NewTheOfficeSDK(map[string]any{
+    "apikey": os.Getenv("THE-OFFICE_APIKEY"),
+})
 
 // List all characters
 characters, err := client.Character(nil).List(nil, nil)
+fmt.Println(characters)
 ```
 
 ### Ruby
@@ -158,15 +156,17 @@ characters, err := client.Character(nil).List(nil, nil)
 ```ruby
 require_relative "TheOffice_sdk"
 
-client = TheOfficeSDK.new({})
+client = TheOfficeSDK.new({
+  "apikey" => ENV["THE-OFFICE_APIKEY"],
+})
 
 # List all characters
-characters, err = client.Character(nil).list(nil, nil)
+characters, err = client.Character().list
+puts characters
 
 # Load a specific character
-character, err = client.Character(nil).load(
-  { "id" => "example_id" }, nil
-)
+character, err = client.Character().load({ "id" => "example_id" })
+puts character
 ```
 
 ### Lua
@@ -174,15 +174,17 @@ character, err = client.Character(nil).load(
 ```lua
 local sdk = require("the-office_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("THE-OFFICE_APIKEY"),
+})
 
 -- List all characters
-local characters, err = client:Character(nil):list(nil, nil)
+local characters, err = client:Character():list()
+print(characters)
 
 -- Load a specific character
-local character, err = client:Character(nil):load(
-  { id = "example_id" }, nil
-)
+local character, err = client:Character():load({ id = "example_id" })
+print(character)
 ```
 
 ## Unit testing in offline mode
@@ -201,25 +203,21 @@ const result = await client.Character().load({ id: 'test01' })
 ### Python
 
 ```python
-client = TheOfficeSDK.test(None, None)
-result, err = client.Character(None).load(
-    {"id": "test01"}, None
-)
+client = TheOfficeSDK.test()
+result, err = client.Character().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = TheOfficeSDK::test(null, null);
-[$result, $err] = $client->Character(null)->load(
-    ["id" => "test01"], null
-);
+$client = TheOfficeSDK::test();
+[$result, $err] = $client->Character()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Character(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -228,19 +226,15 @@ result, err := client.Character(nil).Load(
 ### Ruby
 
 ```ruby
-client = TheOfficeSDK.test(nil, nil)
-result, err = client.Character(nil).load(
-  { "id" => "test01" }, nil
-)
+client = TheOfficeSDK.test
+result, err = client.Character().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Character(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Character():load({ id = "test01" })
 ```
 
 ## How it works
@@ -344,11 +338,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the The Office API
-
-- Upstream: [https://www.theofficeapi.dev](https://www.theofficeapi.dev)
-- API docs: [https://www.theofficeapi.dev/api](https://www.theofficeapi.dev/api)
 
 ---
 

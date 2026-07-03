@@ -92,6 +92,7 @@ def _season_basic_setup(extra):
         "THEOFFICE_TEST_SEASON_ENTID": idmap,
         "THEOFFICE_TEST_LIVE": "FALSE",
         "THEOFFICE_TEST_EXPLAIN": "FALSE",
+        "THEOFFICE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ def _season_basic_setup(extra):
     if env.get("THEOFFICE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("THEOFFICE_APIKEY"),
             },
             extra or {},
         ])

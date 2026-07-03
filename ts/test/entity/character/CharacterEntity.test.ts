@@ -120,6 +120,7 @@ function basicSetup(extra?: any) {
     'THE_OFFICE_TEST_CHARACTER_ENTID': idmap,
     'THE_OFFICE_TEST_LIVE': 'FALSE',
     'THE_OFFICE_TEST_EXPLAIN': 'FALSE',
+    'THE_OFFICE_APIKEY': 'NONE',
   })
 
   idmap = env['THE_OFFICE_TEST_CHARACTER_ENTID']
@@ -129,6 +130,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new TheOfficeSDK(merge([
       {
+        apikey: env.THE_OFFICE_APIKEY,
       },
       extra
     ]))

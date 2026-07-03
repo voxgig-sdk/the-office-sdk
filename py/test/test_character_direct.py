@@ -109,12 +109,14 @@ def _character_direct_setup(mockres):
     env = runner.env_override({
         "THEOFFICE_TEST_CHARACTER_ENTID": {},
         "THEOFFICE_TEST_LIVE": "FALSE",
+        "THEOFFICE_APIKEY": "NONE",
     })
 
     live = env.get("THEOFFICE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("THEOFFICE_APIKEY"),
         }
         client = TheOfficeSDK(merged_opts)
         return {

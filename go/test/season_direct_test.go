@@ -93,12 +93,14 @@ func seasonDirectSetup(mockres any) *seasonDirectSetupResult {
 	env := envOverride(map[string]any{
 		"THEOFFICE_TEST_SEASON_ENTID": map[string]any{},
 		"THEOFFICE_TEST_LIVE":    "FALSE",
+		"THEOFFICE_APIKEY":       "NONE",
 	})
 
 	live := env["THEOFFICE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["THEOFFICE_APIKEY"],
 		}
 		client := sdk.NewTheOfficeSDK(mergedOpts)
 

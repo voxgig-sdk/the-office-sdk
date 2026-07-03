@@ -63,12 +63,14 @@ function season_direct_setup(mockres)
   local env = runner.env_override({
     ["THEOFFICE_TEST_SEASON_ENTID"] = {},
     ["THEOFFICE_TEST_LIVE"] = "FALSE",
+    ["THEOFFICE_APIKEY"] = "NONE",
   })
 
   local live = env["THEOFFICE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["THEOFFICE_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

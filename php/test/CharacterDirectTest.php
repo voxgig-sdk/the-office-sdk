@@ -123,12 +123,14 @@ function character_direct_setup($mockres)
     $env = Runner::env_override([
         "THEOFFICE_TEST_CHARACTER_ENTID" => [],
         "THEOFFICE_TEST_LIVE" => "FALSE",
+        "THEOFFICE_APIKEY" => "NONE",
     ]);
 
     $live = $env["THEOFFICE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["THEOFFICE_APIKEY"],
         ];
         $client = new TheOfficeSDK($merged_opts);
         return [
