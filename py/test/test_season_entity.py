@@ -50,8 +50,7 @@ class TestSeasonEntity:
         season_ref01_ent = client.Season(None)
         season_ref01_match = {}
 
-        season_ref01_list_result, err = season_ref01_ent.list(season_ref01_match, None)
-        assert err is None
+        season_ref01_list_result = season_ref01_ent.list(season_ref01_match, None)
         assert isinstance(season_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _season_basic_setup(extra):
         "THEOFFICE_TEST_SEASON_ENTID": idmap,
         "THEOFFICE_TEST_LIVE": "FALSE",
         "THEOFFICE_TEST_EXPLAIN": "FALSE",
-        "THEOFFICE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _season_basic_setup(extra):
     if env.get("THEOFFICE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("THEOFFICE_APIKEY"),
             },
             extra or {},
         ])

@@ -50,8 +50,7 @@ class SeasonEntityTest extends TestCase
         $season_ref01_ent = $client->Season(null);
         $season_ref01_match = [];
 
-        [$season_ref01_list_result, $err] = $season_ref01_ent->list($season_ref01_match, null);
-        $this->assertNull($err);
+        $season_ref01_list_result = $season_ref01_ent->list($season_ref01_match, null);
         $this->assertIsArray($season_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function season_basic_setup($extra)
         "THEOFFICE_TEST_SEASON_ENTID" => $idmap,
         "THEOFFICE_TEST_LIVE" => "FALSE",
         "THEOFFICE_TEST_EXPLAIN" => "FALSE",
-        "THEOFFICE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function season_basic_setup($extra)
     if ($env["THEOFFICE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["THEOFFICE_APIKEY"],
             ],
             $extra ?? [],
         ]);

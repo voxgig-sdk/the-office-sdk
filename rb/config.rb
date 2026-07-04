@@ -15,9 +15,6 @@ module TheOfficeConfig
       },
       "options" => {
         "base" => "https://www.theofficeapi.dev/api",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -176,6 +173,7 @@ module TheOfficeConfig
                         "orig" => "id",
                         "reqd" => true,
                         "type" => "`$NUMBER`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [

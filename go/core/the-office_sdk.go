@@ -245,16 +245,25 @@ func (sdk *TheOfficeSDK) Direct(fetchargs map[string]any) (map[string]any, error
 }
 
 
+// Character returns a Character entity bound to this client.
+// Idiomatic usage: client.Character(nil).List(nil, nil) or
+// client.Character(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *TheOfficeSDK) Character(data map[string]any) TheOfficeEntity {
 	return NewCharacterEntityFunc(sdk, data)
 }
 
 
+// Episode returns a Episode entity bound to this client.
+// Idiomatic usage: client.Episode(nil).List(nil, nil) or
+// client.Episode(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *TheOfficeSDK) Episode(data map[string]any) TheOfficeEntity {
 	return NewEpisodeEntityFunc(sdk, data)
 }
 
 
+// Season returns a Season entity bound to this client.
+// Idiomatic usage: client.Season(nil).List(nil, nil) or
+// client.Season(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *TheOfficeSDK) Season(data map[string]any) TheOfficeEntity {
 	return NewSeasonEntityFunc(sdk, data)
 }

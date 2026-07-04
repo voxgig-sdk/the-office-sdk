@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Episode,
+  EpisodeListMatch,
+} from '../TheOfficeTypes'
 
 // TODO: needs Entity superclass
-class EpisodeEntity extends TheOfficeEntityBase {
+class EpisodeEntity extends TheOfficeEntityBase<Episode> {
 
   constructor(client: TheOfficeSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class EpisodeEntity extends TheOfficeEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: EpisodeListMatch, ctrl?: Control): Promise<Episode[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class EpisodeEntity extends TheOfficeEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Episode[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

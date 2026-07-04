@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:character():list() / client:character():load({ id = ... })
+function TheOfficeSDK:character(data)
+  local EntityMod = require("entity.character_entity")
+  if data == nil then
+    if self._character == nil then
+      self._character = EntityMod.new(self, nil)
+    end
+    return self._character
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:character() instead.
 function TheOfficeSDK:Character(data)
   local EntityMod = require("entity.character_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:episode():list() / client:episode():load({ id = ... })
+function TheOfficeSDK:episode(data)
+  local EntityMod = require("entity.episode_entity")
+  if data == nil then
+    if self._episode == nil then
+      self._episode = EntityMod.new(self, nil)
+    end
+    return self._episode
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:episode() instead.
 function TheOfficeSDK:Episode(data)
   local EntityMod = require("entity.episode_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:season():list() / client:season():load({ id = ... })
+function TheOfficeSDK:season(data)
+  local EntityMod = require("entity.season_entity")
+  if data == nil then
+    if self._season == nil then
+      self._season = EntityMod.new(self, nil)
+    end
+    return self._season
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:season() instead.
 function TheOfficeSDK:Season(data)
   local EntityMod = require("entity.season_entity")
   return EntityMod.new(self, data)

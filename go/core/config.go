@@ -14,9 +14,6 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://www.theofficeapi.dev/api",
-			"auth": map[string]any{
-				"prefix": "Bearer",
-			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
@@ -175,6 +172,7 @@ func MakeConfig() map[string]any {
 											"orig": "id",
 											"reqd": true,
 											"type": "`$NUMBER`",
+											"index$": 0,
 										},
 									},
 									"query": []any{

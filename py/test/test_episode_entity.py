@@ -50,8 +50,7 @@ class TestEpisodeEntity:
         episode_ref01_ent = client.Episode(None)
         episode_ref01_match = {}
 
-        episode_ref01_list_result, err = episode_ref01_ent.list(episode_ref01_match, None)
-        assert err is None
+        episode_ref01_list_result = episode_ref01_ent.list(episode_ref01_match, None)
         assert isinstance(episode_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _episode_basic_setup(extra):
         "THEOFFICE_TEST_EPISODE_ENTID": idmap,
         "THEOFFICE_TEST_LIVE": "FALSE",
         "THEOFFICE_TEST_EXPLAIN": "FALSE",
-        "THEOFFICE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _episode_basic_setup(extra):
     if env.get("THEOFFICE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("THEOFFICE_APIKEY"),
             },
             extra or {},
         ])

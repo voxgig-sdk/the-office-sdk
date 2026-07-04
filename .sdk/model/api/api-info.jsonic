@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       description: "An API for The Office TV show"
       servers: [
         {

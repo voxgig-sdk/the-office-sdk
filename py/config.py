@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://www.theofficeapi.dev/api",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -176,6 +173,7 @@ def make_config():
                       "orig": "id",
                       "reqd": True,
                       "type": "`$NUMBER`",
+                      "index$": 0,
                     },
                   ],
                   "query": [

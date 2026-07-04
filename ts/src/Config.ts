@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://www.theofficeapi.dev/api',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -209,7 +205,8 @@ class Config {
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$NUMBER`"
+                    "type": "`$NUMBER`",
+                    "index$": 0
                   }
                 ],
                 "query": [

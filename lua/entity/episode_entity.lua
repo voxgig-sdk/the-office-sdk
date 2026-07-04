@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch EpisodeListMatch
+---@param ctrl? table
+---@return Episode[]
+---@return string? err
 function EpisodeEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -43,8 +43,7 @@ class SeasonEntityTest < Minitest::Test
     season_ref01_ent = client.Season(nil)
     season_ref01_match = {}
 
-    season_ref01_list_result, err = season_ref01_ent.list(season_ref01_match, nil)
-    assert_nil err
+    season_ref01_list_result = season_ref01_ent.list(season_ref01_match, nil)
     assert season_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def season_basic_setup(extra)
     "THEOFFICE_TEST_SEASON_ENTID" => idmap,
     "THEOFFICE_TEST_LIVE" => "FALSE",
     "THEOFFICE_TEST_EXPLAIN" => "FALSE",
-    "THEOFFICE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def season_basic_setup(extra)
   if env["THEOFFICE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["THEOFFICE_APIKEY"],
       },
       extra || {},
     ])

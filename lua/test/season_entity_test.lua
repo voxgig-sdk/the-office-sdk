@@ -92,7 +92,6 @@ function season_basic_setup(extra)
     ["THEOFFICE_TEST_SEASON_ENTID"] = idmap,
     ["THEOFFICE_TEST_LIVE"] = "FALSE",
     ["THEOFFICE_TEST_EXPLAIN"] = "FALSE",
-    ["THEOFFICE_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -104,7 +103,6 @@ function season_basic_setup(extra)
   if env["THEOFFICE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["THEOFFICE_APIKEY"],
       },
       extra or {},
     })

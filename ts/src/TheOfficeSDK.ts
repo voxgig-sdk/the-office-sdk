@@ -4,6 +4,8 @@ import { CharacterEntity } from './entity/CharacterEntity'
 import { EpisodeEntity } from './entity/EpisodeEntity'
 import { SeasonEntity } from './entity/SeasonEntity'
 
+export type * from './TheOfficeTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -204,18 +206,42 @@ class TheOfficeSDK {
 
 
 
+  _character?: CharacterEntity
+
+  // Idiomatic facade: `client.character.list()` / `client.character.load({ id })`.
+  get character(): CharacterEntity {
+    return (this._character ??= new CharacterEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.character` instead. */
   Character(data?: any) {
     const self = this
     return new CharacterEntity(self,data)
   }
 
 
+  _episode?: EpisodeEntity
+
+  // Idiomatic facade: `client.episode.list()` / `client.episode.load({ id })`.
+  get episode(): EpisodeEntity {
+    return (this._episode ??= new EpisodeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.episode` instead. */
   Episode(data?: any) {
     const self = this
     return new EpisodeEntity(self,data)
   }
 
 
+  _season?: SeasonEntity
+
+  // Idiomatic facade: `client.season.list()` / `client.season.load({ id })`.
+  get season(): SeasonEntity {
+    return (this._season ??= new SeasonEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.season` instead. */
   Season(data?: any) {
     const self = this
     return new SeasonEntity(self,data)

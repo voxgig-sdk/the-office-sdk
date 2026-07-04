@@ -43,8 +43,7 @@ class EpisodeEntityTest < Minitest::Test
     episode_ref01_ent = client.Episode(nil)
     episode_ref01_match = {}
 
-    episode_ref01_list_result, err = episode_ref01_ent.list(episode_ref01_match, nil)
-    assert_nil err
+    episode_ref01_list_result = episode_ref01_ent.list(episode_ref01_match, nil)
     assert episode_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def episode_basic_setup(extra)
     "THEOFFICE_TEST_EPISODE_ENTID" => idmap,
     "THEOFFICE_TEST_LIVE" => "FALSE",
     "THEOFFICE_TEST_EXPLAIN" => "FALSE",
-    "THEOFFICE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def episode_basic_setup(extra)
   if env["THEOFFICE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["THEOFFICE_APIKEY"],
       },
       extra || {},
     ])
