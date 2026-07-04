@@ -91,7 +91,7 @@ same parameters as `direct()`.
 ## CharacterEntity
 
 ```lua
-local character = client:character(nil)
+local character = client:Character(nil)
 ```
 
 ### Fields
@@ -116,7 +116,7 @@ local character = client:character(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:character():list()
+local results, err = client:Character():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -124,7 +124,7 @@ local results, err = client:character():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:character():load({ id = "character_id" })
+local result, err = client:Character():load({ id = "character_id" })
 ```
 
 ### Common Methods
@@ -160,7 +160,7 @@ Return the entity name.
 ## EpisodeEntity
 
 ```lua
-local episode = client:episode(nil)
+local episode = client:Episode(nil)
 ```
 
 ### Fields
@@ -185,7 +185,7 @@ local episode = client:episode(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:episode():list()
+local results, err = client:Episode():list()
 ```
 
 ### Common Methods
@@ -221,7 +221,7 @@ Return the entity name.
 ## SeasonEntity
 
 ```lua
-local season = client:season(nil)
+local season = client:Season(nil)
 ```
 
 ### Fields
@@ -240,7 +240,7 @@ local season = client:season(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:season():list()
+local results, err = client:Season():list()
 ```
 
 ### Common Methods

@@ -208,39 +208,21 @@ class TheOfficeSDK
   end
 
 
-  # Idiomatic facade: client.character.list / client.character.load({ "id" => ... })
-  def character
-    require_relative 'entity/character_entity'
-    @character ||= CharacterEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.character instead.
+  # Canonical facade: client.Character.list / client.Character.load({ "id" => ... })
   def Character(data = nil)
     require_relative 'entity/character_entity'
     CharacterEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.episode.list / client.episode.load({ "id" => ... })
-  def episode
-    require_relative 'entity/episode_entity'
-    @episode ||= EpisodeEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.episode instead.
+  # Canonical facade: client.Episode.list / client.Episode.load({ "id" => ... })
   def Episode(data = nil)
     require_relative 'entity/episode_entity'
     EpisodeEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.season.list / client.season.load({ "id" => ... })
-  def season
-    require_relative 'entity/season_entity'
-    @season ||= SeasonEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.season instead.
+  # Canonical facade: client.Season.list / client.Season.load({ "id" => ... })
   def Season(data = nil)
     require_relative 'entity/season_entity'
     SeasonEntity.new(self, data)

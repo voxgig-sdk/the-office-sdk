@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:character():list() / client:character():load({ id = ... })
-function TheOfficeSDK:character(data)
+-- Idiomatic facade: client:Character():list() / client:Character():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function TheOfficeSDK:Character(data)
   local EntityMod = require("entity.character_entity")
   if data == nil then
     if self._character == nil then
@@ -256,15 +257,10 @@ function TheOfficeSDK:character(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:character() instead.
-function TheOfficeSDK:Character(data)
-  local EntityMod = require("entity.character_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:episode():list() / client:episode():load({ id = ... })
-function TheOfficeSDK:episode(data)
+-- Idiomatic facade: client:Episode():list() / client:Episode():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function TheOfficeSDK:Episode(data)
   local EntityMod = require("entity.episode_entity")
   if data == nil then
     if self._episode == nil then
@@ -275,15 +271,10 @@ function TheOfficeSDK:episode(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:episode() instead.
-function TheOfficeSDK:Episode(data)
-  local EntityMod = require("entity.episode_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:season():list() / client:season():load({ id = ... })
-function TheOfficeSDK:season(data)
+-- Idiomatic facade: client:Season():list() / client:Season():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function TheOfficeSDK:Season(data)
   local EntityMod = require("entity.season_entity")
   if data == nil then
     if self._season == nil then
@@ -291,12 +282,6 @@ function TheOfficeSDK:season(data)
     end
     return self._season
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:season() instead.
-function TheOfficeSDK:Season(data)
-  local EntityMod = require("entity.season_entity")
   return EntityMod.new(self, data)
 end
 

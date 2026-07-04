@@ -4,15 +4,19 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Character:
+class CharacterRequired(TypedDict):
     actor: str
     first_appearance: str
     gender: str
@@ -22,30 +26,30 @@ class Character:
     marital: str
     name: str
     workplace: list
-    episode: Optional[list] = None
 
 
-@dataclass
-class CharacterLoadMatch:
+class Character(CharacterRequired, total=False):
+    episode: list
+
+
+class CharacterLoadMatch(TypedDict):
     id: float
 
 
-@dataclass
-class CharacterListMatch:
-    actor: Optional[str] = None
-    episode: Optional[list] = None
-    first_appearance: Optional[str] = None
-    gender: Optional[str] = None
-    id: Optional[float] = None
-    job: Optional[list] = None
-    last_appearance: Optional[str] = None
-    marital: Optional[str] = None
-    name: Optional[str] = None
-    workplace: Optional[list] = None
+class CharacterListMatch(TypedDict, total=False):
+    actor: str
+    episode: list
+    first_appearance: str
+    gender: str
+    id: float
+    job: list
+    last_appearance: str
+    marital: str
+    name: str
+    workplace: list
 
 
-@dataclass
-class Episode:
+class EpisodeRequired(TypedDict):
     air_date: str
     episode: str
     id: float
@@ -53,37 +57,36 @@ class Episode:
     series_episode_number: float
     summary: str
     title: str
-    main_character: Optional[list] = None
-    recurring_character: Optional[list] = None
-    supporting_character: Optional[list] = None
 
 
-@dataclass
-class EpisodeListMatch:
-    air_date: Optional[str] = None
-    episode: Optional[str] = None
-    id: Optional[float] = None
-    main_character: Optional[list] = None
-    recurring_character: Optional[list] = None
-    season_id: Optional[float] = None
-    series_episode_number: Optional[float] = None
-    summary: Optional[str] = None
-    supporting_character: Optional[list] = None
-    title: Optional[str] = None
+class Episode(EpisodeRequired, total=False):
+    main_character: list
+    recurring_character: list
+    supporting_character: list
 
 
-@dataclass
-class Season:
+class EpisodeListMatch(TypedDict, total=False):
+    air_date: str
+    episode: str
+    id: float
+    main_character: list
+    recurring_character: list
+    season_id: float
+    series_episode_number: float
+    summary: str
+    supporting_character: list
+    title: str
+
+
+class Season(TypedDict):
     end_date: str
     id: float
     number: float
     start_date: str
 
 
-@dataclass
-class SeasonListMatch:
-    end_date: Optional[str] = None
-    id: Optional[float] = None
-    number: Optional[float] = None
-    start_date: Optional[str] = None
-
+class SeasonListMatch(TypedDict, total=False):
+    end_date: str
+    id: float
+    number: float
+    start_date: str

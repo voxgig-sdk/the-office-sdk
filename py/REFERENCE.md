@@ -88,7 +88,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## CharacterEntity
 
 ```python
-character = client.character
+character = client.Character()
 ```
 
 ### Fields
@@ -113,7 +113,9 @@ character = client.character
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.character.list({})
+results = client.Character().list({})
+for character in results:
+    print(character)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -121,7 +123,7 @@ results = client.character.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.character.load({"id": "character_id"})
+result = client.Character().load({"id": "character_id"})
 ```
 
 ### Common Methods
@@ -156,7 +158,7 @@ Return the entity name.
 ## EpisodeEntity
 
 ```python
-episode = client.episode
+episode = client.Episode()
 ```
 
 ### Fields
@@ -181,7 +183,9 @@ episode = client.episode
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.episode.list({})
+results = client.Episode().list({})
+for episode in results:
+    print(episode)
 ```
 
 ### Common Methods
@@ -216,7 +220,7 @@ Return the entity name.
 ## SeasonEntity
 
 ```python
-season = client.season
+season = client.Season()
 ```
 
 ### Fields
@@ -235,7 +239,9 @@ season = client.season
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.season.list({})
+results = client.Season().list({})
+for season in results:
+    print(season)
 ```
 
 ### Common Methods

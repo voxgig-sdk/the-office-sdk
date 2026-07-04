@@ -220,57 +220,27 @@ class TheOfficeSDK:
         }
 
 
-    @property
-    def character(self):
-        """Idiomatic facade: client.character.list() / client.character.load({"id": ...})."""
-        from entity.character_entity import CharacterEntity
-        cached = getattr(self, "_character", None)
-        if cached is None:
-            cached = CharacterEntity(self, None)
-            self._character = cached
-        return cached
-
-    def Character(self, data=None):
-        # Deprecated: use client.character instead.
+    def Character(self, data=None) -> "CharacterEntity":
+        """Entity factory: client.Character().list({}) / client.Character().load({"id": ...})."""
         from entity.character_entity import CharacterEntity
         return CharacterEntity(self, data)
 
 
-    @property
-    def episode(self):
-        """Idiomatic facade: client.episode.list() / client.episode.load({"id": ...})."""
-        from entity.episode_entity import EpisodeEntity
-        cached = getattr(self, "_episode", None)
-        if cached is None:
-            cached = EpisodeEntity(self, None)
-            self._episode = cached
-        return cached
-
-    def Episode(self, data=None):
-        # Deprecated: use client.episode instead.
+    def Episode(self, data=None) -> "EpisodeEntity":
+        """Entity factory: client.Episode().list({}) / client.Episode().load({"id": ...})."""
         from entity.episode_entity import EpisodeEntity
         return EpisodeEntity(self, data)
 
 
-    @property
-    def season(self):
-        """Idiomatic facade: client.season.list() / client.season.load({"id": ...})."""
-        from entity.season_entity import SeasonEntity
-        cached = getattr(self, "_season", None)
-        if cached is None:
-            cached = SeasonEntity(self, None)
-            self._season = cached
-        return cached
-
-    def Season(self, data=None):
-        # Deprecated: use client.season instead.
+    def Season(self, data=None) -> "SeasonEntity":
+        """Entity factory: client.Season().list({}) / client.Season().load({"id": ...})."""
         from entity.season_entity import SeasonEntity
         return SeasonEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "TheOfficeSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class TheOfficeSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.character_entity import CharacterEntity
+    from entity.episode_entity import EpisodeEntity
+    from entity.season_entity import SeasonEntity

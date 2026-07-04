@@ -133,7 +133,7 @@ Alias for `TheOfficeSDK.test()`.
 ## CharacterEntity
 
 ```ts
-const character = client.character
+const character = client.Character()
 ```
 
 ### Fields
@@ -158,7 +158,7 @@ const character = client.character
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.character.list()
+const results = await client.Character().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -166,7 +166,7 @@ const results = await client.character.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.character.load({ id: 'character_id' })
+const result = await client.Character().load({ id: 'character_id' })
 ```
 
 ### Common Methods
@@ -200,7 +200,7 @@ Return a copy of the entity options.
 ## EpisodeEntity
 
 ```ts
-const episode = client.episode
+const episode = client.Episode()
 ```
 
 ### Fields
@@ -225,7 +225,7 @@ const episode = client.episode
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.episode.list()
+const results = await client.Episode().list()
 ```
 
 ### Common Methods
@@ -259,7 +259,7 @@ Return a copy of the entity options.
 ## SeasonEntity
 
 ```ts
-const season = client.season
+const season = client.Season()
 ```
 
 ### Fields
@@ -278,7 +278,7 @@ const season = client.season
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.season.list()
+const results = await client.Season().list()
 ```
 
 ### Common Methods

@@ -233,10 +233,10 @@ class TheOfficeSDK
 
     private $_character = null;
 
-    // Idiomatic facade: $client->character()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Character() (PHP method
-    // names are case-insensitive).
-    public function character($data = null)
+    // Canonical facade: $client->Character()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->character()
+    // resolves here too.
+    public function Character($data = null)
     {
         require_once __DIR__ . '/entity/character_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class TheOfficeSDK
 
     private $_episode = null;
 
-    // Idiomatic facade: $client->episode()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Episode() (PHP method
-    // names are case-insensitive).
-    public function episode($data = null)
+    // Canonical facade: $client->Episode()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->episode()
+    // resolves here too.
+    public function Episode($data = null)
     {
         require_once __DIR__ . '/entity/episode_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class TheOfficeSDK
 
     private $_season = null;
 
-    // Idiomatic facade: $client->season()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Season() (PHP method
-    // names are case-insensitive).
-    public function season($data = null)
+    // Canonical facade: $client->Season()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->season()
+    // resolves here too.
+    public function Season($data = null)
     {
         require_once __DIR__ . '/entity/season_entity.php';
         if ($data === null) {
