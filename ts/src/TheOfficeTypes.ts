@@ -22,7 +22,18 @@ export interface CharacterLoadMatch {
   id: number
 }
 
-export type CharacterListMatch = Partial<Character>
+export interface CharacterListMatch {
+  actor?: string
+  episode?: any[]
+  first_appearance?: string
+  gender?: string
+  id?: number
+  job?: any[]
+  last_appearance?: string
+  marital?: string
+  name?: string
+  workplace?: any[]
+}
 
 export interface Episode {
   air_date: string
@@ -37,7 +48,18 @@ export interface Episode {
   title: string
 }
 
-export type EpisodeListMatch = Partial<Episode>
+export interface EpisodeListMatch {
+  air_date?: string
+  episode?: string
+  id?: number
+  main_character?: any[]
+  recurring_character?: any[]
+  season_id?: number
+  series_episode_number?: number
+  summary?: string
+  supporting_character?: any[]
+  title?: string
+}
 
 export interface Season {
   end_date: string
@@ -46,5 +68,10 @@ export interface Season {
   start_date: string
 }
 
-export type SeasonListMatch = Partial<Season>
+export interface SeasonListMatch {
+  end_date?: string
+  id?: number
+  number?: number
+  start_date?: string
+}
 

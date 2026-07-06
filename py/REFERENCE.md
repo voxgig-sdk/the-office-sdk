@@ -8,7 +8,7 @@ Complete API reference for the TheOffice Python SDK.
 ### Constructor
 
 ```python
-from the-office_sdk import TheOfficeSDK
+from theoffice_sdk import TheOfficeSDK
 
 client = TheOfficeSDK(options)
 ```
@@ -95,25 +95,25 @@ character = client.Character()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `actor` | ``$STRING`` | Yes |  |
-| `episode` | ``$ARRAY`` | No |  |
-| `first_appearance` | ``$STRING`` | Yes |  |
-| `gender` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `job` | ``$ARRAY`` | Yes |  |
-| `last_appearance` | ``$STRING`` | Yes |  |
-| `marital` | ``$STRING`` | Yes |  |
-| `name` | ``$STRING`` | Yes |  |
-| `workplace` | ``$ARRAY`` | Yes |  |
+| `actor` | `str` | Yes |  |
+| `episode` | `list` | No |  |
+| `first_appearance` | `str` | Yes |  |
+| `gender` | `str` | Yes |  |
+| `id` | `float` | Yes |  |
+| `job` | `list` | Yes |  |
+| `last_appearance` | `str` | Yes |  |
+| `marital` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `workplace` | `list` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Character().list({})
+results = client.Character().list()
 for character in results:
     print(character)
 ```
@@ -165,25 +165,25 @@ episode = client.Episode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | ``$STRING`` | Yes |  |
-| `episode` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `main_character` | ``$ARRAY`` | No |  |
-| `recurring_character` | ``$ARRAY`` | No |  |
-| `season_id` | ``$NUMBER`` | Yes |  |
-| `series_episode_number` | ``$NUMBER`` | Yes |  |
-| `summary` | ``$STRING`` | Yes |  |
-| `supporting_character` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | Yes |  |
+| `air_date` | `str` | Yes |  |
+| `episode` | `str` | Yes |  |
+| `id` | `float` | Yes |  |
+| `main_character` | `list` | No |  |
+| `recurring_character` | `list` | No |  |
+| `season_id` | `float` | Yes |  |
+| `series_episode_number` | `float` | Yes |  |
+| `summary` | `str` | Yes |  |
+| `supporting_character` | `list` | No |  |
+| `title` | `str` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Episode().list({})
+results = client.Episode().list()
 for episode in results:
     print(episode)
 ```
@@ -227,19 +227,19 @@ season = client.Season()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `number` | ``$NUMBER`` | Yes |  |
-| `start_date` | ``$STRING`` | Yes |  |
+| `end_date` | `str` | Yes |  |
+| `id` | `float` | Yes |  |
+| `number` | `float` | Yes |  |
+| `start_date` | `str` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Season().list({})
+results = client.Season().list()
 for season in results:
     print(season)
 ```

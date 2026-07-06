@@ -62,7 +62,7 @@ CharacterLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Character#list (any subset of Character fields).
+# Request payload for Character#list.
 #
 # @!attribute [rw] actor
 #   @return [String, nil]
@@ -152,7 +152,7 @@ Episode = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Episode#list (any subset of Episode fields).
+# Request payload for Episode#list.
 #
 # @!attribute [rw] air_date
 #   @return [String, nil]
@@ -218,7 +218,7 @@ Season = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Season#list (any subset of Season fields).
+# Request payload for Season#list.
 #
 # @!attribute [rw] end_date
 #   @return [String, nil]

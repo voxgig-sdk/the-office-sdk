@@ -8,7 +8,7 @@ Complete API reference for the TheOffice Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'the-office_sdk'
+require_relative 'TheOffice_sdk'
 
 client = TheOfficeSDK.new(options)
 ```
@@ -101,25 +101,25 @@ character = client.Character
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `actor` | ``$STRING`` | Yes |  |
-| `episode` | ``$ARRAY`` | No |  |
-| `first_appearance` | ``$STRING`` | Yes |  |
-| `gender` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `job` | ``$ARRAY`` | Yes |  |
-| `last_appearance` | ``$STRING`` | Yes |  |
-| `marital` | ``$STRING`` | Yes |  |
-| `name` | ``$STRING`` | Yes |  |
-| `workplace` | ``$ARRAY`` | Yes |  |
+| `actor` | `String` | Yes |  |
+| `episode` | `Array` | No |  |
+| `first_appearance` | `String` | Yes |  |
+| `gender` | `String` | Yes |  |
+| `id` | `Float` | Yes |  |
+| `job` | `Array` | Yes |  |
+| `last_appearance` | `String` | Yes |  |
+| `marital` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `workplace` | `Array` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Character.list(nil)
+results = client.Character.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -170,25 +170,25 @@ episode = client.Episode
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | ``$STRING`` | Yes |  |
-| `episode` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `main_character` | ``$ARRAY`` | No |  |
-| `recurring_character` | ``$ARRAY`` | No |  |
-| `season_id` | ``$NUMBER`` | Yes |  |
-| `series_episode_number` | ``$NUMBER`` | Yes |  |
-| `summary` | ``$STRING`` | Yes |  |
-| `supporting_character` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | Yes |  |
+| `air_date` | `String` | Yes |  |
+| `episode` | `String` | Yes |  |
+| `id` | `Float` | Yes |  |
+| `main_character` | `Array` | No |  |
+| `recurring_character` | `Array` | No |  |
+| `season_id` | `Float` | Yes |  |
+| `series_episode_number` | `Float` | Yes |  |
+| `summary` | `String` | Yes |  |
+| `supporting_character` | `Array` | No |  |
+| `title` | `String` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Episode.list(nil)
+results = client.Episode.list
 ```
 
 ### Common Methods
@@ -231,19 +231,19 @@ season = client.Season
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `number` | ``$NUMBER`` | Yes |  |
-| `start_date` | ``$STRING`` | Yes |  |
+| `end_date` | `String` | Yes |  |
+| `id` | `Float` | Yes |  |
+| `number` | `Float` | Yes |  |
+| `start_date` | `String` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Season.list(nil)
+results = client.Season.list
 ```
 
 ### Common Methods

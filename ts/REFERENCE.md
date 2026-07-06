@@ -140,16 +140,16 @@ const character = client.Character()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `actor` | ``$STRING`` | Yes |  |
-| `episode` | ``$ARRAY`` | No |  |
-| `first_appearance` | ``$STRING`` | Yes |  |
-| `gender` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `job` | ``$ARRAY`` | Yes |  |
-| `last_appearance` | ``$STRING`` | Yes |  |
-| `marital` | ``$STRING`` | Yes |  |
-| `name` | ``$STRING`` | Yes |  |
-| `workplace` | ``$ARRAY`` | Yes |  |
+| `actor` | `string` | Yes |  |
+| `episode` | `any[]` | No |  |
+| `first_appearance` | `string` | Yes |  |
+| `gender` | `string` | Yes |  |
+| `id` | `number` | Yes |  |
+| `job` | `any[]` | Yes |  |
+| `last_appearance` | `string` | Yes |  |
+| `marital` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `workplace` | `any[]` | Yes |  |
 
 ### Operations
 
@@ -166,7 +166,7 @@ const results = await client.Character().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Character().load({ id: 'character_id' })
+const result = await client.Character().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -207,16 +207,16 @@ const episode = client.Episode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | ``$STRING`` | Yes |  |
-| `episode` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `main_character` | ``$ARRAY`` | No |  |
-| `recurring_character` | ``$ARRAY`` | No |  |
-| `season_id` | ``$NUMBER`` | Yes |  |
-| `series_episode_number` | ``$NUMBER`` | Yes |  |
-| `summary` | ``$STRING`` | Yes |  |
-| `supporting_character` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | Yes |  |
+| `air_date` | `string` | Yes |  |
+| `episode` | `string` | Yes |  |
+| `id` | `number` | Yes |  |
+| `main_character` | `any[]` | No |  |
+| `recurring_character` | `any[]` | No |  |
+| `season_id` | `number` | Yes |  |
+| `series_episode_number` | `number` | Yes |  |
+| `summary` | `string` | Yes |  |
+| `supporting_character` | `any[]` | No |  |
+| `title` | `string` | Yes |  |
 
 ### Operations
 
@@ -266,10 +266,10 @@ const season = client.Season()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `number` | ``$NUMBER`` | Yes |  |
-| `start_date` | ``$STRING`` | Yes |  |
+| `end_date` | `string` | Yes |  |
+| `id` | `number` | Yes |  |
+| `number` | `number` | Yes |  |
+| `start_date` | `string` | Yes |  |
 
 ### Operations
 

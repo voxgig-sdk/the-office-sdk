@@ -8,7 +8,7 @@ Complete API reference for the TheOffice PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/the-office_sdk.php';
+require_once __DIR__ . '/theoffice_sdk.php';
 
 $client = new TheOfficeSDK($options);
 ```
@@ -53,11 +53,11 @@ Create a new `EpisodeEntity` instance. Pass `null` for no initial data.
 
 Create a new `SeasonEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): TheOfficeUtility`
 
 Return a copy of the SDK utility object.
 
@@ -100,25 +100,25 @@ $character = $client->Character();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `actor` | ``$STRING`` | Yes |  |
-| `episode` | ``$ARRAY`` | No |  |
-| `first_appearance` | ``$STRING`` | Yes |  |
-| `gender` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `job` | ``$ARRAY`` | Yes |  |
-| `last_appearance` | ``$STRING`` | Yes |  |
-| `marital` | ``$STRING`` | Yes |  |
-| `name` | ``$STRING`` | Yes |  |
-| `workplace` | ``$ARRAY`` | Yes |  |
+| `actor` | `string` | Yes |  |
+| `episode` | `array` | No |  |
+| `first_appearance` | `string` | Yes |  |
+| `gender` | `string` | Yes |  |
+| `id` | `float` | Yes |  |
+| `job` | `array` | Yes |  |
+| `last_appearance` | `string` | Yes |  |
+| `marital` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `workplace` | `array` | Yes |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Character()->list([]);
+$results = $client->Character()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -131,19 +131,19 @@ $result = $client->Character()->load(["id" => "character_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -152,7 +152,7 @@ Set the entity match criteria.
 Create a new `CharacterEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -169,42 +169,42 @@ $episode = $client->Episode();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | ``$STRING`` | Yes |  |
-| `episode` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `main_character` | ``$ARRAY`` | No |  |
-| `recurring_character` | ``$ARRAY`` | No |  |
-| `season_id` | ``$NUMBER`` | Yes |  |
-| `series_episode_number` | ``$NUMBER`` | Yes |  |
-| `summary` | ``$STRING`` | Yes |  |
-| `supporting_character` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | Yes |  |
+| `air_date` | `string` | Yes |  |
+| `episode` | `string` | Yes |  |
+| `id` | `float` | Yes |  |
+| `main_character` | `array` | No |  |
+| `recurring_character` | `array` | No |  |
+| `season_id` | `float` | Yes |  |
+| `series_episode_number` | `float` | Yes |  |
+| `summary` | `string` | Yes |  |
+| `supporting_character` | `array` | No |  |
+| `title` | `string` | Yes |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Episode()->list([]);
+$results = $client->Episode()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -213,7 +213,7 @@ Set the entity match criteria.
 Create a new `EpisodeEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -230,36 +230,36 @@ $season = $client->Season();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `number` | ``$NUMBER`` | Yes |  |
-| `start_date` | ``$STRING`` | Yes |  |
+| `end_date` | `string` | Yes |  |
+| `id` | `float` | Yes |  |
+| `number` | `float` | Yes |  |
+| `start_date` | `string` | Yes |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Season()->list([]);
+$results = $client->Season()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -268,7 +268,7 @@ Set the entity match criteria.
 Create a new `SeasonEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

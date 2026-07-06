@@ -105,16 +105,16 @@ character := client.Character(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `actor` | ``$STRING`` | Yes |  |
-| `episode` | ``$ARRAY`` | No |  |
-| `first_appearance` | ``$STRING`` | Yes |  |
-| `gender` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `job` | ``$ARRAY`` | Yes |  |
-| `last_appearance` | ``$STRING`` | Yes |  |
-| `marital` | ``$STRING`` | Yes |  |
-| `name` | ``$STRING`` | Yes |  |
-| `workplace` | ``$ARRAY`` | Yes |  |
+| `actor` | `string` | Yes |  |
+| `episode` | `[]any` | No |  |
+| `first_appearance` | `string` | Yes |  |
+| `gender` | `string` | Yes |  |
+| `id` | `float64` | Yes |  |
+| `job` | `[]any` | Yes |  |
+| `last_appearance` | `string` | Yes |  |
+| `marital` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `workplace` | `[]any` | Yes |  |
 
 ### Operations
 
@@ -168,16 +168,16 @@ episode := client.Episode(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | ``$STRING`` | Yes |  |
-| `episode` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `main_character` | ``$ARRAY`` | No |  |
-| `recurring_character` | ``$ARRAY`` | No |  |
-| `season_id` | ``$NUMBER`` | Yes |  |
-| `series_episode_number` | ``$NUMBER`` | Yes |  |
-| `summary` | ``$STRING`` | Yes |  |
-| `supporting_character` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | Yes |  |
+| `air_date` | `string` | Yes |  |
+| `episode` | `string` | Yes |  |
+| `id` | `float64` | Yes |  |
+| `main_character` | `[]any` | No |  |
+| `recurring_character` | `[]any` | No |  |
+| `season_id` | `float64` | Yes |  |
+| `series_episode_number` | `float64` | Yes |  |
+| `summary` | `string` | Yes |  |
+| `supporting_character` | `[]any` | No |  |
+| `title` | `string` | Yes |  |
 
 ### Operations
 
@@ -223,10 +223,10 @@ season := client.Season(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | ``$STRING`` | Yes |  |
-| `id` | ``$NUMBER`` | Yes |  |
-| `number` | ``$NUMBER`` | Yes |  |
-| `start_date` | ``$STRING`` | Yes |  |
+| `end_date` | `string` | Yes |  |
+| `id` | `float64` | Yes |  |
+| `number` | `float64` | Yes |  |
+| `start_date` | `string` | Yes |  |
 
 ### Operations
 

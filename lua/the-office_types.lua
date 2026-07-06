@@ -22,6 +22,16 @@
 ---@field id number
 
 ---@class CharacterListMatch
+---@field actor? string
+---@field episode? table
+---@field first_appearance? string
+---@field gender? string
+---@field id? number
+---@field job? table
+---@field last_appearance? string
+---@field marital? string
+---@field name? string
+---@field workplace? table
 
 ---@class Episode
 ---@field air_date string
@@ -36,6 +46,16 @@
 ---@field title string
 
 ---@class EpisodeListMatch
+---@field air_date? string
+---@field episode? string
+---@field id? number
+---@field main_character? table
+---@field recurring_character? table
+---@field season_id? number
+---@field series_episode_number? number
+---@field summary? string
+---@field supporting_character? table
+---@field title? string
 
 ---@class Season
 ---@field end_date string
@@ -44,6 +64,10 @@
 ---@field start_date string
 
 ---@class SeasonListMatch
+---@field end_date? string
+---@field id? number
+---@field number? number
+---@field start_date? string
 
 local M = {}
 

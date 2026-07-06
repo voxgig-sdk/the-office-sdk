@@ -33,7 +33,7 @@ class CharacterLoadMatch
     public float $id;
 }
 
-/** Match filter for Character#list (any subset of Character fields). */
+/** Request payload for Character#list. */
 class CharacterListMatch
 {
     public ?string $actor = null;
@@ -63,7 +63,7 @@ class Episode
     public string $title;
 }
 
-/** Match filter for Episode#list (any subset of Episode fields). */
+/** Request payload for Episode#list. */
 class EpisodeListMatch
 {
     public ?string $air_date = null;
@@ -87,7 +87,7 @@ class Season
     public string $start_date;
 }
 
-/** Match filter for Season#list (any subset of Season fields). */
+/** Request payload for Season#list. */
 class SeasonListMatch
 {
     public ?string $end_date = null;
