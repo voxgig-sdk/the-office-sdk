@@ -11,9 +11,9 @@ main: {
           url: "https://www.theofficeapi.dev/api"
         }
       ]
+      summary: "An API for The Office TV show"
       title: "The Office API"
       version: "1.0.0"
+      website: "https://theofficeapi.dev"
     }
   }
-}
-
