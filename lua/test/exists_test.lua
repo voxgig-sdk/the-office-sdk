@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- TheOffice SDK exists test
 
 local sdk = require("the-office_sdk")
 
