@@ -12,22 +12,25 @@ at `../go`.
 # 1. Build a native binary (-> dist/<os>-<arch>/the-office-cli)
 make build
 
-# 2. Provide credentials once, via the environment
+# 2. See usage (words, entities, env vars)
+./the-office-cli --help
+
+# 3. Provide credentials once, via the environment
 export THE_OFFICE_APIKEY=sk_live_xxx
 
-# 3. Each command line is ONE AQL expression, run against the API:
+# 4. Each command line is ONE AQL expression, run against the API:
 ./the-office-cli list character
 ./the-office-cli load 1 character            # {id:1} shorthand
 ./the-office-cli load '{id:1}' character       # explicit match map
 ./the-office-cli list episode
 
-# 4. Override the API base URL for a single call
+# 5. Override the API base URL for a single call
 THE_OFFICE_BASE=https://api.example.com ./the-office-cli list character
 
-# 5. No arguments -> interactive REPL
+# 6. No arguments -> interactive REPL
 ./the-office-cli
 the-office> list character
-the-office> :quit
+the-office> /quit
 ```
 
 > The rest of this guide follows the [Diátaxis](https://diataxis.fr) framework:
@@ -56,7 +59,7 @@ the-office> :quit
    ```
 
 4. **Go interactive.** Run the binary with no arguments to open the REPL, then
-   type `:help` for the word and entity lists and `:quit` to leave.
+   type `/help` for the word and entity lists and `/quit` to leave.
 
 That is the whole loop: *build → set key → evaluate AQL expressions*.
 
@@ -101,8 +104,8 @@ evaluated as its own AQL expression:
 ```text
 $ ./the-office-cli
 the-office> list character
-the-office> :help
-the-office> :quit
+the-office> /help
+the-office> /quit
 ```
 
 ### Cross-compile release binaries
@@ -114,7 +117,7 @@ make build-all   # linux/darwin/windows x amd64/arm64, under dist/<os>-<arch>/
 
 ### Discover the available entities
 
-`:help` in the REPL prints the full entity list, or see [Entities](#entities)
+`/help` in the REPL prints the full entity list, or see [Entities](#entities)
 below — this SDK exposes 3 entities.
 
 ## Reference
@@ -141,10 +144,16 @@ The CLI registers these AQL words, each bound to the SDK:
 
 Unset variables fall back to the SDK's built-in defaults.
 
+### CLI flags
+
+- `--help` / `-h` — print usage (words, entities, env vars) and exit.
+
 ### REPL commands
 
-- `:quit` / `:q` / `:exit` — exit the REPL
-- `:help` / `:h` / `:?`     — show the word list, entity list and meta commands
+Meta-commands use the `/` prefix (everything else on a line is evaluated as AQL):
+
+- `/quit` / `/q` / `/exit` — exit the REPL
+- `/help` / `/h` / `/?`     — show the word list, entity list and meta commands
 
 ### Exit codes
 
