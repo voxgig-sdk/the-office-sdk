@@ -11,12 +11,12 @@ main: kit: entity: character: {
       type: "`$STRING`"
     }
     {
-      name: "episode"
+      name: "episodes"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "first_appearance"
+      name: "firstAppearance"
       req: true
       type: "`$STRING`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: character: {
       type: "`$ARRAY`"
     }
     {
-      name: "last_appearance"
+      name: "lastAppearance"
       req: true
       type: "`$STRING`"
     }

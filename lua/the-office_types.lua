@@ -8,12 +8,12 @@
 
 ---@class Character
 ---@field actor string
----@field episode? table
----@field first_appearance string
+---@field episodes? table
+---@field firstAppearance string
 ---@field gender string
 ---@field id number
 ---@field job table
----@field last_appearance string
+---@field lastAppearance string
 ---@field marital string
 ---@field name string
 ---@field workplace table
@@ -23,51 +23,51 @@
 
 ---@class CharacterListMatch
 ---@field actor? string
----@field episode? table
----@field first_appearance? string
+---@field episodes? table
+---@field firstAppearance? string
 ---@field gender? string
 ---@field id? number
 ---@field job? table
----@field last_appearance? string
+---@field lastAppearance? string
 ---@field marital? string
 ---@field name? string
 ---@field workplace? table
 
 ---@class Episode
----@field air_date string
+---@field airDate string
 ---@field episode string
 ---@field id number
----@field main_character? table
----@field recurring_character? table
----@field season_id number
----@field series_episode_number number
+---@field mainCharacters? table
+---@field recurringCharacters? table
+---@field seasonId number
+---@field seriesEpisodeNumber number
 ---@field summary string
----@field supporting_character? table
+---@field supportingCharacters? table
 ---@field title string
 
 ---@class EpisodeListMatch
----@field air_date? string
+---@field airDate? string
 ---@field episode? string
 ---@field id? number
----@field main_character? table
----@field recurring_character? table
----@field season_id? number
----@field series_episode_number? number
+---@field mainCharacters? table
+---@field recurringCharacters? table
+---@field seasonId? number
+---@field seriesEpisodeNumber? number
 ---@field summary? string
----@field supporting_character? table
+---@field supportingCharacters? table
 ---@field title? string
 
 ---@class Season
----@field end_date string
+---@field endDate string
 ---@field id number
 ---@field number number
----@field start_date string
+---@field startDate string
 
 ---@class SeasonListMatch
----@field end_date? string
+---@field endDate? string
 ---@field id? number
 ---@field number? number
----@field start_date? string
+---@field startDate? string
 
 local M = {}
 

@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ TheOfficeUtility.registrar = ->(u) {
   u.prepare_params = TheOfficeUtilities::PrepareParams
   u.prepare_path = TheOfficeUtilities::PreparePath
   u.prepare_query = TheOfficeUtilities::PrepareQuery
+  u.graphql_body = TheOfficeUtilities::GraphqlBody
+  u.graphql_errors = TheOfficeUtilities::GraphqlErrors
   u.result_basic = TheOfficeUtilities::ResultBasic
   u.result_body = TheOfficeUtilities::ResultBody
   u.result_headers = TheOfficeUtilities::ResultHeaders

@@ -96,12 +96,12 @@ character = client.Character()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `actor` | `str` | Yes |  |
-| `episode` | `list` | No |  |
-| `first_appearance` | `str` | Yes |  |
+| `episodes` | `list` | No |  |
+| `firstAppearance` | `str` | Yes |  |
 | `gender` | `str` | Yes |  |
 | `id` | `float` | Yes |  |
 | `job` | `list` | Yes |  |
-| `last_appearance` | `str` | Yes |  |
+| `lastAppearance` | `str` | Yes |  |
 | `marital` | `str` | Yes |  |
 | `name` | `str` | Yes |  |
 | `workplace` | `list` | Yes |  |
@@ -165,15 +165,15 @@ episode = client.Episode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | `str` | Yes |  |
+| `airDate` | `str` | Yes |  |
 | `episode` | `str` | Yes |  |
 | `id` | `float` | Yes |  |
-| `main_character` | `list` | No |  |
-| `recurring_character` | `list` | No |  |
-| `season_id` | `float` | Yes |  |
-| `series_episode_number` | `float` | Yes |  |
+| `mainCharacters` | `list` | No |  |
+| `recurringCharacters` | `list` | No |  |
+| `seasonId` | `float` | Yes |  |
+| `seriesEpisodeNumber` | `float` | Yes |  |
 | `summary` | `str` | Yes |  |
-| `supporting_character` | `list` | No |  |
+| `supportingCharacters` | `list` | No |  |
 | `title` | `str` | Yes |  |
 
 ### Operations
@@ -227,10 +227,10 @@ season = client.Season()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `str` | Yes |  |
+| `endDate` | `str` | Yes |  |
 | `id` | `float` | Yes |  |
 | `number` | `float` | Yes |  |
-| `start_date` | `str` | Yes |  |
+| `startDate` | `str` | Yes |  |
 
 ### Operations
 

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from theoffice_sdk.utility.voxgig_struct import voxgig_struct as vs
 from theoffice_sdk import TheOfficeSDK
-from core import helpers
+from theoffice_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _episode_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "THEOFFICE_TEST_EPISODE_ENTID": {},
-        "THEOFFICE_TEST_LIVE": "FALSE",
+        "THE_OFFICE_TEST_EPISODE_ENTID": {},
+        "THE_OFFICE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("THEOFFICE_TEST_LIVE") == "TRUE"
+    live = env.get("THE_OFFICE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

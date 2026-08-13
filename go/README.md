@@ -75,12 +75,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-characters, err := client.Character(nil).List(nil, nil)
+episodes, err := client.Episode(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = characters
+_ = episodes
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-character, err := client.Character(nil).List(
+episode, err := client.Episode(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(character) // the returned mock data
+fmt.Println(episode) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -272,12 +272,12 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"actor"` |  |
-| `"episode"` |  |
-| `"first_appearance"` |  |
+| `"episodes"` |  |
+| `"firstAppearance"` |  |
 | `"gender"` |  |
 | `"id"` |  |
 | `"job"` |  |
-| `"last_appearance"` |  |
+| `"lastAppearance"` |  |
 | `"marital"` |  |
 | `"name"` |  |
 | `"workplace"` |  |
@@ -290,15 +290,15 @@ API path: `/characters`
 
 | Field | Description |
 | --- | --- |
-| `"air_date"` |  |
+| `"airDate"` |  |
 | `"episode"` |  |
 | `"id"` |  |
-| `"main_character"` |  |
-| `"recurring_character"` |  |
-| `"season_id"` |  |
-| `"series_episode_number"` |  |
+| `"mainCharacters"` |  |
+| `"recurringCharacters"` |  |
+| `"seasonId"` |  |
+| `"seriesEpisodeNumber"` |  |
 | `"summary"` |  |
-| `"supporting_character"` |  |
+| `"supportingCharacters"` |  |
 | `"title"` |  |
 
 Operations: List.
@@ -309,10 +309,10 @@ API path: `/episodes`
 
 | Field | Description |
 | --- | --- |
-| `"end_date"` |  |
+| `"endDate"` |  |
 | `"id"` |  |
 | `"number"` |  |
-| `"start_date"` |  |
+| `"startDate"` |  |
 
 Operations: List.
 
@@ -339,12 +339,12 @@ Create an instance: `character := client.Character(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `actor` | `string` |  |
-| `episode` | `[]any` |  |
-| `first_appearance` | `string` |  |
+| `episodes` | `[]any` |  |
+| `firstAppearance` | `string` |  |
 | `gender` | `string` |  |
 | `id` | `float64` |  |
 | `job` | `[]any` |  |
-| `last_appearance` | `string` |  |
+| `lastAppearance` | `string` |  |
 | `marital` | `string` |  |
 | `name` | `string` |  |
 | `workplace` | `[]any` |  |
@@ -384,15 +384,15 @@ Create an instance: `episode := client.Episode(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | `string` |  |
+| `airDate` | `string` |  |
 | `episode` | `string` |  |
 | `id` | `float64` |  |
-| `main_character` | `[]any` |  |
-| `recurring_character` | `[]any` |  |
-| `season_id` | `float64` |  |
-| `series_episode_number` | `float64` |  |
+| `mainCharacters` | `[]any` |  |
+| `recurringCharacters` | `[]any` |  |
+| `seasonId` | `float64` |  |
+| `seriesEpisodeNumber` | `float64` |  |
 | `summary` | `string` |  |
-| `supporting_character` | `[]any` |  |
+| `supportingCharacters` | `[]any` |  |
 | `title` | `string` |  |
 
 #### Example: List
@@ -420,10 +420,10 @@ Create an instance: `season := client.Season(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
+| `endDate` | `string` |  |
 | `id` | `float64` |  |
 | `number` | `float64` |  |
-| `start_date` | `string` |  |
+| `startDate` | `string` |  |
 
 #### Example: List
 
@@ -509,11 +509,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-character := client.Character(nil)
-character.List(nil, nil)
+episode := client.Episode(nil)
+episode.List(nil, nil)
 
-// character.Data() now returns the character data from the last list
-// character.Match() returns the last match criteria
+// episode.Data() now returns the episode data from the last list
+// episode.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

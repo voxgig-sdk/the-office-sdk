@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# TheOffice SDK exists test
 
 import pytest
 from theoffice_sdk import TheOfficeSDK

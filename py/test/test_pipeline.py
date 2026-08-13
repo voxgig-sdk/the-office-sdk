@@ -16,11 +16,11 @@
 import pytest
 
 from theoffice_sdk import TheOfficeSDK
-from core.error import TheOfficeError
-from core.result import TheOfficeResult
-from core.response import TheOfficeResponse
-from core.spec import TheOfficeSpec
-from feature.base_feature import TheOfficeBaseFeature
+from theoffice_sdk.core.error import TheOfficeError
+from theoffice_sdk.core.result import TheOfficeResult
+from theoffice_sdk.core.response import TheOfficeResponse
+from theoffice_sdk.core.spec import TheOfficeSpec
+from theoffice_sdk.feature.base_feature import TheOfficeBaseFeature
 
 
 def _client():

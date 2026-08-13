@@ -6,7 +6,7 @@ main: kit: entity: season: {
 
   fields: [
     {
-      name: "end_date"
+      name: "endDate"
       req: true
       type: "`$STRING`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: season: {
       type: "`$NUMBER`"
     }
     {
-      name: "start_date"
+      name: "startDate"
       req: true
       type: "`$STRING`"
     }

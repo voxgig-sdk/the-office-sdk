@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Character record (raises on error).
+  # load returns the ENTITY — call data_get for the Character record (raises on error).
   character = client.Character.load({ "id" => 1 })
   puts character
 rescue => err
@@ -63,7 +63,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  characters = client.Character.list()
+  episodes = client.Episode.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -126,17 +126,15 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```ruby
-client = TheOfficeSDK.test({
-  "entity" => { "character" => { "test01" => { "id" => "test01" } } },
-})
+client = TheOfficeSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-character = client.Character.list()
-puts character
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+episode = client.Episode.list()
+puts episode
 ```
 
 ### Use a custom fetch function
@@ -255,12 +253,12 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `actor` |  |
-| `episode` |  |
-| `first_appearance` |  |
+| `episodes` |  |
+| `firstAppearance` |  |
 | `gender` |  |
 | `id` |  |
 | `job` |  |
-| `last_appearance` |  |
+| `lastAppearance` |  |
 | `marital` |  |
 | `name` |  |
 | `workplace` |  |
@@ -273,15 +271,15 @@ API path: `/characters`
 
 | Field | Description |
 | --- | --- |
-| `air_date` |  |
+| `airDate` |  |
 | `episode` |  |
 | `id` |  |
-| `main_character` |  |
-| `recurring_character` |  |
-| `season_id` |  |
-| `series_episode_number` |  |
+| `mainCharacters` |  |
+| `recurringCharacters` |  |
+| `seasonId` |  |
+| `seriesEpisodeNumber` |  |
 | `summary` |  |
-| `supporting_character` |  |
+| `supportingCharacters` |  |
 | `title` |  |
 
 Operations: List.
@@ -292,10 +290,10 @@ API path: `/episodes`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
+| `endDate` |  |
 | `id` |  |
 | `number` |  |
-| `start_date` |  |
+| `startDate` |  |
 
 Operations: List.
 
@@ -322,12 +320,12 @@ Create an instance: `character = client.Character`
 | Field | Type | Description |
 | --- | --- | --- |
 | `actor` | `String` |  |
-| `episode` | `Array` |  |
-| `first_appearance` | `String` |  |
+| `episodes` | `Array` |  |
+| `firstAppearance` | `String` |  |
 | `gender` | `String` |  |
 | `id` | `Float` |  |
 | `job` | `Array` |  |
-| `last_appearance` | `String` |  |
+| `lastAppearance` | `String` |  |
 | `marital` | `String` |  |
 | `name` | `String` |  |
 | `workplace` | `Array` |  |
@@ -335,7 +333,7 @@ Create an instance: `character = client.Character`
 #### Example: Load
 
 ```ruby
-# load returns the bare Character record (raises on error).
+# load returns the ENTITY — call data_get for the Character record (raises on error).
 character = client.Character.load({ "id" => 1 })
 ```
 
@@ -361,15 +359,15 @@ Create an instance: `episode = client.Episode`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | `String` |  |
+| `airDate` | `String` |  |
 | `episode` | `String` |  |
 | `id` | `Float` |  |
-| `main_character` | `Array` |  |
-| `recurring_character` | `Array` |  |
-| `season_id` | `Float` |  |
-| `series_episode_number` | `Float` |  |
+| `mainCharacters` | `Array` |  |
+| `recurringCharacters` | `Array` |  |
+| `seasonId` | `Float` |  |
+| `seriesEpisodeNumber` | `Float` |  |
 | `summary` | `String` |  |
-| `supporting_character` | `Array` |  |
+| `supportingCharacters` | `Array` |  |
 | `title` | `String` |  |
 
 #### Example: List
@@ -394,10 +392,10 @@ Create an instance: `season = client.Season`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `String` |  |
+| `endDate` | `String` |  |
 | `id` | `Float` |  |
 | `number` | `Float` |  |
-| `start_date` | `String` |  |
+| `startDate` | `String` |  |
 
 #### Example: List
 
@@ -483,11 +481,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-character = client.Character
-character.list()
+episode = client.Episode
+episode.list()
 
-# character.data_get now returns the character data from the last list
-# character.match_get returns the last match criteria
+# episode.data_get now returns the episode data from the last list
+# episode.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

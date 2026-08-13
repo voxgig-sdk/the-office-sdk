@@ -35,14 +35,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "episode",
+						"name": "episodes",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "first_appearance",
+						"name": "firstAppearance",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 2,
@@ -70,7 +70,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "last_appearance",
+						"name": "lastAppearance",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 6,
@@ -136,6 +136,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/characters",
 								"parts": []any{
@@ -155,7 +156,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -187,6 +187,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/character/{id}",
 								"parts": []any{
@@ -206,7 +207,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -217,7 +217,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "air_date",
+						"name": "airDate",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 0,
@@ -238,28 +238,28 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "main_character",
+						"name": "mainCharacters",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 3,
 					},
 					map[string]any{
 						"active": true,
-						"name": "recurring_character",
+						"name": "recurringCharacters",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 4,
 					},
 					map[string]any{
 						"active": true,
-						"name": "season_id",
+						"name": "seasonId",
 						"req": true,
 						"type": "`$NUMBER`",
 						"index$": 5,
 					},
 					map[string]any{
 						"active": true,
-						"name": "series_episode_number",
+						"name": "seriesEpisodeNumber",
 						"req": true,
 						"type": "`$NUMBER`",
 						"index$": 6,
@@ -273,7 +273,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "supporting_character",
+						"name": "supportingCharacters",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 8,
@@ -333,6 +333,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/episodes",
 								"parts": []any{
@@ -353,7 +354,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -364,7 +364,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "end_date",
+						"name": "endDate",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 0,
@@ -385,7 +385,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "start_date",
+						"name": "startDate",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 3,
@@ -400,6 +400,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/seasons",
 								"parts": []any{
@@ -413,7 +414,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{

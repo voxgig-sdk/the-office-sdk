@@ -99,12 +99,12 @@ local character = client:Character(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `actor` | `string` | Yes |  |
-| `episode` | `table` | No |  |
-| `first_appearance` | `string` | Yes |  |
+| `episodes` | `table` | No |  |
+| `firstAppearance` | `string` | Yes |  |
 | `gender` | `string` | Yes |  |
 | `id` | `number` | Yes |  |
 | `job` | `table` | Yes |  |
-| `last_appearance` | `string` | Yes |  |
+| `lastAppearance` | `string` | Yes |  |
 | `marital` | `string` | Yes |  |
 | `name` | `string` | Yes |  |
 | `workplace` | `table` | Yes |  |
@@ -167,15 +167,15 @@ local episode = client:Episode(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | `string` | Yes |  |
+| `airDate` | `string` | Yes |  |
 | `episode` | `string` | Yes |  |
 | `id` | `number` | Yes |  |
-| `main_character` | `table` | No |  |
-| `recurring_character` | `table` | No |  |
-| `season_id` | `number` | Yes |  |
-| `series_episode_number` | `number` | Yes |  |
+| `mainCharacters` | `table` | No |  |
+| `recurringCharacters` | `table` | No |  |
+| `seasonId` | `number` | Yes |  |
+| `seriesEpisodeNumber` | `number` | Yes |  |
 | `summary` | `string` | Yes |  |
-| `supporting_character` | `table` | No |  |
+| `supportingCharacters` | `table` | No |  |
 | `title` | `string` | Yes |  |
 
 ### Operations
@@ -228,10 +228,10 @@ local season = client:Season(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `string` | Yes |  |
+| `endDate` | `string` | Yes |  |
 | `id` | `number` | Yes |  |
 | `number` | `number` | Yes |  |
-| `start_date` | `string` | Yes |  |
+| `startDate` | `string` | Yes |  |
 
 ### Operations
 

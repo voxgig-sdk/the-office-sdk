@@ -36,14 +36,14 @@ module TheOfficeConfig
             },
             {
               "active" => true,
-              "name" => "episode",
+              "name" => "episodes",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 1,
             },
             {
               "active" => true,
-              "name" => "first_appearance",
+              "name" => "firstAppearance",
               "req" => true,
               "type" => "`$STRING`",
               "index$" => 2,
@@ -71,7 +71,7 @@ module TheOfficeConfig
             },
             {
               "active" => true,
-              "name" => "last_appearance",
+              "name" => "lastAppearance",
               "req" => true,
               "type" => "`$STRING`",
               "index$" => 6,
@@ -137,6 +137,7 @@ module TheOfficeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/characters",
                   "parts" => [
@@ -188,6 +189,7 @@ module TheOfficeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/character/{id}",
                   "parts" => [
@@ -218,7 +220,7 @@ module TheOfficeConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "air_date",
+              "name" => "airDate",
               "req" => true,
               "type" => "`$STRING`",
               "index$" => 0,
@@ -239,28 +241,28 @@ module TheOfficeConfig
             },
             {
               "active" => true,
-              "name" => "main_character",
+              "name" => "mainCharacters",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 3,
             },
             {
               "active" => true,
-              "name" => "recurring_character",
+              "name" => "recurringCharacters",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 4,
             },
             {
               "active" => true,
-              "name" => "season_id",
+              "name" => "seasonId",
               "req" => true,
               "type" => "`$NUMBER`",
               "index$" => 5,
             },
             {
               "active" => true,
-              "name" => "series_episode_number",
+              "name" => "seriesEpisodeNumber",
               "req" => true,
               "type" => "`$NUMBER`",
               "index$" => 6,
@@ -274,7 +276,7 @@ module TheOfficeConfig
             },
             {
               "active" => true,
-              "name" => "supporting_character",
+              "name" => "supportingCharacters",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 8,
@@ -334,6 +336,7 @@ module TheOfficeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/episodes",
                   "parts" => [
@@ -365,7 +368,7 @@ module TheOfficeConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "end_date",
+              "name" => "endDate",
               "req" => true,
               "type" => "`$STRING`",
               "index$" => 0,
@@ -386,7 +389,7 @@ module TheOfficeConfig
             },
             {
               "active" => true,
-              "name" => "start_date",
+              "name" => "startDate",
               "req" => true,
               "type" => "`$STRING`",
               "index$" => 3,
@@ -401,6 +404,7 @@ module TheOfficeConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/seasons",
                   "parts" => [

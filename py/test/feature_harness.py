@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import TheOfficeControl
-from core.error import TheOfficeError
-from core.result import TheOfficeResult
-from core.spec import TheOfficeSpec
+from theoffice_sdk.config import make_config
+from theoffice_sdk.features import _make_feature
+from theoffice_sdk.core.control import TheOfficeControl
+from theoffice_sdk.core.error import TheOfficeError
+from theoffice_sdk.core.result import TheOfficeResult
+from theoffice_sdk.core.spec import TheOfficeSpec
 
 
 # True when this SDK was generated with the named feature.

@@ -43,8 +43,8 @@ class TheOfficeTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('THEOFFICE_TEST_LIVE');
-        $override = self::getenv('THEOFFICE_TEST_OVERRIDE');
+        $live = self::getenv('THE_OFFICE_TEST_LIVE');
+        $override = self::getenv('THE_OFFICE_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class TheOfficeTestRunner
             }
         }
 
-        $explain = self::getenv('THEOFFICE_TEST_EXPLAIN');
+        $explain = self::getenv('THE_OFFICE_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['THEOFFICE_TEST_EXPLAIN'] = $explain;
+            $m['THE_OFFICE_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

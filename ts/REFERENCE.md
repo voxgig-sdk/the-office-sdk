@@ -141,12 +141,12 @@ const character = client.Character()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `actor` | `string` | Yes |  |
-| `episode` | `any[]` | No |  |
-| `first_appearance` | `string` | Yes |  |
+| `episodes` | `any[]` | No |  |
+| `firstAppearance` | `string` | Yes |  |
 | `gender` | `string` | Yes |  |
 | `id` | `number` | Yes |  |
 | `job` | `any[]` | Yes |  |
-| `last_appearance` | `string` | Yes |  |
+| `lastAppearance` | `string` | Yes |  |
 | `marital` | `string` | Yes |  |
 | `name` | `string` | Yes |  |
 | `workplace` | `any[]` | Yes |  |
@@ -207,15 +207,15 @@ const episode = client.Episode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | `string` | Yes |  |
+| `airDate` | `string` | Yes |  |
 | `episode` | `string` | Yes |  |
 | `id` | `number` | Yes |  |
-| `main_character` | `any[]` | No |  |
-| `recurring_character` | `any[]` | No |  |
-| `season_id` | `number` | Yes |  |
-| `series_episode_number` | `number` | Yes |  |
+| `mainCharacters` | `any[]` | No |  |
+| `recurringCharacters` | `any[]` | No |  |
+| `seasonId` | `number` | Yes |  |
+| `seriesEpisodeNumber` | `number` | Yes |  |
 | `summary` | `string` | Yes |  |
-| `supporting_character` | `any[]` | No |  |
+| `supportingCharacters` | `any[]` | No |  |
 | `title` | `string` | Yes |  |
 
 ### Operations
@@ -266,10 +266,10 @@ const season = client.Season()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `string` | Yes |  |
+| `endDate` | `string` | Yes |  |
 | `id` | `number` | Yes |  |
 | `number` | `number` | Yes |  |
-| `start_date` | `string` | Yes |  |
+| `startDate` | `string` | Yes |  |
 
 ### Operations
 

@@ -66,11 +66,11 @@ function episode_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "THEOFFICE_TEST_EPISODE_ENTID" => [],
-        "THEOFFICE_TEST_LIVE" => "FALSE",
+        "THE_OFFICE_TEST_EPISODE_ENTID" => [],
+        "THE_OFFICE_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["THEOFFICE_TEST_LIVE"] === "TRUE";
+    $live = $env["THE_OFFICE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

@@ -37,7 +37,7 @@ class EpisodeEntity extends TheOfficeEntityBase<Episode> {
 
 
 
-  async list(this: any, reqmatch?: EpisodeListMatch, ctrl?: Control): Promise<Episode[]> {
+  async list(this: any, reqmatch?: EpisodeListMatch, ctrl?: Control): Promise<EpisodeEntity[]> {
 
     const utility = this._utility
 

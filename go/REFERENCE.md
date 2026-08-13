@@ -107,12 +107,12 @@ fmt.Println(character.GetName()) // "character"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `actor` | `string` | Yes |  |
-| `episode` | `[]any` | No |  |
-| `first_appearance` | `string` | Yes |  |
+| `episodes` | `[]any` | No |  |
+| `firstAppearance` | `string` | Yes |  |
 | `gender` | `string` | Yes |  |
 | `id` | `float64` | Yes |  |
 | `job` | `[]any` | Yes |  |
-| `last_appearance` | `string` | Yes |  |
+| `lastAppearance` | `string` | Yes |  |
 | `marital` | `string` | Yes |  |
 | `name` | `string` | Yes |  |
 | `workplace` | `[]any` | Yes |  |
@@ -178,15 +178,15 @@ fmt.Println(episode.GetName()) // "episode"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | `string` | Yes |  |
+| `airDate` | `string` | Yes |  |
 | `episode` | `string` | Yes |  |
 | `id` | `float64` | Yes |  |
-| `main_character` | `[]any` | No |  |
-| `recurring_character` | `[]any` | No |  |
-| `season_id` | `float64` | Yes |  |
-| `series_episode_number` | `float64` | Yes |  |
+| `mainCharacters` | `[]any` | No |  |
+| `recurringCharacters` | `[]any` | No |  |
+| `seasonId` | `float64` | Yes |  |
+| `seriesEpisodeNumber` | `float64` | Yes |  |
 | `summary` | `string` | Yes |  |
-| `supporting_character` | `[]any` | No |  |
+| `supportingCharacters` | `[]any` | No |  |
 | `title` | `string` | Yes |  |
 
 ### Operations
@@ -238,10 +238,10 @@ fmt.Println(season.GetName()) // "season"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `string` | Yes |  |
+| `endDate` | `string` | Yes |  |
 | `id` | `float64` | Yes |  |
 | `number` | `float64` | Yes |  |
-| `start_date` | `string` | Yes |  |
+| `startDate` | `string` | Yes |  |
 
 ### Operations
 

@@ -62,7 +62,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local characters, err = client:Character():list()
+local episodes, err = client:Episode():list()
 if err then error(err) end
 ```
 
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Character():list()
+local result, err = client:Episode():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -244,12 +244,12 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `actor` |  |
-| `episode` |  |
-| `first_appearance` |  |
+| `episodes` |  |
+| `firstAppearance` |  |
 | `gender` |  |
 | `id` |  |
 | `job` |  |
-| `last_appearance` |  |
+| `lastAppearance` |  |
 | `marital` |  |
 | `name` |  |
 | `workplace` |  |
@@ -262,15 +262,15 @@ API path: `/characters`
 
 | Field | Description |
 | --- | --- |
-| `air_date` |  |
+| `airDate` |  |
 | `episode` |  |
 | `id` |  |
-| `main_character` |  |
-| `recurring_character` |  |
-| `season_id` |  |
-| `series_episode_number` |  |
+| `mainCharacters` |  |
+| `recurringCharacters` |  |
+| `seasonId` |  |
+| `seriesEpisodeNumber` |  |
 | `summary` |  |
-| `supporting_character` |  |
+| `supportingCharacters` |  |
 | `title` |  |
 
 Operations: List.
@@ -281,10 +281,10 @@ API path: `/episodes`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
+| `endDate` |  |
 | `id` |  |
 | `number` |  |
-| `start_date` |  |
+| `startDate` |  |
 
 Operations: List.
 
@@ -311,12 +311,12 @@ Create an instance: `local character = client:Character(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `actor` | `string` |  |
-| `episode` | `table` |  |
-| `first_appearance` | `string` |  |
+| `episodes` | `table` |  |
+| `firstAppearance` | `string` |  |
 | `gender` | `string` |  |
 | `id` | `number` |  |
 | `job` | `table` |  |
-| `last_appearance` | `string` |  |
+| `lastAppearance` | `string` |  |
 | `marital` | `string` |  |
 | `name` | `string` |  |
 | `workplace` | `table` |  |
@@ -348,15 +348,15 @@ Create an instance: `local episode = client:Episode(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | `string` |  |
+| `airDate` | `string` |  |
 | `episode` | `string` |  |
 | `id` | `number` |  |
-| `main_character` | `table` |  |
-| `recurring_character` | `table` |  |
-| `season_id` | `number` |  |
-| `series_episode_number` | `number` |  |
+| `mainCharacters` | `table` |  |
+| `recurringCharacters` | `table` |  |
+| `seasonId` | `number` |  |
+| `seriesEpisodeNumber` | `number` |  |
 | `summary` | `string` |  |
-| `supporting_character` | `table` |  |
+| `supportingCharacters` | `table` |  |
 | `title` | `string` |  |
 
 #### Example: List
@@ -380,10 +380,10 @@ Create an instance: `local season = client:Season(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
+| `endDate` | `string` |  |
 | `id` | `number` |  |
 | `number` | `number` |  |
-| `start_date` | `string` |  |
+| `startDate` | `string` |  |
 
 #### Example: List
 
@@ -468,11 +468,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local character = client:Character()
-character:list()
+local episode = client:Episode()
+episode:list()
 
--- character:data_get() now returns the character data from the last list
--- character:match_get() returns the last match criteria
+-- episode:data_get() now returns the episode data from the last list
+-- episode:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

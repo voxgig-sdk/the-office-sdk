@@ -26,8 +26,8 @@ import {
 describe('EpisodeEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when THEOFFICE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('THEOFFICE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when THE_OFFICE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('THE_OFFICE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = TheOfficeSDK.test()
@@ -63,7 +63,7 @@ describe('EpisodeEntity', async () => {
     const episode_ref01_ent = client.Episode()
     const episode_ref01_match: any = {}
 
-    const episode_ref01_list = await episode_ref01_ent.list(episode_ref01_match)
+    const episode_ref01_list = (await episode_ref01_ent.list(episode_ref01_match)).map((e: any) => e.data())
 
 
   })

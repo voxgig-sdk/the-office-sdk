@@ -6,17 +6,21 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/the-office-sdk/go/core"
+)
 
 // Character is the typed data model for the character entity.
 type Character struct {
 	Actor string `json:"actor"`
-	Episode *[]any `json:"episode,omitempty"`
-	FirstAppearance string `json:"first_appearance"`
+	Episodes *[]any `json:"episodes,omitempty"`
+	FirstAppearance string `json:"firstAppearance"`
 	Gender string `json:"gender"`
 	Id float64 `json:"id"`
 	Job []any `json:"job"`
-	LastAppearance string `json:"last_appearance"`
+	LastAppearance string `json:"lastAppearance"`
 	Marital string `json:"marital"`
 	Name string `json:"name"`
 	Workplace []any `json:"workplace"`
@@ -30,12 +34,12 @@ type CharacterLoadMatch struct {
 // CharacterListMatch is the typed request payload for Character.ListTyped.
 type CharacterListMatch struct {
 	Actor *string `json:"actor,omitempty"`
-	Episode *[]any `json:"episode,omitempty"`
-	FirstAppearance *string `json:"first_appearance,omitempty"`
+	Episodes *[]any `json:"episodes,omitempty"`
+	FirstAppearance *string `json:"firstAppearance,omitempty"`
 	Gender *string `json:"gender,omitempty"`
 	Id *float64 `json:"id,omitempty"`
 	Job *[]any `json:"job,omitempty"`
-	LastAppearance *string `json:"last_appearance,omitempty"`
+	LastAppearance *string `json:"lastAppearance,omitempty"`
 	Marital *string `json:"marital,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Workplace *[]any `json:"workplace,omitempty"`
@@ -43,46 +47,46 @@ type CharacterListMatch struct {
 
 // Episode is the typed data model for the episode entity.
 type Episode struct {
-	AirDate string `json:"air_date"`
+	AirDate string `json:"airDate"`
 	Episode string `json:"episode"`
 	Id float64 `json:"id"`
-	MainCharacter *[]any `json:"main_character,omitempty"`
-	RecurringCharacter *[]any `json:"recurring_character,omitempty"`
-	SeasonId float64 `json:"season_id"`
-	SeriesEpisodeNumber float64 `json:"series_episode_number"`
+	MainCharacters *[]any `json:"mainCharacters,omitempty"`
+	RecurringCharacters *[]any `json:"recurringCharacters,omitempty"`
+	SeasonId float64 `json:"seasonId"`
+	SeriesEpisodeNumber float64 `json:"seriesEpisodeNumber"`
 	Summary string `json:"summary"`
-	SupportingCharacter *[]any `json:"supporting_character,omitempty"`
+	SupportingCharacters *[]any `json:"supportingCharacters,omitempty"`
 	Title string `json:"title"`
 }
 
 // EpisodeListMatch is the typed request payload for Episode.ListTyped.
 type EpisodeListMatch struct {
-	AirDate *string `json:"air_date,omitempty"`
+	AirDate *string `json:"airDate,omitempty"`
 	Episode *string `json:"episode,omitempty"`
 	Id *float64 `json:"id,omitempty"`
-	MainCharacter *[]any `json:"main_character,omitempty"`
-	RecurringCharacter *[]any `json:"recurring_character,omitempty"`
-	SeasonId *float64 `json:"season_id,omitempty"`
-	SeriesEpisodeNumber *float64 `json:"series_episode_number,omitempty"`
+	MainCharacters *[]any `json:"mainCharacters,omitempty"`
+	RecurringCharacters *[]any `json:"recurringCharacters,omitempty"`
+	SeasonId *float64 `json:"seasonId,omitempty"`
+	SeriesEpisodeNumber *float64 `json:"seriesEpisodeNumber,omitempty"`
 	Summary *string `json:"summary,omitempty"`
-	SupportingCharacter *[]any `json:"supporting_character,omitempty"`
+	SupportingCharacters *[]any `json:"supportingCharacters,omitempty"`
 	Title *string `json:"title,omitempty"`
 }
 
 // Season is the typed data model for the season entity.
 type Season struct {
-	EndDate string `json:"end_date"`
+	EndDate string `json:"endDate"`
 	Id float64 `json:"id"`
 	Number float64 `json:"number"`
-	StartDate string `json:"start_date"`
+	StartDate string `json:"startDate"`
 }
 
 // SeasonListMatch is the typed request payload for Season.ListTyped.
 type SeasonListMatch struct {
-	EndDate *string `json:"end_date,omitempty"`
+	EndDate *string `json:"endDate,omitempty"`
 	Id *float64 `json:"id,omitempty"`
 	Number *float64 `json:"number,omitempty"`
-	StartDate *string `json:"start_date,omitempty"`
+	StartDate *string `json:"startDate,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
@@ -97,12 +101,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -114,12 +132,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

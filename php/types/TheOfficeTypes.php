@@ -16,12 +16,12 @@ declare(strict_types=1);
 class Character
 {
     public string $actor;
-    public ?array $episode = null;
-    public string $first_appearance;
+    public ?array $episodes = null;
+    public string $firstAppearance;
     public string $gender;
     public float $id;
     public array $job;
-    public string $last_appearance;
+    public string $lastAppearance;
     public string $marital;
     public string $name;
     public array $workplace;
@@ -37,12 +37,12 @@ class CharacterLoadMatch
 class CharacterListMatch
 {
     public ?string $actor = null;
-    public ?array $episode = null;
-    public ?string $first_appearance = null;
+    public ?array $episodes = null;
+    public ?string $firstAppearance = null;
     public ?string $gender = null;
     public ?float $id = null;
     public ?array $job = null;
-    public ?string $last_appearance = null;
+    public ?string $lastAppearance = null;
     public ?string $marital = null;
     public ?string $name = null;
     public ?array $workplace = null;
@@ -51,48 +51,48 @@ class CharacterListMatch
 /** Episode entity data model. */
 class Episode
 {
-    public string $air_date;
+    public string $airDate;
     public string $episode;
     public float $id;
-    public ?array $main_character = null;
-    public ?array $recurring_character = null;
-    public float $season_id;
-    public float $series_episode_number;
+    public ?array $mainCharacters = null;
+    public ?array $recurringCharacters = null;
+    public float $seasonId;
+    public float $seriesEpisodeNumber;
     public string $summary;
-    public ?array $supporting_character = null;
+    public ?array $supportingCharacters = null;
     public string $title;
 }
 
 /** Request payload for Episode#list. */
 class EpisodeListMatch
 {
-    public ?string $air_date = null;
+    public ?string $airDate = null;
     public ?string $episode = null;
     public ?float $id = null;
-    public ?array $main_character = null;
-    public ?array $recurring_character = null;
-    public ?float $season_id = null;
-    public ?float $series_episode_number = null;
+    public ?array $mainCharacters = null;
+    public ?array $recurringCharacters = null;
+    public ?float $seasonId = null;
+    public ?float $seriesEpisodeNumber = null;
     public ?string $summary = null;
-    public ?array $supporting_character = null;
+    public ?array $supportingCharacters = null;
     public ?string $title = null;
 }
 
 /** Season entity data model. */
 class Season
 {
-    public string $end_date;
+    public string $endDate;
     public float $id;
     public float $number;
-    public string $start_date;
+    public string $startDate;
 }
 
 /** Request payload for Season#list. */
 class SeasonListMatch
 {
-    public ?string $end_date = null;
+    public ?string $endDate = null;
     public ?float $id = null;
     public ?float $number = null;
-    public ?string $start_date = null;
+    public ?string $startDate = null;
 }
 

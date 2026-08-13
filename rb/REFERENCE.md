@@ -102,12 +102,12 @@ character = client.Character
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `actor` | `String` | Yes |  |
-| `episode` | `Array` | No |  |
-| `first_appearance` | `String` | Yes |  |
+| `episodes` | `Array` | No |  |
+| `firstAppearance` | `String` | Yes |  |
 | `gender` | `String` | Yes |  |
 | `id` | `Float` | Yes |  |
 | `job` | `Array` | Yes |  |
-| `last_appearance` | `String` | Yes |  |
+| `lastAppearance` | `String` | Yes |  |
 | `marital` | `String` | Yes |  |
 | `name` | `String` | Yes |  |
 | `workplace` | `Array` | Yes |  |
@@ -170,15 +170,15 @@ episode = client.Episode
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | `String` | Yes |  |
+| `airDate` | `String` | Yes |  |
 | `episode` | `String` | Yes |  |
 | `id` | `Float` | Yes |  |
-| `main_character` | `Array` | No |  |
-| `recurring_character` | `Array` | No |  |
-| `season_id` | `Float` | Yes |  |
-| `series_episode_number` | `Float` | Yes |  |
+| `mainCharacters` | `Array` | No |  |
+| `recurringCharacters` | `Array` | No |  |
+| `seasonId` | `Float` | Yes |  |
+| `seriesEpisodeNumber` | `Float` | Yes |  |
 | `summary` | `String` | Yes |  |
-| `supporting_character` | `Array` | No |  |
+| `supportingCharacters` | `Array` | No |  |
 | `title` | `String` | Yes |  |
 
 ### Operations
@@ -231,10 +231,10 @@ season = client.Season
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `String` | Yes |  |
+| `endDate` | `String` | Yes |  |
 | `id` | `Float` | Yes |  |
 | `number` | `Float` | Yes |  |
-| `start_date` | `String` | Yes |  |
+| `startDate` | `String` | Yes |  |
 
 ### Operations
 

@@ -13,10 +13,10 @@
 # @!attribute [rw] actor
 #   @return [String]
 #
-# @!attribute [rw] episode
+# @!attribute [rw] episodes
 #   @return [Array, nil]
 #
-# @!attribute [rw] first_appearance
+# @!attribute [rw] firstAppearance
 #   @return [String]
 #
 # @!attribute [rw] gender
@@ -28,7 +28,7 @@
 # @!attribute [rw] job
 #   @return [Array]
 #
-# @!attribute [rw] last_appearance
+# @!attribute [rw] lastAppearance
 #   @return [String]
 #
 # @!attribute [rw] marital
@@ -41,12 +41,12 @@
 #   @return [Array]
 Character = Struct.new(
   :actor,
-  :episode,
-  :first_appearance,
+  :episodes,
+  :firstAppearance,
   :gender,
   :id,
   :job,
-  :last_appearance,
+  :lastAppearance,
   :marital,
   :name,
   :workplace,
@@ -67,10 +67,10 @@ CharacterLoadMatch = Struct.new(
 # @!attribute [rw] actor
 #   @return [String, nil]
 #
-# @!attribute [rw] episode
+# @!attribute [rw] episodes
 #   @return [Array, nil]
 #
-# @!attribute [rw] first_appearance
+# @!attribute [rw] firstAppearance
 #   @return [String, nil]
 #
 # @!attribute [rw] gender
@@ -82,7 +82,7 @@ CharacterLoadMatch = Struct.new(
 # @!attribute [rw] job
 #   @return [Array, nil]
 #
-# @!attribute [rw] last_appearance
+# @!attribute [rw] lastAppearance
 #   @return [String, nil]
 #
 # @!attribute [rw] marital
@@ -95,12 +95,12 @@ CharacterLoadMatch = Struct.new(
 #   @return [Array, nil]
 CharacterListMatch = Struct.new(
   :actor,
-  :episode,
-  :first_appearance,
+  :episodes,
+  :firstAppearance,
   :gender,
   :id,
   :job,
-  :last_appearance,
+  :lastAppearance,
   :marital,
   :name,
   :workplace,
@@ -109,7 +109,7 @@ CharacterListMatch = Struct.new(
 
 # Episode entity data model.
 #
-# @!attribute [rw] air_date
+# @!attribute [rw] airDate
 #   @return [String]
 #
 # @!attribute [rw] episode
@@ -118,43 +118,43 @@ CharacterListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Float]
 #
-# @!attribute [rw] main_character
+# @!attribute [rw] mainCharacters
 #   @return [Array, nil]
 #
-# @!attribute [rw] recurring_character
+# @!attribute [rw] recurringCharacters
 #   @return [Array, nil]
 #
-# @!attribute [rw] season_id
+# @!attribute [rw] seasonId
 #   @return [Float]
 #
-# @!attribute [rw] series_episode_number
+# @!attribute [rw] seriesEpisodeNumber
 #   @return [Float]
 #
 # @!attribute [rw] summary
 #   @return [String]
 #
-# @!attribute [rw] supporting_character
+# @!attribute [rw] supportingCharacters
 #   @return [Array, nil]
 #
 # @!attribute [rw] title
 #   @return [String]
 Episode = Struct.new(
-  :air_date,
+  :airDate,
   :episode,
   :id,
-  :main_character,
-  :recurring_character,
-  :season_id,
-  :series_episode_number,
+  :mainCharacters,
+  :recurringCharacters,
+  :seasonId,
+  :seriesEpisodeNumber,
   :summary,
-  :supporting_character,
+  :supportingCharacters,
   :title,
   keyword_init: true
 )
 
 # Request payload for Episode#list.
 #
-# @!attribute [rw] air_date
+# @!attribute [rw] airDate
 #   @return [String, nil]
 #
 # @!attribute [rw] episode
@@ -163,43 +163,43 @@ Episode = Struct.new(
 # @!attribute [rw] id
 #   @return [Float, nil]
 #
-# @!attribute [rw] main_character
+# @!attribute [rw] mainCharacters
 #   @return [Array, nil]
 #
-# @!attribute [rw] recurring_character
+# @!attribute [rw] recurringCharacters
 #   @return [Array, nil]
 #
-# @!attribute [rw] season_id
+# @!attribute [rw] seasonId
 #   @return [Float, nil]
 #
-# @!attribute [rw] series_episode_number
+# @!attribute [rw] seriesEpisodeNumber
 #   @return [Float, nil]
 #
 # @!attribute [rw] summary
 #   @return [String, nil]
 #
-# @!attribute [rw] supporting_character
+# @!attribute [rw] supportingCharacters
 #   @return [Array, nil]
 #
 # @!attribute [rw] title
 #   @return [String, nil]
 EpisodeListMatch = Struct.new(
-  :air_date,
+  :airDate,
   :episode,
   :id,
-  :main_character,
-  :recurring_character,
-  :season_id,
-  :series_episode_number,
+  :mainCharacters,
+  :recurringCharacters,
+  :seasonId,
+  :seriesEpisodeNumber,
   :summary,
-  :supporting_character,
+  :supportingCharacters,
   :title,
   keyword_init: true
 )
 
 # Season entity data model.
 #
-# @!attribute [rw] end_date
+# @!attribute [rw] endDate
 #   @return [String]
 #
 # @!attribute [rw] id
@@ -208,19 +208,19 @@ EpisodeListMatch = Struct.new(
 # @!attribute [rw] number
 #   @return [Float]
 #
-# @!attribute [rw] start_date
+# @!attribute [rw] startDate
 #   @return [String]
 Season = Struct.new(
-  :end_date,
+  :endDate,
   :id,
   :number,
-  :start_date,
+  :startDate,
   keyword_init: true
 )
 
 # Request payload for Season#list.
 #
-# @!attribute [rw] end_date
+# @!attribute [rw] endDate
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -229,13 +229,13 @@ Season = Struct.new(
 # @!attribute [rw] number
 #   @return [Float, nil]
 #
-# @!attribute [rw] start_date
+# @!attribute [rw] startDate
 #   @return [String, nil]
 SeasonListMatch = Struct.new(
-  :end_date,
+  :endDate,
   :id,
   :number,
-  :start_date,
+  :startDate,
   keyword_init: true
 )
 

@@ -6,7 +6,7 @@ main: kit: entity: episode: {
 
   fields: [
     {
-      name: "air_date"
+      name: "airDate"
       req: true
       type: "`$STRING`"
     }
@@ -21,22 +21,22 @@ main: kit: entity: episode: {
       type: "`$NUMBER`"
     }
     {
-      name: "main_character"
+      name: "mainCharacters"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "recurring_character"
+      name: "recurringCharacters"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "season_id"
+      name: "seasonId"
       req: true
       type: "`$NUMBER`"
     }
     {
-      name: "series_episode_number"
+      name: "seriesEpisodeNumber"
       req: true
       type: "`$NUMBER`"
     }
@@ -46,7 +46,7 @@ main: kit: entity: episode: {
       type: "`$STRING`"
     }
     {
-      name: "supporting_character"
+      name: "supportingCharacters"
       req: false
       type: "`$ARRAY`"
     }

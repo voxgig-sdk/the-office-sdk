@@ -7,12 +7,12 @@
 
 export interface Character {
   actor: string
-  episode?: any[]
-  first_appearance: string
+  episodes?: any[]
+  firstAppearance: string
   gender: string
   id: number
   job: any[]
-  last_appearance: string
+  lastAppearance: string
   marital: string
   name: string
   workplace: any[]
@@ -24,54 +24,54 @@ export interface CharacterLoadMatch {
 
 export interface CharacterListMatch {
   actor?: string
-  episode?: any[]
-  first_appearance?: string
+  episodes?: any[]
+  firstAppearance?: string
   gender?: string
   id?: number
   job?: any[]
-  last_appearance?: string
+  lastAppearance?: string
   marital?: string
   name?: string
   workplace?: any[]
 }
 
 export interface Episode {
-  air_date: string
+  airDate: string
   episode: string
   id: number
-  main_character?: any[]
-  recurring_character?: any[]
-  season_id: number
-  series_episode_number: number
+  mainCharacters?: any[]
+  recurringCharacters?: any[]
+  seasonId: number
+  seriesEpisodeNumber: number
   summary: string
-  supporting_character?: any[]
+  supportingCharacters?: any[]
   title: string
 }
 
 export interface EpisodeListMatch {
-  air_date?: string
+  airDate?: string
   episode?: string
   id?: number
-  main_character?: any[]
-  recurring_character?: any[]
-  season_id?: number
-  series_episode_number?: number
+  mainCharacters?: any[]
+  recurringCharacters?: any[]
+  seasonId?: number
+  seriesEpisodeNumber?: number
   summary?: string
-  supporting_character?: any[]
+  supportingCharacters?: any[]
   title?: string
 }
 
 export interface Season {
-  end_date: string
+  endDate: string
   id: number
   number: number
-  start_date: string
+  startDate: string
 }
 
 export interface SeasonListMatch {
-  end_date?: string
+  endDate?: string
   id?: number
   number?: number
-  start_date?: string
+  startDate?: string
 }
 

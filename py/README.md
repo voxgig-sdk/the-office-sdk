@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load a character
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -69,8 +69,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    characters = client.Character().list()
-    print(characters)
+    episodes = client.Episode().list()
+    print(episodes)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -136,9 +136,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = TheOfficeSDK.test()
 
-# Entity ops return the bare record and raise on error.
-character = client.Character().list()
-# character contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+episode = client.Episode().list()
+# episode contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -235,7 +236,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -258,12 +259,12 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `actor` |  |
-| `episode` |  |
-| `first_appearance` |  |
+| `episodes` |  |
+| `firstAppearance` |  |
 | `gender` |  |
 | `id` |  |
 | `job` |  |
-| `last_appearance` |  |
+| `lastAppearance` |  |
 | `marital` |  |
 | `name` |  |
 | `workplace` |  |
@@ -276,15 +277,15 @@ API path: `/characters`
 
 | Field | Description |
 | --- | --- |
-| `air_date` |  |
+| `airDate` |  |
 | `episode` |  |
 | `id` |  |
-| `main_character` |  |
-| `recurring_character` |  |
-| `season_id` |  |
-| `series_episode_number` |  |
+| `mainCharacters` |  |
+| `recurringCharacters` |  |
+| `seasonId` |  |
+| `seriesEpisodeNumber` |  |
 | `summary` |  |
-| `supporting_character` |  |
+| `supportingCharacters` |  |
 | `title` |  |
 
 Operations: List.
@@ -295,10 +296,10 @@ API path: `/episodes`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
+| `endDate` |  |
 | `id` |  |
 | `number` |  |
-| `start_date` |  |
+| `startDate` |  |
 
 Operations: List.
 
@@ -325,12 +326,12 @@ Create an instance: `character = client.Character()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `actor` | `str` |  |
-| `episode` | `list` |  |
-| `first_appearance` | `str` |  |
+| `episodes` | `list` |  |
+| `firstAppearance` | `str` |  |
 | `gender` | `str` |  |
 | `id` | `float` |  |
 | `job` | `list` |  |
-| `last_appearance` | `str` |  |
+| `lastAppearance` | `str` |  |
 | `marital` | `str` |  |
 | `name` | `str` |  |
 | `workplace` | `list` |  |
@@ -362,15 +363,15 @@ Create an instance: `episode = client.Episode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | `str` |  |
+| `airDate` | `str` |  |
 | `episode` | `str` |  |
 | `id` | `float` |  |
-| `main_character` | `list` |  |
-| `recurring_character` | `list` |  |
-| `season_id` | `float` |  |
-| `series_episode_number` | `float` |  |
+| `mainCharacters` | `list` |  |
+| `recurringCharacters` | `list` |  |
+| `seasonId` | `float` |  |
+| `seriesEpisodeNumber` | `float` |  |
 | `summary` | `str` |  |
-| `supporting_character` | `list` |  |
+| `supportingCharacters` | `list` |  |
 | `title` | `str` |  |
 
 #### Example: List
@@ -394,10 +395,10 @@ Create an instance: `season = client.Season()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `str` |  |
+| `endDate` | `str` |  |
 | `id` | `float` |  |
 | `number` | `float` |  |
-| `start_date` | `str` |  |
+| `startDate` | `str` |  |
 
 #### Example: List
 
@@ -481,11 +482,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-character = client.Character()
-character.list()
+episode = client.Episode()
+episode.list()
 
-# character.data_get() now returns the character data from the last list
-# character.match_get() returns the last match criteria
+# episode.data_get() now returns the episode data from the last list
+# episode.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

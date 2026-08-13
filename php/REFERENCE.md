@@ -101,12 +101,12 @@ $character = $client->Character();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `actor` | `string` | Yes |  |
-| `episode` | `array` | No |  |
-| `first_appearance` | `string` | Yes |  |
+| `episodes` | `array` | No |  |
+| `firstAppearance` | `string` | Yes |  |
 | `gender` | `string` | Yes |  |
 | `id` | `float` | Yes |  |
 | `job` | `array` | Yes |  |
-| `last_appearance` | `string` | Yes |  |
+| `lastAppearance` | `string` | Yes |  |
 | `marital` | `string` | Yes |  |
 | `name` | `string` | Yes |  |
 | `workplace` | `array` | Yes |  |
@@ -169,15 +169,15 @@ $episode = $client->Episode();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `air_date` | `string` | Yes |  |
+| `airDate` | `string` | Yes |  |
 | `episode` | `string` | Yes |  |
 | `id` | `float` | Yes |  |
-| `main_character` | `array` | No |  |
-| `recurring_character` | `array` | No |  |
-| `season_id` | `float` | Yes |  |
-| `series_episode_number` | `float` | Yes |  |
+| `mainCharacters` | `array` | No |  |
+| `recurringCharacters` | `array` | No |  |
+| `seasonId` | `float` | Yes |  |
+| `seriesEpisodeNumber` | `float` | Yes |  |
 | `summary` | `string` | Yes |  |
-| `supporting_character` | `array` | No |  |
+| `supportingCharacters` | `array` | No |  |
 | `title` | `string` | Yes |  |
 
 ### Operations
@@ -230,10 +230,10 @@ $season = $client->Season();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `string` | Yes |  |
+| `endDate` | `string` | Yes |  |
 | `id` | `float` | Yes |  |
 | `number` | `float` | Yes |  |
-| `start_date` | `string` | Yes |  |
+| `startDate` | `string` | Yes |  |
 
 ### Operations
 

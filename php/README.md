@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Character record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Character record (throws on error).
     $character = $client->Character()->load(["id" => 1]);
     print_r($character);
 } catch (\Throwable $err) {
@@ -65,7 +65,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $characters = $client->Character()->list();
+    $episodes = $client->Episode()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -132,17 +132,15 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```php
-$client = TheOfficeSDK::test([
-    "entity" => ["character" => ["test01" => ["id" => "test01"]]],
-]);
+$client = TheOfficeSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$character = $client->Character()->list();
-print_r($character);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$episode = $client->Episode()->list();
+print_r($episode);
 ```
 
 ### Use a custom fetch function
@@ -242,7 +240,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -265,12 +263,12 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `actor` |  |
-| `episode` |  |
-| `first_appearance` |  |
+| `episodes` |  |
+| `firstAppearance` |  |
 | `gender` |  |
 | `id` |  |
 | `job` |  |
-| `last_appearance` |  |
+| `lastAppearance` |  |
 | `marital` |  |
 | `name` |  |
 | `workplace` |  |
@@ -283,15 +281,15 @@ API path: `/characters`
 
 | Field | Description |
 | --- | --- |
-| `air_date` |  |
+| `airDate` |  |
 | `episode` |  |
 | `id` |  |
-| `main_character` |  |
-| `recurring_character` |  |
-| `season_id` |  |
-| `series_episode_number` |  |
+| `mainCharacters` |  |
+| `recurringCharacters` |  |
+| `seasonId` |  |
+| `seriesEpisodeNumber` |  |
 | `summary` |  |
-| `supporting_character` |  |
+| `supportingCharacters` |  |
 | `title` |  |
 
 Operations: List.
@@ -302,10 +300,10 @@ API path: `/episodes`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
+| `endDate` |  |
 | `id` |  |
 | `number` |  |
-| `start_date` |  |
+| `startDate` |  |
 
 Operations: List.
 
@@ -332,12 +330,12 @@ Create an instance: `$character = $client->Character();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `actor` | `string` |  |
-| `episode` | `array` |  |
-| `first_appearance` | `string` |  |
+| `episodes` | `array` |  |
+| `firstAppearance` | `string` |  |
 | `gender` | `string` |  |
 | `id` | `float` |  |
 | `job` | `array` |  |
-| `last_appearance` | `string` |  |
+| `lastAppearance` | `string` |  |
 | `marital` | `string` |  |
 | `name` | `string` |  |
 | `workplace` | `array` |  |
@@ -345,7 +343,7 @@ Create an instance: `$character = $client->Character();`
 #### Example: Load
 
 ```php
-// load() returns the bare Character record (throws on error).
+// load() returns the ENTITY — call data_get() for the Character record (throws on error).
 $character = $client->Character()->load(["id" => 1]);
 ```
 
@@ -371,15 +369,15 @@ Create an instance: `$episode = $client->Episode();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | `string` |  |
+| `airDate` | `string` |  |
 | `episode` | `string` |  |
 | `id` | `float` |  |
-| `main_character` | `array` |  |
-| `recurring_character` | `array` |  |
-| `season_id` | `float` |  |
-| `series_episode_number` | `float` |  |
+| `mainCharacters` | `array` |  |
+| `recurringCharacters` | `array` |  |
+| `seasonId` | `float` |  |
+| `seriesEpisodeNumber` | `float` |  |
 | `summary` | `string` |  |
-| `supporting_character` | `array` |  |
+| `supportingCharacters` | `array` |  |
 | `title` | `string` |  |
 
 #### Example: List
@@ -404,10 +402,10 @@ Create an instance: `$season = $client->Season();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
+| `endDate` | `string` |  |
 | `id` | `float` |  |
 | `number` | `float` |  |
-| `start_date` | `string` |  |
+| `startDate` | `string` |  |
 
 #### Example: List
 
@@ -493,11 +491,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$character = $client->Character();
-$character->list();
+$episode = $client->Episode();
+$episode->list();
 
-// $character->data_get() now returns the character data from the last list
-// $character->match_get() returns the last match criteria
+// $episode->data_get() now returns the episode data from the last list
+// $episode->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

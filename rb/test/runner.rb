@@ -23,8 +23,8 @@ module TheOfficeTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("THEOFFICE_TEST_LIVE")
-    override = getenv("THEOFFICE_TEST_OVERRIDE")
+    live = getenv("THE_OFFICE_TEST_LIVE")
+    override = getenv("THE_OFFICE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module TheOfficeTestRunner
       end
     end
 
-    explain = getenv("THEOFFICE_TEST_EXPLAIN")
-    m["THEOFFICE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("THE_OFFICE_TEST_EXPLAIN")
+    m["THE_OFFICE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

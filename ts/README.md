@@ -35,7 +35,9 @@ const client = new TheOfficeSDK()
 
 ### 2. List character records
 
-`list()` resolves to an array of Character objects — iterate it directly:
+`list()` resolves to an array of Character ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const characters = await client.Character().list()
@@ -65,8 +67,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const characters = await client.Character().list()
-  console.log(characters)
+  const episodes = await client.Episode().list()
+  console.log(episodes)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -132,9 +134,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = TheOfficeSDK.test()
 
-const character = await client.Character().list()
-// character is a bare entity populated with mock response data
-console.log(character)
+const episode = await client.Episode().list()
+// episode is the entity, populated with mock response data
+// — call episode.data() for the record itself
+console.log(episode)
 ```
 
 You can also use the instance method:
@@ -149,7 +152,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Character()
+const entity = client.Episode()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -302,12 +305,12 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `actor` |  |
-| `episode` |  |
-| `first_appearance` |  |
+| `episodes` |  |
+| `firstAppearance` |  |
 | `gender` |  |
 | `id` |  |
 | `job` |  |
-| `last_appearance` |  |
+| `lastAppearance` |  |
 | `marital` |  |
 | `name` |  |
 | `workplace` |  |
@@ -320,15 +323,15 @@ API path: `/characters`
 
 | Field | Description |
 | --- | --- |
-| `air_date` |  |
+| `airDate` |  |
 | `episode` |  |
 | `id` |  |
-| `main_character` |  |
-| `recurring_character` |  |
-| `season_id` |  |
-| `series_episode_number` |  |
+| `mainCharacters` |  |
+| `recurringCharacters` |  |
+| `seasonId` |  |
+| `seriesEpisodeNumber` |  |
 | `summary` |  |
-| `supporting_character` |  |
+| `supportingCharacters` |  |
 | `title` |  |
 
 Operations: list.
@@ -339,10 +342,10 @@ API path: `/episodes`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
+| `endDate` |  |
 | `id` |  |
 | `number` |  |
-| `start_date` |  |
+| `startDate` |  |
 
 Operations: list.
 
@@ -369,12 +372,12 @@ Create an instance: `const character = client.Character()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `actor` | `string` |  |
-| `episode` | `any[]` |  |
-| `first_appearance` | `string` |  |
+| `episodes` | `any[]` |  |
+| `firstAppearance` | `string` |  |
 | `gender` | `string` |  |
 | `id` | `number` |  |
 | `job` | `any[]` |  |
-| `last_appearance` | `string` |  |
+| `lastAppearance` | `string` |  |
 | `marital` | `string` |  |
 | `name` | `string` |  |
 | `workplace` | `any[]` |  |
@@ -406,15 +409,15 @@ Create an instance: `const episode = client.Episode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `air_date` | `string` |  |
+| `airDate` | `string` |  |
 | `episode` | `string` |  |
 | `id` | `number` |  |
-| `main_character` | `any[]` |  |
-| `recurring_character` | `any[]` |  |
-| `season_id` | `number` |  |
-| `series_episode_number` | `number` |  |
+| `mainCharacters` | `any[]` |  |
+| `recurringCharacters` | `any[]` |  |
+| `seasonId` | `number` |  |
+| `seriesEpisodeNumber` | `number` |  |
 | `summary` | `string` |  |
-| `supporting_character` | `any[]` |  |
+| `supportingCharacters` | `any[]` |  |
 | `title` | `string` |  |
 
 #### Example: List
@@ -438,10 +441,10 @@ Create an instance: `const season = client.Season()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
+| `endDate` | `string` |  |
 | `id` | `number` |  |
 | `number` | `number` |  |
-| `start_date` | `string` |  |
+| `startDate` | `string` |  |
 
 #### Example: List
 
@@ -519,11 +522,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const character = client.Character()
-await character.list()
+const episode = client.Episode()
+await episode.list()
 
-// character.data() now returns the character data from the last `list`
-// character.match() returns the last match criteria
+// episode.data() now returns the episode data from the last `list`
+// episode.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration
