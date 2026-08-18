@@ -40,7 +40,7 @@ class TheOfficeSDK
         $utility = new TheOfficeUtility();
         $this->_utility = $utility;
 
-        $config = TheOfficeConfig::make_config();
+        $config = TheOfficeConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

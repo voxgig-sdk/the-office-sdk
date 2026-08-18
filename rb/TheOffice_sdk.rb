@@ -28,7 +28,7 @@ class TheOfficeSDK
     utility = TheOfficeUtility.new
     @_utility = utility
 
-    config = TheOfficeConfig.make_config
+    config = TheOfficeConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
