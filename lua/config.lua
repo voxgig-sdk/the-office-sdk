@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "TheOffice",
+      slug = "the-office",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -32,50 +35,60 @@ local function make_config()
           {
             ["name"] = "actor",
             ["req"] = true,
+            ["short"] = "The actor who played the character.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "episodes",
+            ["short"] = "List of episodes the character appeared in.",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "firstAppearance",
             ["req"] = true,
+            ["short"] = "Title of the episode the character first appeared in.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "gender",
             ["req"] = true,
+            ["short"] = "The character's gender.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "id",
             ["req"] = true,
+            ["short"] = "Unique identifier for the character.",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "job",
             ["req"] = true,
+            ["short"] = "List of jobs the character has.",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "lastAppearance",
             ["req"] = true,
+            ["short"] = "Title of the last episode the character appeared in.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "marital",
             ["req"] = true,
+            ["short"] = "The character's marital status.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "name",
             ["req"] = true,
+            ["short"] = "The character's name.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "workplace",
             ["req"] = true,
+            ["short"] = "List of locations a character has worked at.",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -186,48 +199,58 @@ local function make_config()
           {
             ["name"] = "airDate",
             ["req"] = true,
+            ["short"] = "Original air date.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "episode",
             ["req"] = true,
+            ["short"] = "Episode number.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "id",
             ["req"] = true,
+            ["short"] = "Unique identifier for the episode.",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "mainCharacters",
+            ["short"] = "Main characters in the episode.",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "recurringCharacters",
+            ["short"] = "Recurring characters in the episode.",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "seasonId",
             ["req"] = true,
+            ["short"] = "Season ID.",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "seriesEpisodeNumber",
             ["req"] = true,
+            ["short"] = "Episode number in the series.",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "summary",
             ["req"] = true,
+            ["short"] = "Short summary of the episode.",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "supportingCharacters",
+            ["short"] = "Supporting characters in the episode.",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "title",
             ["req"] = true,
+            ["short"] = "Title of the episode.",
             ["type"] = "`$STRING`",
           },
         },

@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "TheOffice",
+			"slug": "the-office",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -36,50 +39,60 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "actor",
 						"req": true,
+						"short": "The actor who played the character.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "episodes",
+						"short": "List of episodes the character appeared in.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "firstAppearance",
 						"req": true,
+						"short": "Title of the episode the character first appeared in.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gender",
 						"req": true,
+						"short": "The character's gender.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
 						"req": true,
+						"short": "Unique identifier for the character.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "job",
 						"req": true,
+						"short": "List of jobs the character has.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "lastAppearance",
 						"req": true,
+						"short": "Title of the last episode the character appeared in.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "marital",
 						"req": true,
+						"short": "The character's marital status.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
 						"req": true,
+						"short": "The character's name.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "workplace",
 						"req": true,
+						"short": "List of locations a character has worked at.",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -190,48 +203,58 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "airDate",
 						"req": true,
+						"short": "Original air date.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "episode",
 						"req": true,
+						"short": "Episode number.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
 						"req": true,
+						"short": "Unique identifier for the episode.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "mainCharacters",
+						"short": "Main characters in the episode.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "recurringCharacters",
+						"short": "Recurring characters in the episode.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "seasonId",
 						"req": true,
+						"short": "Season ID.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "seriesEpisodeNumber",
 						"req": true,
+						"short": "Episode number in the series.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "summary",
 						"req": true,
+						"short": "Short summary of the episode.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "supportingCharacters",
+						"short": "Supporting characters in the episode.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "title",
 						"req": true,
+						"short": "Title of the episode.",
 						"type": "`$STRING`",
 					},
 				},

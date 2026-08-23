@@ -8,51 +8,61 @@ main: kit: entity: episode: {
     {
       name: "airDate"
       req: true
+      short: "Original air date."
       type: "`$STRING`"
     }
     {
       name: "episode"
       req: true
+      short: "Episode number."
       type: "`$STRING`"
     }
     {
       name: "id"
       req: true
+      short: "Unique identifier for the episode."
       type: "`$NUMBER`"
     }
     {
       name: "mainCharacters"
       req: false
+      short: "Main characters in the episode."
       type: "`$ARRAY`"
     }
     {
       name: "recurringCharacters"
       req: false
+      short: "Recurring characters in the episode."
       type: "`$ARRAY`"
     }
     {
       name: "seasonId"
       req: true
+      short: "Season ID."
       type: "`$NUMBER`"
     }
     {
       name: "seriesEpisodeNumber"
       req: true
+      short: "Episode number in the series."
       type: "`$NUMBER`"
     }
     {
       name: "summary"
       req: true
+      short: "Short summary of the episode."
       type: "`$STRING`"
     }
     {
       name: "supportingCharacters"
       req: false
+      short: "Supporting characters in the episode."
       type: "`$ARRAY`"
     }
     {
       name: "title"
       req: true
+      short: "Title of the episode."
       type: "`$STRING`"
     }
   ]

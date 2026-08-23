@@ -6,7 +6,7 @@ The Golang SDK for the TheOffice API — an entity-oriented client using standar
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Character(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -271,16 +271,16 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"actor"` |  |
-| `"episodes"` |  |
-| `"firstAppearance"` |  |
-| `"gender"` |  |
-| `"id"` |  |
-| `"job"` |  |
-| `"lastAppearance"` |  |
-| `"marital"` |  |
-| `"name"` |  |
-| `"workplace"` |  |
+| `"actor"` | The actor who played the character. |
+| `"episodes"` | List of episodes the character appeared in. |
+| `"firstAppearance"` | Title of the episode the character first appeared in. |
+| `"gender"` | The character's gender. |
+| `"id"` | Unique identifier for the character. |
+| `"job"` | List of jobs the character has. |
+| `"lastAppearance"` | Title of the last episode the character appeared in. |
+| `"marital"` | The character's marital status. |
+| `"name"` | The character's name. |
+| `"workplace"` | List of locations a character has worked at. |
 
 Operations: List, Load.
 
@@ -290,16 +290,16 @@ API path: `/characters`
 
 | Field | Description |
 | --- | --- |
-| `"airDate"` |  |
-| `"episode"` |  |
-| `"id"` |  |
-| `"mainCharacters"` |  |
-| `"recurringCharacters"` |  |
-| `"seasonId"` |  |
-| `"seriesEpisodeNumber"` |  |
-| `"summary"` |  |
-| `"supportingCharacters"` |  |
-| `"title"` |  |
+| `"airDate"` | Original air date. |
+| `"episode"` | Episode number. |
+| `"id"` | Unique identifier for the episode. |
+| `"mainCharacters"` | Main characters in the episode. |
+| `"recurringCharacters"` | Recurring characters in the episode. |
+| `"seasonId"` | Season ID. |
+| `"seriesEpisodeNumber"` | Episode number in the series. |
+| `"summary"` | Short summary of the episode. |
+| `"supportingCharacters"` | Supporting characters in the episode. |
+| `"title"` | Title of the episode. |
 
 Operations: List.
 
@@ -338,16 +338,16 @@ Create an instance: `character := client.Character(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `actor` | `string` |  |
-| `episodes` | `[]any` |  |
-| `firstAppearance` | `string` |  |
-| `gender` | `string` |  |
-| `id` | `float64` |  |
-| `job` | `[]any` |  |
-| `lastAppearance` | `string` |  |
-| `marital` | `string` |  |
-| `name` | `string` |  |
-| `workplace` | `[]any` |  |
+| `actor` | `string` | The actor who played the character. |
+| `episodes` | `[]any` | List of episodes the character appeared in. |
+| `firstAppearance` | `string` | Title of the episode the character first appeared in. |
+| `gender` | `string` | The character's gender. |
+| `id` | `float64` | Unique identifier for the character. |
+| `job` | `[]any` | List of jobs the character has. |
+| `lastAppearance` | `string` | Title of the last episode the character appeared in. |
+| `marital` | `string` | The character's marital status. |
+| `name` | `string` | The character's name. |
+| `workplace` | `[]any` | List of locations a character has worked at. |
 
 #### Example: Load
 
@@ -384,16 +384,16 @@ Create an instance: `episode := client.Episode(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `airDate` | `string` |  |
-| `episode` | `string` |  |
-| `id` | `float64` |  |
-| `mainCharacters` | `[]any` |  |
-| `recurringCharacters` | `[]any` |  |
-| `seasonId` | `float64` |  |
-| `seriesEpisodeNumber` | `float64` |  |
-| `summary` | `string` |  |
-| `supportingCharacters` | `[]any` |  |
-| `title` | `string` |  |
+| `airDate` | `string` | Original air date. |
+| `episode` | `string` | Episode number. |
+| `id` | `float64` | Unique identifier for the episode. |
+| `mainCharacters` | `[]any` | Main characters in the episode. |
+| `recurringCharacters` | `[]any` | Recurring characters in the episode. |
+| `seasonId` | `float64` | Season ID. |
+| `seriesEpisodeNumber` | `float64` | Episode number in the series. |
+| `summary` | `string` | Short summary of the episode. |
+| `supportingCharacters` | `[]any` | Supporting characters in the episode. |
+| `title` | `string` | Title of the episode. |
 
 #### Example: List
 

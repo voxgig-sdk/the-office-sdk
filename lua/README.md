@@ -243,16 +243,16 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `actor` |  |
-| `episodes` |  |
-| `firstAppearance` |  |
-| `gender` |  |
-| `id` |  |
-| `job` |  |
-| `lastAppearance` |  |
-| `marital` |  |
-| `name` |  |
-| `workplace` |  |
+| `actor` | The actor who played the character. |
+| `episodes` | List of episodes the character appeared in. |
+| `firstAppearance` | Title of the episode the character first appeared in. |
+| `gender` | The character's gender. |
+| `id` | Unique identifier for the character. |
+| `job` | List of jobs the character has. |
+| `lastAppearance` | Title of the last episode the character appeared in. |
+| `marital` | The character's marital status. |
+| `name` | The character's name. |
+| `workplace` | List of locations a character has worked at. |
 
 Operations: List, Load.
 
@@ -262,16 +262,16 @@ API path: `/characters`
 
 | Field | Description |
 | --- | --- |
-| `airDate` |  |
-| `episode` |  |
-| `id` |  |
-| `mainCharacters` |  |
-| `recurringCharacters` |  |
-| `seasonId` |  |
-| `seriesEpisodeNumber` |  |
-| `summary` |  |
-| `supportingCharacters` |  |
-| `title` |  |
+| `airDate` | Original air date. |
+| `episode` | Episode number. |
+| `id` | Unique identifier for the episode. |
+| `mainCharacters` | Main characters in the episode. |
+| `recurringCharacters` | Recurring characters in the episode. |
+| `seasonId` | Season ID. |
+| `seriesEpisodeNumber` | Episode number in the series. |
+| `summary` | Short summary of the episode. |
+| `supportingCharacters` | Supporting characters in the episode. |
+| `title` | Title of the episode. |
 
 Operations: List.
 
@@ -310,16 +310,16 @@ Create an instance: `local character = client:Character(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `actor` | `string` |  |
-| `episodes` | `table` |  |
-| `firstAppearance` | `string` |  |
-| `gender` | `string` |  |
-| `id` | `number` |  |
-| `job` | `table` |  |
-| `lastAppearance` | `string` |  |
-| `marital` | `string` |  |
-| `name` | `string` |  |
-| `workplace` | `table` |  |
+| `actor` | `string` | The actor who played the character. |
+| `episodes` | `table` | List of episodes the character appeared in. |
+| `firstAppearance` | `string` | Title of the episode the character first appeared in. |
+| `gender` | `string` | The character's gender. |
+| `id` | `number` | Unique identifier for the character. |
+| `job` | `table` | List of jobs the character has. |
+| `lastAppearance` | `string` | Title of the last episode the character appeared in. |
+| `marital` | `string` | The character's marital status. |
+| `name` | `string` | The character's name. |
+| `workplace` | `table` | List of locations a character has worked at. |
 
 #### Example: Load
 
@@ -348,16 +348,16 @@ Create an instance: `local episode = client:Episode(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `airDate` | `string` |  |
-| `episode` | `string` |  |
-| `id` | `number` |  |
-| `mainCharacters` | `table` |  |
-| `recurringCharacters` | `table` |  |
-| `seasonId` | `number` |  |
-| `seriesEpisodeNumber` | `number` |  |
-| `summary` | `string` |  |
-| `supportingCharacters` | `table` |  |
-| `title` | `string` |  |
+| `airDate` | `string` | Original air date. |
+| `episode` | `string` | Episode number. |
+| `id` | `number` | Unique identifier for the episode. |
+| `mainCharacters` | `table` | Main characters in the episode. |
+| `recurringCharacters` | `table` | Recurring characters in the episode. |
+| `seasonId` | `number` | Season ID. |
+| `seriesEpisodeNumber` | `number` | Episode number in the series. |
+| `summary` | `string` | Short summary of the episode. |
+| `supportingCharacters` | `table` | Supporting characters in the episode. |
+| `title` | `string` | Title of the episode. |
 
 #### Example: List
 

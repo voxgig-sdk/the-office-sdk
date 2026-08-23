@@ -262,16 +262,16 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `actor` |  |
-| `episodes` |  |
-| `firstAppearance` |  |
-| `gender` |  |
-| `id` |  |
-| `job` |  |
-| `lastAppearance` |  |
-| `marital` |  |
-| `name` |  |
-| `workplace` |  |
+| `actor` | The actor who played the character. |
+| `episodes` | List of episodes the character appeared in. |
+| `firstAppearance` | Title of the episode the character first appeared in. |
+| `gender` | The character's gender. |
+| `id` | Unique identifier for the character. |
+| `job` | List of jobs the character has. |
+| `lastAppearance` | Title of the last episode the character appeared in. |
+| `marital` | The character's marital status. |
+| `name` | The character's name. |
+| `workplace` | List of locations a character has worked at. |
 
 Operations: List, Load.
 
@@ -281,16 +281,16 @@ API path: `/characters`
 
 | Field | Description |
 | --- | --- |
-| `airDate` |  |
-| `episode` |  |
-| `id` |  |
-| `mainCharacters` |  |
-| `recurringCharacters` |  |
-| `seasonId` |  |
-| `seriesEpisodeNumber` |  |
-| `summary` |  |
-| `supportingCharacters` |  |
-| `title` |  |
+| `airDate` | Original air date. |
+| `episode` | Episode number. |
+| `id` | Unique identifier for the episode. |
+| `mainCharacters` | Main characters in the episode. |
+| `recurringCharacters` | Recurring characters in the episode. |
+| `seasonId` | Season ID. |
+| `seriesEpisodeNumber` | Episode number in the series. |
+| `summary` | Short summary of the episode. |
+| `supportingCharacters` | Supporting characters in the episode. |
+| `title` | Title of the episode. |
 
 Operations: List.
 
@@ -329,16 +329,16 @@ Create an instance: `$character = $client->Character();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `actor` | `string` |  |
-| `episodes` | `array` |  |
-| `firstAppearance` | `string` |  |
-| `gender` | `string` |  |
-| `id` | `float` |  |
-| `job` | `array` |  |
-| `lastAppearance` | `string` |  |
-| `marital` | `string` |  |
-| `name` | `string` |  |
-| `workplace` | `array` |  |
+| `actor` | `string` | The actor who played the character. |
+| `episodes` | `array` | List of episodes the character appeared in. |
+| `firstAppearance` | `string` | Title of the episode the character first appeared in. |
+| `gender` | `string` | The character's gender. |
+| `id` | `float` | Unique identifier for the character. |
+| `job` | `array` | List of jobs the character has. |
+| `lastAppearance` | `string` | Title of the last episode the character appeared in. |
+| `marital` | `string` | The character's marital status. |
+| `name` | `string` | The character's name. |
+| `workplace` | `array` | List of locations a character has worked at. |
 
 #### Example: Load
 
@@ -369,16 +369,16 @@ Create an instance: `$episode = $client->Episode();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `airDate` | `string` |  |
-| `episode` | `string` |  |
-| `id` | `float` |  |
-| `mainCharacters` | `array` |  |
-| `recurringCharacters` | `array` |  |
-| `seasonId` | `float` |  |
-| `seriesEpisodeNumber` | `float` |  |
-| `summary` | `string` |  |
-| `supportingCharacters` | `array` |  |
-| `title` | `string` |  |
+| `airDate` | `string` | Original air date. |
+| `episode` | `string` | Episode number. |
+| `id` | `float` | Unique identifier for the episode. |
+| `mainCharacters` | `array` | Main characters in the episode. |
+| `recurringCharacters` | `array` | Recurring characters in the episode. |
+| `seasonId` | `float` | Season ID. |
+| `seriesEpisodeNumber` | `float` | Episode number in the series. |
+| `summary` | `string` | Short summary of the episode. |
+| `supportingCharacters` | `array` | Supporting characters in the episode. |
+| `title` | `string` | Title of the episode. |
 
 #### Example: List
 

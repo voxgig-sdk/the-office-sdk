@@ -95,16 +95,16 @@ character = client.Character()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `actor` | `str` | Yes |  |
-| `episodes` | `list` | No |  |
-| `firstAppearance` | `str` | Yes |  |
-| `gender` | `str` | Yes |  |
-| `id` | `float` | Yes |  |
-| `job` | `list` | Yes |  |
-| `lastAppearance` | `str` | Yes |  |
-| `marital` | `str` | Yes |  |
-| `name` | `str` | Yes |  |
-| `workplace` | `list` | Yes |  |
+| `actor` | `str` | Yes | The actor who played the character. |
+| `episodes` | `list` | No | List of episodes the character appeared in. |
+| `firstAppearance` | `str` | Yes | Title of the episode the character first appeared in. |
+| `gender` | `str` | Yes | The character's gender. |
+| `id` | `float` | Yes | Unique identifier for the character. |
+| `job` | `list` | Yes | List of jobs the character has. |
+| `lastAppearance` | `str` | Yes | Title of the last episode the character appeared in. |
+| `marital` | `str` | Yes | The character's marital status. |
+| `name` | `str` | Yes | The character's name. |
+| `workplace` | `list` | Yes | List of locations a character has worked at. |
 
 ### Operations
 
@@ -165,16 +165,16 @@ episode = client.Episode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `airDate` | `str` | Yes |  |
-| `episode` | `str` | Yes |  |
-| `id` | `float` | Yes |  |
-| `mainCharacters` | `list` | No |  |
-| `recurringCharacters` | `list` | No |  |
-| `seasonId` | `float` | Yes |  |
-| `seriesEpisodeNumber` | `float` | Yes |  |
-| `summary` | `str` | Yes |  |
-| `supportingCharacters` | `list` | No |  |
-| `title` | `str` | Yes |  |
+| `airDate` | `str` | Yes | Original air date. |
+| `episode` | `str` | Yes | Episode number. |
+| `id` | `float` | Yes | Unique identifier for the episode. |
+| `mainCharacters` | `list` | No | Main characters in the episode. |
+| `recurringCharacters` | `list` | No | Recurring characters in the episode. |
+| `seasonId` | `float` | Yes | Season ID. |
+| `seriesEpisodeNumber` | `float` | Yes | Episode number in the series. |
+| `summary` | `str` | Yes | Short summary of the episode. |
+| `supportingCharacters` | `list` | No | Supporting characters in the episode. |
+| `title` | `str` | Yes | Title of the episode. |
 
 ### Operations
 

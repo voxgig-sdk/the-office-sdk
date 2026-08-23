@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "TheOffice",
+            "slug": "the-office",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -53,50 +56,60 @@ def make_config():
           {
             "name": "actor",
             "req": True,
+            "short": "The actor who played the character.",
             "type": "`$STRING`",
           },
           {
             "name": "episodes",
+            "short": "List of episodes the character appeared in.",
             "type": "`$ARRAY`",
           },
           {
             "name": "firstAppearance",
             "req": True,
+            "short": "Title of the episode the character first appeared in.",
             "type": "`$STRING`",
           },
           {
             "name": "gender",
             "req": True,
+            "short": "The character's gender.",
             "type": "`$STRING`",
           },
           {
             "name": "id",
             "req": True,
+            "short": "Unique identifier for the character.",
             "type": "`$NUMBER`",
           },
           {
             "name": "job",
             "req": True,
+            "short": "List of jobs the character has.",
             "type": "`$ARRAY`",
           },
           {
             "name": "lastAppearance",
             "req": True,
+            "short": "Title of the last episode the character appeared in.",
             "type": "`$STRING`",
           },
           {
             "name": "marital",
             "req": True,
+            "short": "The character's marital status.",
             "type": "`$STRING`",
           },
           {
             "name": "name",
             "req": True,
+            "short": "The character's name.",
             "type": "`$STRING`",
           },
           {
             "name": "workplace",
             "req": True,
+            "short": "List of locations a character has worked at.",
             "type": "`$ARRAY`",
           },
         ],
@@ -207,48 +220,58 @@ def make_config():
           {
             "name": "airDate",
             "req": True,
+            "short": "Original air date.",
             "type": "`$STRING`",
           },
           {
             "name": "episode",
             "req": True,
+            "short": "Episode number.",
             "type": "`$STRING`",
           },
           {
             "name": "id",
             "req": True,
+            "short": "Unique identifier for the episode.",
             "type": "`$NUMBER`",
           },
           {
             "name": "mainCharacters",
+            "short": "Main characters in the episode.",
             "type": "`$ARRAY`",
           },
           {
             "name": "recurringCharacters",
+            "short": "Recurring characters in the episode.",
             "type": "`$ARRAY`",
           },
           {
             "name": "seasonId",
             "req": True,
+            "short": "Season ID.",
             "type": "`$NUMBER`",
           },
           {
             "name": "seriesEpisodeNumber",
             "req": True,
+            "short": "Episode number in the series.",
             "type": "`$NUMBER`",
           },
           {
             "name": "summary",
             "req": True,
+            "short": "Short summary of the episode.",
             "type": "`$STRING`",
           },
           {
             "name": "supportingCharacters",
+            "short": "Supporting characters in the episode.",
             "type": "`$ARRAY`",
           },
           {
             "name": "title",
             "req": True,
+            "short": "Title of the episode.",
             "type": "`$STRING`",
           },
         ],

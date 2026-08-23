@@ -100,16 +100,16 @@ $character = $client->Character();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `actor` | `string` | Yes |  |
-| `episodes` | `array` | No |  |
-| `firstAppearance` | `string` | Yes |  |
-| `gender` | `string` | Yes |  |
-| `id` | `float` | Yes |  |
-| `job` | `array` | Yes |  |
-| `lastAppearance` | `string` | Yes |  |
-| `marital` | `string` | Yes |  |
-| `name` | `string` | Yes |  |
-| `workplace` | `array` | Yes |  |
+| `actor` | `string` | Yes | The actor who played the character. |
+| `episodes` | `array` | No | List of episodes the character appeared in. |
+| `firstAppearance` | `string` | Yes | Title of the episode the character first appeared in. |
+| `gender` | `string` | Yes | The character's gender. |
+| `id` | `float` | Yes | Unique identifier for the character. |
+| `job` | `array` | Yes | List of jobs the character has. |
+| `lastAppearance` | `string` | Yes | Title of the last episode the character appeared in. |
+| `marital` | `string` | Yes | The character's marital status. |
+| `name` | `string` | Yes | The character's name. |
+| `workplace` | `array` | Yes | List of locations a character has worked at. |
 
 ### Operations
 
@@ -169,16 +169,16 @@ $episode = $client->Episode();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `airDate` | `string` | Yes |  |
-| `episode` | `string` | Yes |  |
-| `id` | `float` | Yes |  |
-| `mainCharacters` | `array` | No |  |
-| `recurringCharacters` | `array` | No |  |
-| `seasonId` | `float` | Yes |  |
-| `seriesEpisodeNumber` | `float` | Yes |  |
-| `summary` | `string` | Yes |  |
-| `supportingCharacters` | `array` | No |  |
-| `title` | `string` | Yes |  |
+| `airDate` | `string` | Yes | Original air date. |
+| `episode` | `string` | Yes | Episode number. |
+| `id` | `float` | Yes | Unique identifier for the episode. |
+| `mainCharacters` | `array` | No | Main characters in the episode. |
+| `recurringCharacters` | `array` | No | Recurring characters in the episode. |
+| `seasonId` | `float` | Yes | Season ID. |
+| `seriesEpisodeNumber` | `float` | Yes | Episode number in the series. |
+| `summary` | `string` | Yes | Short summary of the episode. |
+| `supportingCharacters` | `array` | No | Supporting characters in the episode. |
+| `title` | `string` | Yes | Title of the episode. |
 
 ### Operations
 

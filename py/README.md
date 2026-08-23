@@ -258,16 +258,16 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `actor` |  |
-| `episodes` |  |
-| `firstAppearance` |  |
-| `gender` |  |
-| `id` |  |
-| `job` |  |
-| `lastAppearance` |  |
-| `marital` |  |
-| `name` |  |
-| `workplace` |  |
+| `actor` | The actor who played the character. |
+| `episodes` | List of episodes the character appeared in. |
+| `firstAppearance` | Title of the episode the character first appeared in. |
+| `gender` | The character's gender. |
+| `id` | Unique identifier for the character. |
+| `job` | List of jobs the character has. |
+| `lastAppearance` | Title of the last episode the character appeared in. |
+| `marital` | The character's marital status. |
+| `name` | The character's name. |
+| `workplace` | List of locations a character has worked at. |
 
 Operations: List, Load.
 
@@ -277,16 +277,16 @@ API path: `/characters`
 
 | Field | Description |
 | --- | --- |
-| `airDate` |  |
-| `episode` |  |
-| `id` |  |
-| `mainCharacters` |  |
-| `recurringCharacters` |  |
-| `seasonId` |  |
-| `seriesEpisodeNumber` |  |
-| `summary` |  |
-| `supportingCharacters` |  |
-| `title` |  |
+| `airDate` | Original air date. |
+| `episode` | Episode number. |
+| `id` | Unique identifier for the episode. |
+| `mainCharacters` | Main characters in the episode. |
+| `recurringCharacters` | Recurring characters in the episode. |
+| `seasonId` | Season ID. |
+| `seriesEpisodeNumber` | Episode number in the series. |
+| `summary` | Short summary of the episode. |
+| `supportingCharacters` | Supporting characters in the episode. |
+| `title` | Title of the episode. |
 
 Operations: List.
 
@@ -325,16 +325,16 @@ Create an instance: `character = client.Character()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `actor` | `str` |  |
-| `episodes` | `list` |  |
-| `firstAppearance` | `str` |  |
-| `gender` | `str` |  |
-| `id` | `float` |  |
-| `job` | `list` |  |
-| `lastAppearance` | `str` |  |
-| `marital` | `str` |  |
-| `name` | `str` |  |
-| `workplace` | `list` |  |
+| `actor` | `str` | The actor who played the character. |
+| `episodes` | `list` | List of episodes the character appeared in. |
+| `firstAppearance` | `str` | Title of the episode the character first appeared in. |
+| `gender` | `str` | The character's gender. |
+| `id` | `float` | Unique identifier for the character. |
+| `job` | `list` | List of jobs the character has. |
+| `lastAppearance` | `str` | Title of the last episode the character appeared in. |
+| `marital` | `str` | The character's marital status. |
+| `name` | `str` | The character's name. |
+| `workplace` | `list` | List of locations a character has worked at. |
 
 #### Example: Load
 
@@ -363,16 +363,16 @@ Create an instance: `episode = client.Episode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `airDate` | `str` |  |
-| `episode` | `str` |  |
-| `id` | `float` |  |
-| `mainCharacters` | `list` |  |
-| `recurringCharacters` | `list` |  |
-| `seasonId` | `float` |  |
-| `seriesEpisodeNumber` | `float` |  |
-| `summary` | `str` |  |
-| `supportingCharacters` | `list` |  |
-| `title` | `str` |  |
+| `airDate` | `str` | Original air date. |
+| `episode` | `str` | Episode number. |
+| `id` | `float` | Unique identifier for the episode. |
+| `mainCharacters` | `list` | Main characters in the episode. |
+| `recurringCharacters` | `list` | Recurring characters in the episode. |
+| `seasonId` | `float` | Season ID. |
+| `seriesEpisodeNumber` | `float` | Episode number in the series. |
+| `summary` | `str` | Short summary of the episode. |
+| `supportingCharacters` | `list` | Supporting characters in the episode. |
+| `title` | `str` | Title of the episode. |
 
 #### Example: List
 

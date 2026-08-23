@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -304,16 +304,16 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `actor` |  |
-| `episodes` |  |
-| `firstAppearance` |  |
-| `gender` |  |
-| `id` |  |
-| `job` |  |
-| `lastAppearance` |  |
-| `marital` |  |
-| `name` |  |
-| `workplace` |  |
+| `actor` | The actor who played the character. |
+| `episodes` | List of episodes the character appeared in. |
+| `firstAppearance` | Title of the episode the character first appeared in. |
+| `gender` | The character's gender. |
+| `id` | Unique identifier for the character. |
+| `job` | List of jobs the character has. |
+| `lastAppearance` | Title of the last episode the character appeared in. |
+| `marital` | The character's marital status. |
+| `name` | The character's name. |
+| `workplace` | List of locations a character has worked at. |
 
 Operations: list, load.
 
@@ -323,16 +323,16 @@ API path: `/characters`
 
 | Field | Description |
 | --- | --- |
-| `airDate` |  |
-| `episode` |  |
-| `id` |  |
-| `mainCharacters` |  |
-| `recurringCharacters` |  |
-| `seasonId` |  |
-| `seriesEpisodeNumber` |  |
-| `summary` |  |
-| `supportingCharacters` |  |
-| `title` |  |
+| `airDate` | Original air date. |
+| `episode` | Episode number. |
+| `id` | Unique identifier for the episode. |
+| `mainCharacters` | Main characters in the episode. |
+| `recurringCharacters` | Recurring characters in the episode. |
+| `seasonId` | Season ID. |
+| `seriesEpisodeNumber` | Episode number in the series. |
+| `summary` | Short summary of the episode. |
+| `supportingCharacters` | Supporting characters in the episode. |
+| `title` | Title of the episode. |
 
 Operations: list.
 
@@ -371,16 +371,16 @@ Create an instance: `const character = client.Character()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `actor` | `string` |  |
-| `episodes` | `any[]` |  |
-| `firstAppearance` | `string` |  |
-| `gender` | `string` |  |
-| `id` | `number` |  |
-| `job` | `any[]` |  |
-| `lastAppearance` | `string` |  |
-| `marital` | `string` |  |
-| `name` | `string` |  |
-| `workplace` | `any[]` |  |
+| `actor` | `string` | The actor who played the character. |
+| `episodes` | `any[]` | List of episodes the character appeared in. |
+| `firstAppearance` | `string` | Title of the episode the character first appeared in. |
+| `gender` | `string` | The character's gender. |
+| `id` | `number` | Unique identifier for the character. |
+| `job` | `any[]` | List of jobs the character has. |
+| `lastAppearance` | `string` | Title of the last episode the character appeared in. |
+| `marital` | `string` | The character's marital status. |
+| `name` | `string` | The character's name. |
+| `workplace` | `any[]` | List of locations a character has worked at. |
 
 #### Example: Load
 
@@ -409,16 +409,16 @@ Create an instance: `const episode = client.Episode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `airDate` | `string` |  |
-| `episode` | `string` |  |
-| `id` | `number` |  |
-| `mainCharacters` | `any[]` |  |
-| `recurringCharacters` | `any[]` |  |
-| `seasonId` | `number` |  |
-| `seriesEpisodeNumber` | `number` |  |
-| `summary` | `string` |  |
-| `supportingCharacters` | `any[]` |  |
-| `title` | `string` |  |
+| `airDate` | `string` | Original air date. |
+| `episode` | `string` | Episode number. |
+| `id` | `number` | Unique identifier for the episode. |
+| `mainCharacters` | `any[]` | Main characters in the episode. |
+| `recurringCharacters` | `any[]` | Recurring characters in the episode. |
+| `seasonId` | `number` | Season ID. |
+| `seriesEpisodeNumber` | `number` | Episode number in the series. |
+| `summary` | `string` | Short summary of the episode. |
+| `supportingCharacters` | `any[]` | Supporting characters in the episode. |
+| `title` | `string` | Title of the episode. |
 
 #### Example: List
 
