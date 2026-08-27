@@ -28,6 +28,7 @@ module TheOfficeConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
