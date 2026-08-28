@@ -32,21 +32,18 @@ class Character(CharacterRequired, total=False):
     episodes: list
 
 
-class CharacterLoadMatch(TypedDict):
+class CharacterLoadMatchRequired(TypedDict):
     id: float
+
+
+class CharacterLoadMatch(CharacterLoadMatchRequired, total=False):
+    include_episode: str
 
 
 class CharacterListMatch(TypedDict, total=False):
-    actor: str
-    episodes: list
-    firstAppearance: str
-    gender: str
-    id: float
-    job: list
-    lastAppearance: str
-    marital: str
-    name: str
-    workplace: list
+    include_episode: str
+    limit: float
+    page: float
 
 
 class EpisodeRequired(TypedDict):
@@ -66,16 +63,10 @@ class Episode(EpisodeRequired, total=False):
 
 
 class EpisodeListMatch(TypedDict, total=False):
-    airDate: str
-    episode: str
-    id: float
-    mainCharacters: list
-    recurringCharacters: list
-    seasonId: float
-    seriesEpisodeNumber: float
-    summary: str
-    supportingCharacters: list
-    title: str
+    include_character: str
+    limit: float
+    page: float
+    season: float
 
 
 class Season(TypedDict):

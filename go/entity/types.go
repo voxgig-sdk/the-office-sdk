@@ -29,20 +29,14 @@ type Character struct {
 // CharacterLoadMatch is the typed request payload for Character.LoadTyped.
 type CharacterLoadMatch struct {
 	Id float64 `json:"id"`
+	IncludeEpisode *string `json:"include_episode,omitempty"`
 }
 
 // CharacterListMatch is the typed request payload for Character.ListTyped.
 type CharacterListMatch struct {
-	Actor *string `json:"actor,omitempty"`
-	Episodes *[]any `json:"episodes,omitempty"`
-	FirstAppearance *string `json:"firstAppearance,omitempty"`
-	Gender *string `json:"gender,omitempty"`
-	Id *float64 `json:"id,omitempty"`
-	Job *[]any `json:"job,omitempty"`
-	LastAppearance *string `json:"lastAppearance,omitempty"`
-	Marital *string `json:"marital,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Workplace *[]any `json:"workplace,omitempty"`
+	IncludeEpisode *string `json:"include_episode,omitempty"`
+	Limit *float64 `json:"limit,omitempty"`
+	Page *float64 `json:"page,omitempty"`
 }
 
 // Episode is the typed data model for the episode entity.
@@ -61,16 +55,10 @@ type Episode struct {
 
 // EpisodeListMatch is the typed request payload for Episode.ListTyped.
 type EpisodeListMatch struct {
-	AirDate *string `json:"airDate,omitempty"`
-	Episode *string `json:"episode,omitempty"`
-	Id *float64 `json:"id,omitempty"`
-	MainCharacters *[]any `json:"mainCharacters,omitempty"`
-	RecurringCharacters *[]any `json:"recurringCharacters,omitempty"`
-	SeasonId *float64 `json:"seasonId,omitempty"`
-	SeriesEpisodeNumber *float64 `json:"seriesEpisodeNumber,omitempty"`
-	Summary *string `json:"summary,omitempty"`
-	SupportingCharacters *[]any `json:"supportingCharacters,omitempty"`
-	Title *string `json:"title,omitempty"`
+	IncludeCharacter *string `json:"include_character,omitempty"`
+	Limit *float64 `json:"limit,omitempty"`
+	Page *float64 `json:"page,omitempty"`
+	Season *float64 `json:"season,omitempty"`
 }
 
 // Season is the typed data model for the season entity.

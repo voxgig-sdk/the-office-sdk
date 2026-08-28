@@ -31,21 +31,15 @@ class Character
 class CharacterLoadMatch
 {
     public float $id;
+    public ?string $include_episode = null;
 }
 
 /** Request payload for Character#list. */
 class CharacterListMatch
 {
-    public ?string $actor = null;
-    public ?array $episodes = null;
-    public ?string $firstAppearance = null;
-    public ?string $gender = null;
-    public ?float $id = null;
-    public ?array $job = null;
-    public ?string $lastAppearance = null;
-    public ?string $marital = null;
-    public ?string $name = null;
-    public ?array $workplace = null;
+    public ?string $include_episode = null;
+    public ?float $limit = null;
+    public ?float $page = null;
 }
 
 /** Episode entity data model. */
@@ -66,16 +60,10 @@ class Episode
 /** Request payload for Episode#list. */
 class EpisodeListMatch
 {
-    public ?string $airDate = null;
-    public ?string $episode = null;
-    public ?float $id = null;
-    public ?array $mainCharacters = null;
-    public ?array $recurringCharacters = null;
-    public ?float $seasonId = null;
-    public ?float $seriesEpisodeNumber = null;
-    public ?string $summary = null;
-    public ?array $supportingCharacters = null;
-    public ?string $title = null;
+    public ?string $include_character = null;
+    public ?float $limit = null;
+    public ?float $page = null;
+    public ?float $season = null;
 }
 
 /** Season entity data model. */

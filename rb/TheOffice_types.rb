@@ -57,53 +57,29 @@ Character = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [Float]
+#
+# @!attribute [rw] include_episode
+#   @return [String, nil]
 CharacterLoadMatch = Struct.new(
   :id,
+  :include_episode,
   keyword_init: true
 )
 
 # Request payload for Character#list.
 #
-# @!attribute [rw] actor
+# @!attribute [rw] include_episode
 #   @return [String, nil]
 #
-# @!attribute [rw] episodes
-#   @return [Array, nil]
-#
-# @!attribute [rw] firstAppearance
-#   @return [String, nil]
-#
-# @!attribute [rw] gender
-#   @return [String, nil]
-#
-# @!attribute [rw] id
+# @!attribute [rw] limit
 #   @return [Float, nil]
 #
-# @!attribute [rw] job
-#   @return [Array, nil]
-#
-# @!attribute [rw] lastAppearance
-#   @return [String, nil]
-#
-# @!attribute [rw] marital
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] workplace
-#   @return [Array, nil]
+# @!attribute [rw] page
+#   @return [Float, nil]
 CharacterListMatch = Struct.new(
-  :actor,
-  :episodes,
-  :firstAppearance,
-  :gender,
-  :id,
-  :job,
-  :lastAppearance,
-  :marital,
-  :name,
-  :workplace,
+  :include_episode,
+  :limit,
+  :page,
   keyword_init: true
 )
 
@@ -154,46 +130,22 @@ Episode = Struct.new(
 
 # Request payload for Episode#list.
 #
-# @!attribute [rw] airDate
+# @!attribute [rw] include_character
 #   @return [String, nil]
 #
-# @!attribute [rw] episode
-#   @return [String, nil]
-#
-# @!attribute [rw] id
+# @!attribute [rw] limit
 #   @return [Float, nil]
 #
-# @!attribute [rw] mainCharacters
-#   @return [Array, nil]
-#
-# @!attribute [rw] recurringCharacters
-#   @return [Array, nil]
-#
-# @!attribute [rw] seasonId
+# @!attribute [rw] page
 #   @return [Float, nil]
 #
-# @!attribute [rw] seriesEpisodeNumber
+# @!attribute [rw] season
 #   @return [Float, nil]
-#
-# @!attribute [rw] summary
-#   @return [String, nil]
-#
-# @!attribute [rw] supportingCharacters
-#   @return [Array, nil]
-#
-# @!attribute [rw] title
-#   @return [String, nil]
 EpisodeListMatch = Struct.new(
-  :airDate,
-  :episode,
-  :id,
-  :mainCharacters,
-  :recurringCharacters,
-  :seasonId,
-  :seriesEpisodeNumber,
-  :summary,
-  :supportingCharacters,
-  :title,
+  :include_character,
+  :limit,
+  :page,
+  :season,
   keyword_init: true
 )
 

@@ -20,19 +20,13 @@ export interface Character {
 
 export interface CharacterLoadMatch {
   id: number
+  include_episode?: string
 }
 
 export interface CharacterListMatch {
-  actor?: string
-  episodes?: any[]
-  firstAppearance?: string
-  gender?: string
-  id?: number
-  job?: any[]
-  lastAppearance?: string
-  marital?: string
-  name?: string
-  workplace?: any[]
+  include_episode?: string
+  limit?: number
+  page?: number
 }
 
 export interface Episode {
@@ -49,16 +43,10 @@ export interface Episode {
 }
 
 export interface EpisodeListMatch {
-  airDate?: string
-  episode?: string
-  id?: number
-  mainCharacters?: any[]
-  recurringCharacters?: any[]
-  seasonId?: number
-  seriesEpisodeNumber?: number
-  summary?: string
-  supportingCharacters?: any[]
-  title?: string
+  include_character?: string
+  limit?: number
+  page?: number
+  season?: number
 }
 
 export interface Season {

@@ -20,18 +20,12 @@
 
 ---@class CharacterLoadMatch
 ---@field id number
+---@field include_episode? string
 
 ---@class CharacterListMatch
----@field actor? string
----@field episodes? table
----@field firstAppearance? string
----@field gender? string
----@field id? number
----@field job? table
----@field lastAppearance? string
----@field marital? string
----@field name? string
----@field workplace? table
+---@field include_episode? string
+---@field limit? number
+---@field page? number
 
 ---@class Episode
 ---@field airDate string
@@ -46,16 +40,10 @@
 ---@field title string
 
 ---@class EpisodeListMatch
----@field airDate? string
----@field episode? string
----@field id? number
----@field mainCharacters? table
----@field recurringCharacters? table
----@field seasonId? number
----@field seriesEpisodeNumber? number
----@field summary? string
----@field supportingCharacters? table
----@field title? string
+---@field include_character? string
+---@field limit? number
+---@field page? number
+---@field season? number
 
 ---@class Season
 ---@field endDate string
