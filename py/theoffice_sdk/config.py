@@ -1,6 +1,14 @@
 # TheOffice SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -114,6 +122,10 @@ def make_config():
             "type": "`$ARRAY`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "character",
         "op": {
           "list": {
@@ -149,8 +161,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/characters",
-                "parts": [
-                  "characters",
+                "segments": [
+                  {
+                    "lit": "characters",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -163,6 +177,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "characters",
+                ],
               },
             ],
           },
@@ -194,9 +211,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/character/{id}",
-                "parts": [
-                  "character",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "character",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -208,6 +229,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "character",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -276,6 +301,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "episode",
         "op": {
           "list": {
@@ -317,8 +346,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/episodes",
-                "parts": [
-                  "episodes",
+                "segments": [
+                  {
+                    "lit": "episodes",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -332,6 +363,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "episodes",
+                ],
               },
             ],
           },
@@ -363,6 +397,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "season",
         "op": {
           "list": {
@@ -374,14 +412,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/seasons",
-                "parts": [
-                  "seasons",
+                "segments": [
+                  {
+                    "lit": "seasons",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "seasons",
+                ],
               },
             ],
           },

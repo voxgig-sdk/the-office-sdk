@@ -119,6 +119,10 @@ class TheOfficeConfig
               'type' => '`$ARRAY`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'character',
           'op' => [
             'list' => [
@@ -154,8 +158,10 @@ class TheOfficeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/characters',
-                  'parts' => [
-                    'characters',
+                  'segments' => [
+                    [
+                      'lit' => 'characters',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -167,6 +173,9 @@ class TheOfficeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'characters',
                   ],
                 ],
               ],
@@ -199,9 +208,13 @@ class TheOfficeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/character/{id}',
-                  'parts' => [
-                    'character',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'character',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -212,6 +225,10 @@ class TheOfficeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'character',
+                    '{id}',
                   ],
                 ],
               ],
@@ -281,6 +298,10 @@ class TheOfficeConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'episode',
           'op' => [
             'list' => [
@@ -322,8 +343,10 @@ class TheOfficeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/episodes',
-                  'parts' => [
-                    'episodes',
+                  'segments' => [
+                    [
+                      'lit' => 'episodes',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -336,6 +359,9 @@ class TheOfficeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'episodes',
                   ],
                 ],
               ],
@@ -368,6 +394,10 @@ class TheOfficeConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'season',
           'op' => [
             'list' => [
@@ -379,13 +409,18 @@ class TheOfficeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/seasons',
-                  'parts' => [
-                    'seasons',
+                  'segments' => [
+                    [
+                      'lit' => 'seasons',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'seasons',
                   ],
                 ],
               ],

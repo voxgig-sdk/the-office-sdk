@@ -40,8 +40,10 @@ main: kit: entity: season: {
         {
           method: "GET"
           orig: "/seasons"
-          parts: [
-            "seasons"
+          segments: [
+            {
+              lit: "seasons"
+            }
           ]
           transform: {
             req: "`reqdata`"

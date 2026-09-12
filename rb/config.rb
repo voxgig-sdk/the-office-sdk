@@ -105,6 +105,10 @@ module TheOfficeConfig
               "type" => "`$ARRAY`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "character",
           "op" => {
             "list" => {
@@ -140,8 +144,10 @@ module TheOfficeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/characters",
-                  "parts" => [
-                    "characters",
+                  "segments" => [
+                    {
+                      "lit" => "characters",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -154,6 +160,9 @@ module TheOfficeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "characters",
+                  ],
                 },
               ],
             },
@@ -185,9 +194,13 @@ module TheOfficeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/character/{id}",
-                  "parts" => [
-                    "character",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "character",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -199,6 +212,10 @@ module TheOfficeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "character",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -267,6 +284,10 @@ module TheOfficeConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "episode",
           "op" => {
             "list" => {
@@ -308,8 +329,10 @@ module TheOfficeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/episodes",
-                  "parts" => [
-                    "episodes",
+                  "segments" => [
+                    {
+                      "lit" => "episodes",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -323,6 +346,9 @@ module TheOfficeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "episodes",
+                  ],
                 },
               ],
             },
@@ -354,6 +380,10 @@ module TheOfficeConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "season",
           "op" => {
             "list" => {
@@ -365,14 +395,19 @@ module TheOfficeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/seasons",
-                  "parts" => [
-                    "seasons",
+                  "segments" => [
+                    {
+                      "lit" => "seasons",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "seasons",
+                  ],
                 },
               ],
             },

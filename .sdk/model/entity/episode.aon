@@ -115,8 +115,10 @@ main: kit: entity: episode: {
           }
           method: "GET"
           orig: "/episodes"
-          parts: [
-            "episodes"
+          segments: [
+            {
+              lit: "episodes"
+            }
           ]
           select: {
             exist: [
