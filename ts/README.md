@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { TheOfficeSDK } from '@voxgig-sdk/the-office'
+import { TheOfficeSDK } from '@voxgig-sdk/the-office-sdk'
 
 const client = new TheOfficeSDK()
 ```
@@ -535,7 +535,7 @@ the-office/
 Import the SDK from the package root:
 
 ```ts
-import { TheOfficeSDK } from '@voxgig-sdk/the-office'
+import { TheOfficeSDK } from '@voxgig-sdk/the-office-sdk'
 ```
 
 ### Entity state

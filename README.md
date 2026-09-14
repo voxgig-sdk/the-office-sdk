@@ -105,7 +105,7 @@ local results, err = client:Episode():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/the-office` | publish pending — [install from git tag](https://github.com/voxgig-sdk/the-office-sdk/releases) |
+| TypeScript | `@voxgig-sdk/the-office-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/the-office-sdk/releases) |
 | Python | `voxgig-sdk-the-office` | publish pending — [install from git tag](https://github.com/voxgig-sdk/the-office-sdk/releases) |
 | PHP | `voxgig-sdk/the-office` | publish pending — [install from git tag](https://github.com/voxgig-sdk/the-office-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/the-office-sdk/go` | `go get github.com/voxgig-sdk/the-office-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Episode():list()
 ### TypeScript
 
 ```ts
-import { TheOfficeSDK } from '@voxgig-sdk/the-office'
+import { TheOfficeSDK } from '@voxgig-sdk/the-office-sdk'
 
 const client = new TheOfficeSDK()
 
