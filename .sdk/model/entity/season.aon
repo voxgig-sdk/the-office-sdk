@@ -38,6 +38,12 @@ main: kit: entity: season: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /seasons"
+            json: "{\"operationId\":\"seasons\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"endDate\":{\"type\":\"string\"},\"id\":{\"type\":\"number\"},\"number\":{\"type\":\"number\"},\"startDate\":{\"type\":\"string\"}},\"required\":[\"id\",\"number\",\"startDate\",\"endDate\"],\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"200\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/seasons"
           segments: [

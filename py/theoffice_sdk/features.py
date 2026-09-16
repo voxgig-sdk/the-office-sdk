@@ -1,12 +1,18 @@
 # TheOffice SDK feature factory
 
 from theoffice_sdk.feature.base_feature import TheOfficeBaseFeature
+from theoffice_sdk.feature.ratelimit_feature import TheOfficeRatelimitFeature
+from theoffice_sdk.feature.retry_feature import TheOfficeRetryFeature
 from theoffice_sdk.feature.test_feature import TheOfficeTestFeature
+from theoffice_sdk.feature.timeout_feature import TheOfficeTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: TheOfficeBaseFeature(),
+    "ratelimit": lambda: TheOfficeRatelimitFeature(),
+    "retry": lambda: TheOfficeRetryFeature(),
     "test": lambda: TheOfficeTestFeature(),
+    "timeout": lambda: TheOfficeTimeoutFeature(),
 }
 
 

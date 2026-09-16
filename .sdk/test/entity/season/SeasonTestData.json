@@ -29,5 +29,51 @@
         "startDate": "sa3"
       }
     }
+  },
+  "requests": {
+    "GET /seasons": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "seasons",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "endDate": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "number"
+                      },
+                      "number": {
+                        "type": "number"
+                      },
+                      "startDate": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "number",
+                      "startDate",
+                      "endDate"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "200"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
