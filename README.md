@@ -105,12 +105,12 @@ local results, err = client:Episode():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/the-office-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/the-office-sdk/releases) |
-| Python | `voxgig-sdk-the-office` | publish pending — [install from git tag](https://github.com/voxgig-sdk/the-office-sdk/releases) |
-| PHP | `voxgig-sdk/the-office` | publish pending — [install from git tag](https://github.com/voxgig-sdk/the-office-sdk/releases) |
+| TypeScript | `@voxgig-sdk/the-office-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/the-office-sdk/tags) |
+| Python | `voxgig-sdk-the-office` | publish pending — [install from git tag](https://github.com/voxgig-sdk/the-office-sdk/tags) |
+| PHP | `voxgig-sdk/the-office` | publish pending — [install from git tag](https://github.com/voxgig-sdk/the-office-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/the-office-sdk/go` | `go get github.com/voxgig-sdk/the-office-sdk/go@latest` |
-| Ruby | `voxgig-sdk-the-office` | publish pending — [install from git tag](https://github.com/voxgig-sdk/the-office-sdk/releases) |
-| Lua | `voxgig-sdk-the-office` | publish pending — [install from git tag](https://github.com/voxgig-sdk/the-office-sdk/releases) |
+| Ruby | `voxgig-sdk-the-office` | publish pending — [install from git tag](https://github.com/voxgig-sdk/the-office-sdk/tags) |
+| Lua | `voxgig-sdk-the-office` | publish pending — [install from git tag](https://github.com/voxgig-sdk/the-office-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/the-office-sdk/go-cli` | `go install github.com/voxgig-sdk/the-office-sdk/go-cli/cmd/the-office@latest` |
 | Go MCP server | `github.com/voxgig-sdk/the-office-sdk/go-mcp` | `go get github.com/voxgig-sdk/the-office-sdk/go-mcp@latest` |
 

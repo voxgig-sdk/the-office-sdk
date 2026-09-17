@@ -1,5 +1,5 @@
 # Flows
 
-@"BasicCharacterFlow.aon"
-@"BasicEpisodeFlow.aon"
-@"BasicSeasonFlow.aon"
+@"./BasicCharacterFlow.aon"
+@"./BasicEpisodeFlow.aon"
+@"./BasicSeasonFlow.aon"

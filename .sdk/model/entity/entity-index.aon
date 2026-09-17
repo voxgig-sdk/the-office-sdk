@@ -1,5 +1,5 @@
 # Entity Models
 
-@"character.aon"
-@"episode.aon"
-@"season.aon"
+@"./character.aon"
+@"./episode.aon"
+@"./season.aon"
