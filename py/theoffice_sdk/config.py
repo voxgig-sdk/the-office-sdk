@@ -118,62 +118,72 @@ def make_config():
         "fields": [
           {
             "name": "actor",
+            "title": "Actor",
+            "type": "`$STRING`",
             "req": True,
             "short": "The actor who played the character.",
-            "type": "`$STRING`",
           },
           {
             "name": "episodes",
-            "short": "List of episodes the character appeared in.",
+            "title": "Episodes",
             "type": "`$ARRAY`",
+            "short": "List of episodes the character appeared in.",
           },
           {
             "name": "firstAppearance",
+            "title": "First Appearance",
+            "type": "`$STRING`",
             "req": True,
             "short": "Title of the episode the character first appeared in.",
-            "type": "`$STRING`",
           },
           {
             "name": "gender",
+            "title": "Gender",
+            "type": "`$STRING`",
             "req": True,
             "short": "The character's gender.",
-            "type": "`$STRING`",
           },
           {
             "name": "id",
+            "title": "Id",
+            "type": "`$NUMBER`",
             "req": True,
             "short": "Unique identifier for the character.",
-            "type": "`$NUMBER`",
           },
           {
             "name": "job",
+            "title": "Job",
+            "type": "`$ARRAY`",
             "req": True,
             "short": "List of jobs the character has.",
-            "type": "`$ARRAY`",
           },
           {
             "name": "lastAppearance",
+            "title": "Last Appearance",
+            "type": "`$STRING`",
             "req": True,
             "short": "Title of the last episode the character appeared in.",
-            "type": "`$STRING`",
           },
           {
             "name": "marital",
+            "title": "Marital",
+            "type": "`$STRING`",
             "req": True,
             "short": "The character's marital status.",
-            "type": "`$STRING`",
           },
           {
             "name": "name",
+            "title": "Name",
+            "type": "`$STRING`",
             "req": True,
             "short": "The character's name.",
-            "type": "`$STRING`",
           },
           {
             "name": "workplace",
+            "title": "Workplace",
+            "type": "`$ARRAY`",
             "req": True,
             "short": "List of locations a character has worked at.",
-            "type": "`$ARRAY`",
           },
         ],
         "id": {
@@ -187,31 +197,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "false",
-                      "kind": "query",
-                      "name": "include_episode",
-                      "orig": "include_episode",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$NUMBER`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$NUMBER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/characters",
@@ -220,6 +205,39 @@ def make_config():
                     "lit": "characters",
                   },
                 ],
+                "parts": [
+                  "characters",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "include_episode",
+                      "orig": "include_episode",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "false",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$NUMBER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$NUMBER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "include_episode",
@@ -227,13 +245,6 @@ def make_config():
                     "page",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "characters",
-                ],
               },
             ],
           },
@@ -242,26 +253,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$NUMBER`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "example": "false",
-                      "kind": "query",
-                      "name": "include_episode",
-                      "orig": "include_episode",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/character/{id}",
@@ -273,20 +264,41 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "character",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$NUMBER`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "include_episode",
+                      "orig": "include_episode",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "false",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                     "include_episode",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "character",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -299,60 +311,70 @@ def make_config():
         "fields": [
           {
             "name": "airDate",
+            "title": "Air Date",
+            "type": "`$STRING`",
             "req": True,
             "short": "Original air date.",
-            "type": "`$STRING`",
           },
           {
             "name": "episode",
+            "title": "Episode",
+            "type": "`$STRING`",
             "req": True,
             "short": "Episode number.",
-            "type": "`$STRING`",
           },
           {
             "name": "id",
+            "title": "Id",
+            "type": "`$NUMBER`",
             "req": True,
             "short": "Unique identifier for the episode.",
-            "type": "`$NUMBER`",
           },
           {
             "name": "mainCharacters",
-            "short": "Main characters in the episode.",
+            "title": "Main Characters",
             "type": "`$ARRAY`",
+            "short": "Main characters in the episode.",
           },
           {
             "name": "recurringCharacters",
-            "short": "Recurring characters in the episode.",
+            "title": "Recurring Characters",
             "type": "`$ARRAY`",
+            "short": "Recurring characters in the episode.",
           },
           {
             "name": "seasonId",
+            "title": "Season Id",
+            "type": "`$NUMBER`",
             "req": True,
             "short": "Season ID.",
-            "type": "`$NUMBER`",
           },
           {
             "name": "seriesEpisodeNumber",
+            "title": "Series Episode Number",
+            "type": "`$NUMBER`",
             "req": True,
             "short": "Episode number in the series.",
-            "type": "`$NUMBER`",
           },
           {
             "name": "summary",
+            "title": "Summary",
+            "type": "`$STRING`",
             "req": True,
             "short": "Short summary of the episode.",
-            "type": "`$STRING`",
           },
           {
             "name": "supportingCharacters",
-            "short": "Supporting characters in the episode.",
+            "title": "Supporting Characters",
             "type": "`$ARRAY`",
+            "short": "Supporting characters in the episode.",
           },
           {
             "name": "title",
+            "title": "Title",
+            "type": "`$STRING`",
             "req": True,
             "short": "Title of the episode.",
-            "type": "`$STRING`",
           },
         ],
         "id": {
@@ -366,37 +388,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "false",
-                      "kind": "query",
-                      "name": "include_character",
-                      "orig": "include_character",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$NUMBER`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$NUMBER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "season",
-                      "orig": "season",
-                      "type": "`$NUMBER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/episodes",
@@ -405,6 +396,45 @@ def make_config():
                     "lit": "episodes",
                   },
                 ],
+                "parts": [
+                  "episodes",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "include_character",
+                      "orig": "include_character",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "false",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$NUMBER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$NUMBER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "season",
+                      "orig": "season",
+                      "type": "`$NUMBER`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "include_character",
@@ -413,13 +443,6 @@ def make_config():
                     "season",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "episodes",
-                ],
               },
             ],
           },
@@ -432,23 +455,27 @@ def make_config():
         "fields": [
           {
             "name": "endDate",
-            "req": True,
+            "title": "End Date",
             "type": "`$STRING`",
+            "req": True,
           },
           {
             "name": "id",
-            "req": True,
+            "title": "Id",
             "type": "`$NUMBER`",
+            "req": True,
           },
           {
             "name": "number",
-            "req": True,
+            "title": "Number",
             "type": "`$NUMBER`",
+            "req": True,
           },
           {
             "name": "startDate",
-            "req": True,
+            "title": "Start Date",
             "type": "`$STRING`",
+            "req": True,
           },
         ],
         "id": {
@@ -462,7 +489,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/seasons",
@@ -471,14 +497,16 @@ def make_config():
                     "lit": "seasons",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "seasons",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "seasons",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },

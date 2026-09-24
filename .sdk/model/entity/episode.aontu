@@ -1,0 +1,157 @@
+# Entity: episode
+
+main: kit: entity: episode: {
+
+  alias: field: {}
+
+  fields: {
+    airDate: {
+      h: "Air Date"
+      n: "airDate"
+      r: true
+      sh: "Original air date."
+      t: "`$STRING`"
+    }
+    episode: {
+      h: "Episode"
+      n: "episode"
+      r: true
+      sh: "Episode number."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Unique identifier for the episode."
+      t: "`$NUMBER`"
+    }
+    mainCharacters: {
+      h: "Main Characters"
+      n: "mainCharacters"
+      r: false
+      sh: "Main characters in the episode."
+      t: "`$ARRAY`"
+    }
+    recurringCharacters: {
+      h: "Recurring Characters"
+      n: "recurringCharacters"
+      r: false
+      sh: "Recurring characters in the episode."
+      t: "`$ARRAY`"
+    }
+    seasonId: {
+      h: "Season Id"
+      n: "seasonId"
+      r: true
+      sh: "Season ID."
+      t: "`$NUMBER`"
+    }
+    seriesEpisodeNumber: {
+      h: "Series Episode Number"
+      n: "seriesEpisodeNumber"
+      r: true
+      sh: "Episode number in the series."
+      t: "`$NUMBER`"
+    }
+    summary: {
+      h: "Summary"
+      n: "summary"
+      r: true
+      sh: "Short summary of the episode."
+      t: "`$STRING`"
+    }
+    supportingCharacters: {
+      h: "Supporting Characters"
+      n: "supportingCharacters"
+      r: false
+      sh: "Supporting characters in the episode."
+      t: "`$ARRAY`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      sh: "Title of the episode."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "episode"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /episodes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "false"
+                k: "query"
+                n: "include_character"
+                or: "include_character"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                k: "query"
+                n: "season"
+                or: "season"
+                r: false
+                t: "`$NUMBER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/episodes"
+          q: {
+            exist: [
+              "include_character"
+              "limit"
+              "page"
+              "season"
+            ]
+          }
+          s: [
+            {
+              lit: "episodes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

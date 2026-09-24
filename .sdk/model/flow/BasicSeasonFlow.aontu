@@ -1,0 +1,22 @@
+# BasicSeasonFlow
+
+main: kit: flow: BasicSeasonFlow:
+{
+  entity: "season",
+  kind: "basic",
+  name: "BasicSeasonFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "season_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSeasonFlow"
+}

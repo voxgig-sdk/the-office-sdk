@@ -1,7 +1,7 @@
 // Typed models for the TheOffice SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,16 +14,6 @@ import (
 
 // Character is the typed data model for the character entity.
 type Character struct {
-	Actor string `json:"actor"`
-	Episodes *[]any `json:"episodes,omitempty"`
-	FirstAppearance string `json:"firstAppearance"`
-	Gender string `json:"gender"`
-	Id float64 `json:"id"`
-	Job []any `json:"job"`
-	LastAppearance string `json:"lastAppearance"`
-	Marital string `json:"marital"`
-	Name string `json:"name"`
-	Workplace []any `json:"workplace"`
 }
 
 // CharacterLoadMatch is the typed request payload for Character.LoadTyped.
@@ -41,16 +31,6 @@ type CharacterListMatch struct {
 
 // Episode is the typed data model for the episode entity.
 type Episode struct {
-	AirDate string `json:"airDate"`
-	Episode string `json:"episode"`
-	Id float64 `json:"id"`
-	MainCharacters *[]any `json:"mainCharacters,omitempty"`
-	RecurringCharacters *[]any `json:"recurringCharacters,omitempty"`
-	SeasonId float64 `json:"seasonId"`
-	SeriesEpisodeNumber float64 `json:"seriesEpisodeNumber"`
-	Summary string `json:"summary"`
-	SupportingCharacters *[]any `json:"supportingCharacters,omitempty"`
-	Title string `json:"title"`
 }
 
 // EpisodeListMatch is the typed request payload for Episode.ListTyped.
@@ -63,10 +43,6 @@ type EpisodeListMatch struct {
 
 // Season is the typed data model for the season entity.
 type Season struct {
-	EndDate string `json:"endDate"`
-	Id float64 `json:"id"`
-	Number float64 `json:"number"`
-	StartDate string `json:"startDate"`
 }
 
 // SeasonListMatch is the typed request payload for Season.ListTyped.

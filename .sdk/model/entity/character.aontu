@@ -1,0 +1,202 @@
+# Entity: character
+
+main: kit: entity: character: {
+
+  alias: field: {}
+
+  fields: {
+    actor: {
+      h: "Actor"
+      n: "actor"
+      r: true
+      sh: "The actor who played the character."
+      t: "`$STRING`"
+    }
+    episodes: {
+      h: "Episodes"
+      n: "episodes"
+      r: false
+      sh: "List of episodes the character appeared in."
+      t: "`$ARRAY`"
+    }
+    firstAppearance: {
+      h: "First Appearance"
+      n: "firstAppearance"
+      r: true
+      sh: "Title of the episode the character first appeared in."
+      t: "`$STRING`"
+    }
+    gender: {
+      h: "Gender"
+      n: "gender"
+      r: true
+      sh: "The character's gender."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Unique identifier for the character."
+      t: "`$NUMBER`"
+    }
+    job: {
+      h: "Job"
+      n: "job"
+      r: true
+      sh: "List of jobs the character has."
+      t: "`$ARRAY`"
+    }
+    lastAppearance: {
+      h: "Last Appearance"
+      n: "lastAppearance"
+      r: true
+      sh: "Title of the last episode the character appeared in."
+      t: "`$STRING`"
+    }
+    marital: {
+      h: "Marital"
+      n: "marital"
+      r: true
+      sh: "The character's marital status."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The character's name."
+      t: "`$STRING`"
+    }
+    workplace: {
+      h: "Workplace"
+      n: "workplace"
+      r: true
+      sh: "List of locations a character has worked at."
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "character"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /characters"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "false"
+                k: "query"
+                n: "include_episode"
+                or: "include_episode"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$NUMBER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/characters"
+          q: {
+            exist: [
+              "include_episode"
+              "limit"
+              "page"
+            ]
+          }
+          s: [
+            {
+              lit: "characters"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /character/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$NUMBER`"
+              }
+            ]
+            query: [
+              {
+                ex: "false"
+                k: "query"
+                n: "include_episode"
+                or: "include_episode"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/character/{id}"
+          q: {
+            exist: [
+              "id"
+              "include_episode"
+            ]
+          }
+          s: [
+            {
+              lit: "character"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

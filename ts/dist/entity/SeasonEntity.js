@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SeasonEntity = void 0;
 const TheOfficeEntityBase_1 = require("../TheOfficeEntityBase");
-// TODO: needs Entity superclass
 class SeasonEntity extends TheOfficeEntityBase_1.TheOfficeEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

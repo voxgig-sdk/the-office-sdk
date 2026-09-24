@@ -19,7 +19,6 @@ import type {
   EpisodeListMatch,
 } from '../TheOfficeTypes'
 
-// TODO: needs Entity superclass
 class EpisodeEntity extends TheOfficeEntityBase<Episode> {
 
   constructor(client: TheOfficeSDK, entopts: any) {

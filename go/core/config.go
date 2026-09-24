@@ -93,62 +93,72 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "actor",
+						"title": "Actor",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The actor who played the character.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "episodes",
-						"short": "List of episodes the character appeared in.",
+						"title": "Episodes",
 						"type": "`$ARRAY`",
+						"short": "List of episodes the character appeared in.",
 					},
 					map[string]any{
 						"name": "firstAppearance",
+						"title": "First Appearance",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Title of the episode the character first appeared in.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gender",
+						"title": "Gender",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The character's gender.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "Unique identifier for the character.",
-						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "job",
+						"title": "Job",
+						"type": "`$ARRAY`",
 						"req": true,
 						"short": "List of jobs the character has.",
-						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "lastAppearance",
+						"title": "Last Appearance",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Title of the last episode the character appeared in.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "marital",
+						"title": "Marital",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The character's marital status.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The character's name.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "workplace",
+						"title": "Workplace",
+						"type": "`$ARRAY`",
 						"req": true,
 						"short": "List of locations a character has worked at.",
-						"type": "`$ARRAY`",
 					},
 				},
 				"id": map[string]any{
@@ -162,37 +172,45 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "false",
-											"kind": "query",
-											"name": "include_episode",
-											"orig": "include_episode",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 10,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$NUMBER`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$NUMBER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/characters",
 								"segments": []any{
 									map[string]any{
 										"lit": "characters",
+									},
+								},
+								"parts": []any{
+									"characters",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "include_episode",
+											"orig": "include_episode",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "false",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$NUMBER`",
+											"kind": "query",
+											"example": 10,
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$NUMBER`",
+											"kind": "query",
+											"example": 1,
+										},
 									},
 								},
 								"select": map[string]any{
@@ -202,13 +220,6 @@ func MakeConfig() map[string]any {
 										"page",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"characters",
-								},
 							},
 						},
 					},
@@ -217,26 +228,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$NUMBER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": "false",
-											"kind": "query",
-											"name": "include_episode",
-											"orig": "include_episode",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/character/{id}",
@@ -248,19 +239,40 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
+								"parts": []any{
+									"character",
+									"{id}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$NUMBER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "include_episode",
+											"orig": "include_episode",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "false",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"id",
 										"include_episode",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"character",
-									"{id}",
 								},
 							},
 						},
@@ -274,60 +286,70 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "airDate",
+						"title": "Air Date",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Original air date.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "episode",
+						"title": "Episode",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Episode number.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "Unique identifier for the episode.",
-						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "mainCharacters",
-						"short": "Main characters in the episode.",
+						"title": "Main Characters",
 						"type": "`$ARRAY`",
+						"short": "Main characters in the episode.",
 					},
 					map[string]any{
 						"name": "recurringCharacters",
-						"short": "Recurring characters in the episode.",
+						"title": "Recurring Characters",
 						"type": "`$ARRAY`",
+						"short": "Recurring characters in the episode.",
 					},
 					map[string]any{
 						"name": "seasonId",
+						"title": "Season Id",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "Season ID.",
-						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "seriesEpisodeNumber",
+						"title": "Series Episode Number",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "Episode number in the series.",
-						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "summary",
+						"title": "Summary",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Short summary of the episode.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "supportingCharacters",
-						"short": "Supporting characters in the episode.",
+						"title": "Supporting Characters",
 						"type": "`$ARRAY`",
+						"short": "Supporting characters in the episode.",
 					},
 					map[string]any{
 						"name": "title",
+						"title": "Title",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Title of the episode.",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -341,43 +363,51 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "false",
-											"kind": "query",
-											"name": "include_character",
-											"orig": "include_character",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 10,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$NUMBER`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$NUMBER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "season",
-											"orig": "season",
-											"type": "`$NUMBER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/episodes",
 								"segments": []any{
 									map[string]any{
 										"lit": "episodes",
+									},
+								},
+								"parts": []any{
+									"episodes",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "include_character",
+											"orig": "include_character",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "false",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$NUMBER`",
+											"kind": "query",
+											"example": 10,
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$NUMBER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "season",
+											"orig": "season",
+											"type": "`$NUMBER`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -387,13 +417,6 @@ func MakeConfig() map[string]any {
 										"page",
 										"season",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"episodes",
 								},
 							},
 						},
@@ -407,23 +430,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "endDate",
-						"req": true,
+						"title": "End Date",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "id",
-						"req": true,
+						"title": "Id",
 						"type": "`$NUMBER`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "number",
-						"req": true,
+						"title": "Number",
 						"type": "`$NUMBER`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "startDate",
-						"req": true,
+						"title": "Start Date",
 						"type": "`$STRING`",
+						"req": true,
 					},
 				},
 				"id": map[string]any{
@@ -437,7 +464,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/seasons",
@@ -446,14 +472,16 @@ func MakeConfig() map[string]any {
 										"lit": "seasons",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"seasons",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"seasons",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

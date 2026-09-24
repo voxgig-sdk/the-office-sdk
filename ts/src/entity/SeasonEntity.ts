@@ -19,7 +19,6 @@ import type {
   SeasonListMatch,
 } from '../TheOfficeTypes'
 
-// TODO: needs Entity superclass
 class SeasonEntity extends TheOfficeEntityBase<Season> {
 
   constructor(client: TheOfficeSDK, entopts: any) {

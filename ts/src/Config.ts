@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -145,62 +138,72 @@ class Config {
       "fields": [
         {
           "name": "actor",
+          "title": "Actor",
+          "type": "`$STRING`",
           "req": true,
-          "short": "The actor who played the character.",
-          "type": "`$STRING`"
+          "short": "The actor who played the character."
         },
         {
           "name": "episodes",
-          "short": "List of episodes the character appeared in.",
-          "type": "`$ARRAY`"
+          "title": "Episodes",
+          "type": "`$ARRAY`",
+          "short": "List of episodes the character appeared in."
         },
         {
           "name": "firstAppearance",
+          "title": "First Appearance",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Title of the episode the character first appeared in.",
-          "type": "`$STRING`"
+          "short": "Title of the episode the character first appeared in."
         },
         {
           "name": "gender",
+          "title": "Gender",
+          "type": "`$STRING`",
           "req": true,
-          "short": "The character's gender.",
-          "type": "`$STRING`"
+          "short": "The character's gender."
         },
         {
           "name": "id",
+          "title": "Id",
+          "type": "`$NUMBER`",
           "req": true,
-          "short": "Unique identifier for the character.",
-          "type": "`$NUMBER`"
+          "short": "Unique identifier for the character."
         },
         {
           "name": "job",
+          "title": "Job",
+          "type": "`$ARRAY`",
           "req": true,
-          "short": "List of jobs the character has.",
-          "type": "`$ARRAY`"
+          "short": "List of jobs the character has."
         },
         {
           "name": "lastAppearance",
+          "title": "Last Appearance",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Title of the last episode the character appeared in.",
-          "type": "`$STRING`"
+          "short": "Title of the last episode the character appeared in."
         },
         {
           "name": "marital",
+          "title": "Marital",
+          "type": "`$STRING`",
           "req": true,
-          "short": "The character's marital status.",
-          "type": "`$STRING`"
+          "short": "The character's marital status."
         },
         {
           "name": "name",
+          "title": "Name",
+          "type": "`$STRING`",
           "req": true,
-          "short": "The character's name.",
-          "type": "`$STRING`"
+          "short": "The character's name."
         },
         {
           "name": "workplace",
+          "title": "Workplace",
+          "type": "`$ARRAY`",
           "req": true,
-          "short": "List of locations a character has worked at.",
-          "type": "`$ARRAY`"
+          "short": "List of locations a character has worked at."
         }
       ],
       "id": {
@@ -214,31 +217,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "false",
-                    "kind": "query",
-                    "name": "include_episode",
-                    "orig": "include_episode",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 10,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$NUMBER`"
-                  },
-                  {
-                    "example": 1,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$NUMBER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/characters",
@@ -247,20 +225,46 @@ class Config {
                   "lit": "characters"
                 }
               ],
+              "parts": [
+                "characters"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "include_episode",
+                    "orig": "include_episode",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "false"
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$NUMBER`",
+                    "kind": "query",
+                    "example": 10
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$NUMBER`",
+                    "kind": "query",
+                    "example": 1
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "include_episode",
                   "limit",
                   "page"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "characters"
-              ]
+              }
             }
           ]
         },
@@ -269,26 +273,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$NUMBER`"
-                  }
-                ],
-                "query": [
-                  {
-                    "example": "false",
-                    "kind": "query",
-                    "name": "include_episode",
-                    "orig": "include_episode",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/character/{id}",
@@ -300,20 +284,41 @@ class Config {
                   "var": "id"
                 }
               ],
+              "parts": [
+                "character",
+                "{id}"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$NUMBER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "include_episode",
+                    "orig": "include_episode",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "false"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "id",
                   "include_episode"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "character",
-                "{id}"
-              ]
+              }
             }
           ]
         }
@@ -326,60 +331,70 @@ class Config {
       "fields": [
         {
           "name": "airDate",
+          "title": "Air Date",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Original air date.",
-          "type": "`$STRING`"
+          "short": "Original air date."
         },
         {
           "name": "episode",
+          "title": "Episode",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Episode number.",
-          "type": "`$STRING`"
+          "short": "Episode number."
         },
         {
           "name": "id",
+          "title": "Id",
+          "type": "`$NUMBER`",
           "req": true,
-          "short": "Unique identifier for the episode.",
-          "type": "`$NUMBER`"
+          "short": "Unique identifier for the episode."
         },
         {
           "name": "mainCharacters",
-          "short": "Main characters in the episode.",
-          "type": "`$ARRAY`"
+          "title": "Main Characters",
+          "type": "`$ARRAY`",
+          "short": "Main characters in the episode."
         },
         {
           "name": "recurringCharacters",
-          "short": "Recurring characters in the episode.",
-          "type": "`$ARRAY`"
+          "title": "Recurring Characters",
+          "type": "`$ARRAY`",
+          "short": "Recurring characters in the episode."
         },
         {
           "name": "seasonId",
+          "title": "Season Id",
+          "type": "`$NUMBER`",
           "req": true,
-          "short": "Season ID.",
-          "type": "`$NUMBER`"
+          "short": "Season ID."
         },
         {
           "name": "seriesEpisodeNumber",
+          "title": "Series Episode Number",
+          "type": "`$NUMBER`",
           "req": true,
-          "short": "Episode number in the series.",
-          "type": "`$NUMBER`"
+          "short": "Episode number in the series."
         },
         {
           "name": "summary",
+          "title": "Summary",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Short summary of the episode.",
-          "type": "`$STRING`"
+          "short": "Short summary of the episode."
         },
         {
           "name": "supportingCharacters",
-          "short": "Supporting characters in the episode.",
-          "type": "`$ARRAY`"
+          "title": "Supporting Characters",
+          "type": "`$ARRAY`",
+          "short": "Supporting characters in the episode."
         },
         {
           "name": "title",
+          "title": "Title",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Title of the episode.",
-          "type": "`$STRING`"
+          "short": "Title of the episode."
         }
       ],
       "id": {
@@ -393,37 +408,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "false",
-                    "kind": "query",
-                    "name": "include_character",
-                    "orig": "include_character",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 10,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$NUMBER`"
-                  },
-                  {
-                    "example": 1,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$NUMBER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "season",
-                    "orig": "season",
-                    "type": "`$NUMBER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/episodes",
@@ -432,6 +416,45 @@ class Config {
                   "lit": "episodes"
                 }
               ],
+              "parts": [
+                "episodes"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "include_character",
+                    "orig": "include_character",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "false"
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$NUMBER`",
+                    "kind": "query",
+                    "example": 10
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$NUMBER`",
+                    "kind": "query",
+                    "example": 1
+                  },
+                  {
+                    "name": "season",
+                    "orig": "season",
+                    "type": "`$NUMBER`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "include_character",
@@ -439,14 +462,7 @@ class Config {
                   "page",
                   "season"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "episodes"
-              ]
+              }
             }
           ]
         }
@@ -459,23 +475,27 @@ class Config {
       "fields": [
         {
           "name": "endDate",
-          "req": true,
-          "type": "`$STRING`"
+          "title": "End Date",
+          "type": "`$STRING`",
+          "req": true
         },
         {
           "name": "id",
-          "req": true,
-          "type": "`$NUMBER`"
+          "title": "Id",
+          "type": "`$NUMBER`",
+          "req": true
         },
         {
           "name": "number",
-          "req": true,
-          "type": "`$NUMBER`"
+          "title": "Number",
+          "type": "`$NUMBER`",
+          "req": true
         },
         {
           "name": "startDate",
-          "req": true,
-          "type": "`$STRING`"
+          "title": "Start Date",
+          "type": "`$STRING`",
+          "req": true
         }
       ],
       "id": {
@@ -489,7 +509,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/seasons",
@@ -498,14 +517,16 @@ class Config {
                   "lit": "seasons"
                 }
               ],
-              "select": {},
+              "parts": [
+                "seasons"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "seasons"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }

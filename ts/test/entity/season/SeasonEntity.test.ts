@@ -25,10 +25,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -55,7 +51,7 @@ describe('SeasonEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"endDate","req":true,"type":"`$STRING`","index$":0},{"active":true,"name":"id","req":true,"type":"`$NUMBER`","index$":1},{"active":true,"name":"number","req":true,"type":"`$NUMBER`","index$":2},{"active":true,"name":"startDate","req":true,"type":"`$STRING`","index$":3}],"id":{"field":"id","name":"id"},"name":"season","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{},"contract":{"id":"GET /seasons","json":"{\"operationId\":\"seasons\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"endDate\":{\"type\":\"string\"},\"id\":{\"type\":\"number\"},\"number\":{\"type\":\"number\"},\"startDate\":{\"type\":\"string\"}},\"required\":[\"id\",\"number\",\"startDate\",\"endDate\"],\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"200\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/seasons","segments":[{"lit":"seasons"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"season","name__orig":"season","Name":"Season","name_":"season","name-":"season","NAME":"SEASON","index$":2}, {"active":true,"entity":"season","key$":"BasicSeasonFlow","kind":"basic","name":"BasicSeasonFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"season_ref01"}}],"index$":0}]}, 'Season')
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"endDate":{"a":true,"h":"End Date","n":"endDate","r":true,"t":"`$STRING`","key$":"endDate","index$":0},"id":{"a":true,"h":"Id","n":"id","r":true,"t":"`$NUMBER`","key$":"id","index$":1},"number":{"a":true,"h":"Number","n":"number","r":true,"t":"`$NUMBER`","key$":"number","index$":2},"startDate":{"a":true,"h":"Start Date","n":"startDate","r":true,"t":"`$STRING`","key$":"startDate","index$":3}},"id":{"field":"id","name":"id"},"name":"season","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /seasons","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/seasons","q":{},"r":{},"s":[{"lit":"seasons"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"season","name__orig":"season","Name":"Season","name_":"season","name-":"season","NAME":"SEASON","index$":2}, {"active":true,"entity":"season","key$":"BasicSeasonFlow","kind":"basic","name":"BasicSeasonFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"season_ref01"}}],"index$":0}]}, 'Season', {"GET /seasons":{"protocol":"http","operationId":"seasons","responses":{"200":{"description":"200","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","properties":{"id":{"type":"number","key$":"id"},"number":{"type":"number","key$":"number"},"startDate":{"type":"string","key$":"startDate"},"endDate":{"type":"string","key$":"endDate"}},"required":["id","number","startDate","endDate"],"index$":0}}}}}},"parameters":[],"securitySource":"unspecified"}})
     }
     const client = setup.client
     const struct = setup.struct
