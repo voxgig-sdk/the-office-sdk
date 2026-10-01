@@ -182,13 +182,13 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.results`",
                 },
                 ["args"] = {
                   ["query"] = {
                     {
                       ["name"] = "include_episode",
-                      ["orig"] = "include_episode",
+                      ["orig"] = "includeEpisodes",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                       ["example"] = "false",
@@ -257,7 +257,7 @@ local function make_config()
                   ["query"] = {
                     {
                       ["name"] = "include_episode",
-                      ["orig"] = "include_episode",
+                      ["orig"] = "includeEpisodes",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                       ["example"] = "false",
@@ -373,13 +373,13 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.results`",
                 },
                 ["args"] = {
                   ["query"] = {
                     {
                       ["name"] = "include_character",
-                      ["orig"] = "include_character",
+                      ["orig"] = "includeCharacters",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                       ["example"] = "false",

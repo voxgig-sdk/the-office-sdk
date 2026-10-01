@@ -14,12 +14,14 @@ guide: {
     }
     path: "/characters": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
   }
 
   entity: episode: {
     path: "/episodes": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
   }
 

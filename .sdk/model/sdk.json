@@ -202,7 +202,7 @@
                         "ex": "false",
                         "k": "query",
                         "n": "include_episode",
-                        "or": "include_episode",
+                        "or": "includeEpisodes",
                         "r": false,
                         "t": "`$STRING`"
                       },
@@ -244,7 +244,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.results`"
                   }
                 }
               ]
@@ -277,7 +277,7 @@
                         "ex": "false",
                         "k": "query",
                         "n": "include_episode",
-                        "or": "include_episode",
+                        "or": "includeEpisodes",
                         "r": false,
                         "t": "`$STRING`"
                       }
@@ -424,7 +424,7 @@
                         "ex": "false",
                         "k": "query",
                         "n": "include_character",
-                        "or": "include_character",
+                        "or": "includeCharacters",
                         "r": false,
                         "t": "`$STRING`"
                       },
@@ -475,7 +475,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.results`"
                   }
                 }
               ]
@@ -1102,7 +1102,12 @@
         },
         "base": "http://localhost:8000",
         "clean": {
-          "keys": "key,token,id"
+          "active": true,
+          "hint": "0",
+          "keys": "key,secret,token,password,passwd,authorization,cookie,credential,signature",
+          "mask": "[redacted]",
+          "min": "4",
+          "values": ""
         },
         "entity": {
           "`$CHILD`": {

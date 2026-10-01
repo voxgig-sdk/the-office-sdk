@@ -99,7 +99,7 @@ main: kit: entity: character: {
                 ex: "false"
                 k: "query"
                 n: "include_episode"
-                or: "include_episode"
+                or: "includeEpisodes"
                 r: false
                 t: "`$STRING`"
               }
@@ -137,7 +137,7 @@ main: kit: entity: character: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]
@@ -166,7 +166,7 @@ main: kit: entity: character: {
                 ex: "false"
                 k: "query"
                 n: "include_episode"
-                or: "include_episode"
+                or: "includeEpisodes"
                 r: false
                 t: "`$STRING`"
               }

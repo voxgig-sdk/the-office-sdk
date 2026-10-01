@@ -186,13 +186,13 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
 											"name": "include_episode",
-											"orig": "include_episode",
+											"orig": "includeEpisodes",
 											"type": "`$STRING`",
 											"kind": "query",
 											"example": "false",
@@ -261,7 +261,7 @@ func MakeConfig() map[string]any {
 									"query": []any{
 										map[string]any{
 											"name": "include_episode",
-											"orig": "include_episode",
+											"orig": "includeEpisodes",
 											"type": "`$STRING`",
 											"kind": "query",
 											"example": "false",
@@ -377,13 +377,13 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
 											"name": "include_character",
-											"orig": "include_character",
+											"orig": "includeCharacters",
 											"type": "`$STRING`",
 											"kind": "query",
 											"example": "false",

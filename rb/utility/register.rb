@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 TheOfficeUtility.registrar = ->(u) {
   u.clean = TheOfficeUtilities::Clean
+  u.clean_add = TheOfficeUtilities::CleanAdd
+  u.clean_explain = TheOfficeUtilities::CleanExplain
   u.done = TheOfficeUtilities::Done
   u.make_error = TheOfficeUtilities::MakeError
   u.feature_add = TheOfficeUtilities::FeatureAdd

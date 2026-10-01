@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 TheOfficeUtility::setRegistrar(function (TheOfficeUtility $u): void {
     $u->clean = [TheOfficeClean::class, 'call'];
+    $u->clean_add = [TheOfficeClean::class, 'add'];
+    $u->clean_explain = [TheOfficeDone::class, 'clean_explain'];
     $u->done = [TheOfficeDone::class, 'call'];
     $u->make_error = [TheOfficeMakeError::class, 'call'];
     $u->feature_add = [TheOfficeFeatureAdd::class, 'call'];
