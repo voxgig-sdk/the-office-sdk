@@ -130,13 +130,9 @@ main: kit: entity: episode: {
           }
           m: "GET"
           o: "/episodes"
-          q: {
-            exist: [
-              "include_character"
-              "limit"
-              "page"
-              "season"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

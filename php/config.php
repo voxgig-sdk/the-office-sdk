@@ -93,6 +93,7 @@ class TheOfficeConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -235,12 +236,10 @@ class TheOfficeConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'include_episode',
-                      'limit',
-                      'page',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -293,8 +292,11 @@ class TheOfficeConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'include_episode',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -432,13 +434,10 @@ class TheOfficeConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'include_character',
-                      'limit',
-                      'page',
-                      'season',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -504,6 +503,10 @@ class TheOfficeConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
               ],
             ],

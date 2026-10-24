@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Episode();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('episode hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.TheOfficeSDK.test(offline).Episode().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.TheOfficeSDK.test(offline).Episode()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.TheOfficeSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Episode().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.TheOfficeSDK.test().Episode().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.TheOfficeSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Episode().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Episode().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.TheOfficeSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Episode().list({ "include_character": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.THE_OFFICE_TEST_LIVE;
         for (const op of ['list']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "airDate": { "a": true, "h": "Air Date", "n": "airDate", "r": true, "sh": "Original air date.", "t": "`$STRING`", "key$": "airDate", "index$": 0 }, "episode": { "a": true, "h": "Episode", "n": "episode", "r": true, "sh": "Episode number.", "t": "`$STRING`", "key$": "episode", "index$": 1 }, "id": { "a": true, "h": "Id", "n": "id", "r": true, "sh": "Unique identifier for the episode.", "t": "`$NUMBER`", "key$": "id", "index$": 2 }, "mainCharacters": { "a": true, "h": "Main Characters", "n": "mainCharacters", "r": false, "sh": "Main characters in the episode.", "t": "`$ARRAY`", "key$": "mainCharacters", "index$": 3 }, "recurringCharacters": { "a": true, "h": "Recurring Characters", "n": "recurringCharacters", "r": false, "sh": "Recurring characters in the episode.", "t": "`$ARRAY`", "key$": "recurringCharacters", "index$": 4 }, "seasonId": { "a": true, "h": "Season Id", "n": "seasonId", "r": true, "sh": "Season ID.", "t": "`$NUMBER`", "key$": "seasonId", "index$": 5 }, "seriesEpisodeNumber": { "a": true, "h": "Series Episode Number", "n": "seriesEpisodeNumber", "r": true, "sh": "Episode number in the series.", "t": "`$NUMBER`", "key$": "seriesEpisodeNumber", "index$": 6 }, "summary": { "a": true, "h": "Summary", "n": "summary", "r": true, "sh": "Short summary of the episode.", "t": "`$STRING`", "key$": "summary", "index$": 7 }, "supportingCharacters": { "a": true, "h": "Supporting Characters", "n": "supportingCharacters", "r": false, "sh": "Supporting characters in the episode.", "t": "`$ARRAY`", "key$": "supportingCharacters", "index$": 8 }, "title": { "a": true, "h": "Title", "n": "title", "r": true, "sh": "Title of the episode.", "t": "`$STRING`", "key$": "title", "index$": 9 } }, "id": { "field": "id", "name": "id" }, "name": "episode", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /episodes", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "false", "k": "query", "n": "include_character", "or": "includeCharacters", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "ex": 10, "k": "query", "n": "limit", "or": "limit", "r": false, "t": "`$NUMBER`", "index$": 1 }, { "a": true, "ex": 1, "k": "query", "n": "page", "or": "page", "r": false, "t": "`$NUMBER`", "index$": 2 }, { "a": true, "k": "query", "n": "season", "or": "season", "r": false, "t": "`$NUMBER`", "index$": 3 }] }, "k": "http", "m": "GET", "o": "/episodes", "q": { "exist": ["include_character", "limit", "page", "season"] }, "r": {}, "s": [{ "lit": "episodes" }], "t": { "req": "`reqdata`", "res": "`body.results`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "episode", "name__orig": "episode", "Name": "Episode", "name_": "episode", "name-": "episode", "NAME": "EPISODE", "index$": 1 }, { "active": true, "entity": "episode", "key$": "BasicEpisodeFlow", "kind": "basic", "name": "BasicEpisodeFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "episode_ref01" } }], "index$": 0 }] }, 'Episode', { "GET /episodes": { "protocol": "http", "parameters": [{ "name": "includeCharacters", "in": "query", "description": "Include characters in the response.", "schema": { "default": "false", "type": "string", "enum": ["false", "true"] }, "index$": 0 }, { "name": "season", "in": "query", "description": "The season number.", "schema": { "type": "number", "nullable": true }, "index$": 1 }, { "name": "limit", "in": "query", "description": "The number of items to return", "schema": { "default": 10, "type": "number", "minimum": 1 }, "index$": 2 }, { "name": "page", "in": "query", "description": "The page number to return.", "schema": { "default": 1, "type": "number", "minimum": 1 }, "index$": 3 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "airDate": { "a": true, "h": "Air Date", "n": "airDate", "r": true, "sh": "Original air date.", "t": "`$STRING`", "key$": "airDate", "index$": 0 }, "episode": { "a": true, "h": "Episode", "n": "episode", "r": true, "sh": "Episode number.", "t": "`$STRING`", "key$": "episode", "index$": 1 }, "id": { "a": true, "h": "Id", "n": "id", "r": true, "sh": "Unique identifier for the episode.", "t": "`$NUMBER`", "key$": "id", "index$": 2 }, "mainCharacters": { "a": true, "h": "Main Characters", "n": "mainCharacters", "r": false, "sh": "Main characters in the episode.", "t": "`$ARRAY`", "key$": "mainCharacters", "index$": 3 }, "recurringCharacters": { "a": true, "h": "Recurring Characters", "n": "recurringCharacters", "r": false, "sh": "Recurring characters in the episode.", "t": "`$ARRAY`", "key$": "recurringCharacters", "index$": 4 }, "seasonId": { "a": true, "h": "Season Id", "n": "seasonId", "r": true, "sh": "Season ID.", "t": "`$NUMBER`", "key$": "seasonId", "index$": 5 }, "seriesEpisodeNumber": { "a": true, "h": "Series Episode Number", "n": "seriesEpisodeNumber", "r": true, "sh": "Episode number in the series.", "t": "`$NUMBER`", "key$": "seriesEpisodeNumber", "index$": 6 }, "summary": { "a": true, "h": "Summary", "n": "summary", "r": true, "sh": "Short summary of the episode.", "t": "`$STRING`", "key$": "summary", "index$": 7 }, "supportingCharacters": { "a": true, "h": "Supporting Characters", "n": "supportingCharacters", "r": false, "sh": "Supporting characters in the episode.", "t": "`$ARRAY`", "key$": "supportingCharacters", "index$": 8 }, "title": { "a": true, "h": "Title", "n": "title", "r": true, "sh": "Title of the episode.", "t": "`$STRING`", "key$": "title", "index$": 9 } }, "id": { "field": "id", "name": "id" }, "name": "episode", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /episodes", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "false", "k": "query", "n": "include_character", "or": "includeCharacters", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "ex": 10, "k": "query", "n": "limit", "or": "limit", "r": false, "t": "`$NUMBER`", "index$": 1 }, { "a": true, "ex": 1, "k": "query", "n": "page", "or": "page", "r": false, "t": "`$NUMBER`", "index$": 2 }, { "a": true, "k": "query", "n": "season", "or": "season", "r": false, "t": "`$NUMBER`", "index$": 3 }] }, "k": "http", "m": "GET", "o": "/episodes", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "episodes" }], "t": { "req": "`reqdata`", "res": "`body.results`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "episode", "name__orig": "episode", "Name": "Episode", "name_": "episode", "name-": "episode", "NAME": "EPISODE", "index$": 1 }, { "active": true, "entity": "episode", "key$": "BasicEpisodeFlow", "kind": "basic", "name": "BasicEpisodeFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "episode_ref01" } }], "index$": 0 }] }, 'Episode', { "GET /episodes": { "protocol": "http", "parameters": [{ "name": "includeCharacters", "in": "query", "description": "Include characters in the response.", "schema": { "default": "false", "type": "string", "enum": ["false", "true"] }, "index$": 0 }, { "name": "season", "in": "query", "description": "The season number.", "schema": { "type": "number", "nullable": true }, "index$": 1 }, { "name": "limit", "in": "query", "description": "The number of items to return", "schema": { "default": 10, "type": "number", "minimum": 1 }, "index$": 2 }, { "name": "page", "in": "query", "description": "The page number to return.", "schema": { "default": 1, "type": "number", "minimum": 1 }, "index$": 3 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -75,6 +122,11 @@ const utility_1 = require("../../utility");
         const episode_ref01_list = (await episode_ref01_ent.list(episode_ref01_match)).map((e) => e.data());
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

@@ -102,6 +102,7 @@ class Config {
       },
       "optspec": {
         "clearTimer": "`$FUNCTION`",
+        "now": "`$FUNCTION`",
         "setTimer": "`$FUNCTION`"
       },
       "strict": false,
@@ -258,12 +259,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "include_episode",
-                  "limit",
-                  "page"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -315,9 +314,12 @@ class Config {
               },
               "select": {
                 "exist": [
-                  "id",
-                  "include_episode"
+                  "id"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -455,13 +457,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "include_character",
-                  "limit",
-                  "page",
-                  "season"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -526,7 +525,11 @@ class Config {
                 "res": "`body`"
               },
               "args": {},
-              "select": {}
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
+              }
             }
           ]
         }

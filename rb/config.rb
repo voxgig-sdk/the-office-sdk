@@ -79,6 +79,7 @@ module TheOfficeConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -221,12 +222,10 @@ module TheOfficeConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "include_episode",
-                      "limit",
-                      "page",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -279,8 +278,11 @@ module TheOfficeConfig
                   "select" => {
                     "exist" => [
                       "id",
-                      "include_episode",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -418,13 +420,10 @@ module TheOfficeConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "include_character",
-                      "limit",
-                      "page",
-                      "season",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -490,6 +489,10 @@ module TheOfficeConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
               ],
             },

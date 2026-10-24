@@ -3,5 +3,21 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "200",
+      "An API for The Office TV show",
+      "Episode number.",
+      "List of episodes the character appeared in. Only available if `includeEpisodes=true`.",
+      "Main characters in the episode.",
+      "Original air date.",
+      "Recurring characters in the episode.",
+      "The actor who played the character.",
+      "The character&#39;s gender.",
+      "Title of the episode the character first appeared in.",
+      "Unique identifier for the character.",
+      "Unique identifier for the episode."
+    ]
+  }
 }

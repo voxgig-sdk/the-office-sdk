@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { TheOfficeSDK, BaseFeature, stdutil } from '../../..'
+import { TheOfficeSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('EpisodeEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('episode hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of TheOfficeSDK.test(offline).Episode().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of TheOfficeSDK.test(offline).Episode()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = TheOfficeSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Episode().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of TheOfficeSDK.test().Episode().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new TheOfficeSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Episode().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Episode().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = TheOfficeSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Episode().list({"include_character":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.THE_OFFICE_TEST_LIVE
@@ -51,7 +109,7 @@ describe('EpisodeEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"airDate":{"a":true,"h":"Air Date","n":"airDate","r":true,"sh":"Original air date.","t":"`$STRING`","key$":"airDate","index$":0},"episode":{"a":true,"h":"Episode","n":"episode","r":true,"sh":"Episode number.","t":"`$STRING`","key$":"episode","index$":1},"id":{"a":true,"h":"Id","n":"id","r":true,"sh":"Unique identifier for the episode.","t":"`$NUMBER`","key$":"id","index$":2},"mainCharacters":{"a":true,"h":"Main Characters","n":"mainCharacters","r":false,"sh":"Main characters in the episode.","t":"`$ARRAY`","key$":"mainCharacters","index$":3},"recurringCharacters":{"a":true,"h":"Recurring Characters","n":"recurringCharacters","r":false,"sh":"Recurring characters in the episode.","t":"`$ARRAY`","key$":"recurringCharacters","index$":4},"seasonId":{"a":true,"h":"Season Id","n":"seasonId","r":true,"sh":"Season ID.","t":"`$NUMBER`","key$":"seasonId","index$":5},"seriesEpisodeNumber":{"a":true,"h":"Series Episode Number","n":"seriesEpisodeNumber","r":true,"sh":"Episode number in the series.","t":"`$NUMBER`","key$":"seriesEpisodeNumber","index$":6},"summary":{"a":true,"h":"Summary","n":"summary","r":true,"sh":"Short summary of the episode.","t":"`$STRING`","key$":"summary","index$":7},"supportingCharacters":{"a":true,"h":"Supporting Characters","n":"supportingCharacters","r":false,"sh":"Supporting characters in the episode.","t":"`$ARRAY`","key$":"supportingCharacters","index$":8},"title":{"a":true,"h":"Title","n":"title","r":true,"sh":"Title of the episode.","t":"`$STRING`","key$":"title","index$":9}},"id":{"field":"id","name":"id"},"name":"episode","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /episodes","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":"false","k":"query","n":"include_character","or":"includeCharacters","r":false,"t":"`$STRING`","index$":0},{"a":true,"ex":10,"k":"query","n":"limit","or":"limit","r":false,"t":"`$NUMBER`","index$":1},{"a":true,"ex":1,"k":"query","n":"page","or":"page","r":false,"t":"`$NUMBER`","index$":2},{"a":true,"k":"query","n":"season","or":"season","r":false,"t":"`$NUMBER`","index$":3}]},"k":"http","m":"GET","o":"/episodes","q":{"exist":["include_character","limit","page","season"]},"r":{},"s":[{"lit":"episodes"}],"t":{"req":"`reqdata`","res":"`body.results`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"episode","name__orig":"episode","Name":"Episode","name_":"episode","name-":"episode","NAME":"EPISODE","index$":1}, {"active":true,"entity":"episode","key$":"BasicEpisodeFlow","kind":"basic","name":"BasicEpisodeFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"episode_ref01"}}],"index$":0}]}, 'Episode', {"GET /episodes":{"protocol":"http","parameters":[{"name":"includeCharacters","in":"query","description":"Include characters in the response.","schema":{"default":"false","type":"string","enum":["false","true"]},"index$":0},{"name":"season","in":"query","description":"The season number.","schema":{"type":"number","nullable":true},"index$":1},{"name":"limit","in":"query","description":"The number of items to return","schema":{"default":10,"type":"number","minimum":1},"index$":2},{"name":"page","in":"query","description":"The page number to return.","schema":{"default":1,"type":"number","minimum":1},"index$":3}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"airDate":{"a":true,"h":"Air Date","n":"airDate","r":true,"sh":"Original air date.","t":"`$STRING`","key$":"airDate","index$":0},"episode":{"a":true,"h":"Episode","n":"episode","r":true,"sh":"Episode number.","t":"`$STRING`","key$":"episode","index$":1},"id":{"a":true,"h":"Id","n":"id","r":true,"sh":"Unique identifier for the episode.","t":"`$NUMBER`","key$":"id","index$":2},"mainCharacters":{"a":true,"h":"Main Characters","n":"mainCharacters","r":false,"sh":"Main characters in the episode.","t":"`$ARRAY`","key$":"mainCharacters","index$":3},"recurringCharacters":{"a":true,"h":"Recurring Characters","n":"recurringCharacters","r":false,"sh":"Recurring characters in the episode.","t":"`$ARRAY`","key$":"recurringCharacters","index$":4},"seasonId":{"a":true,"h":"Season Id","n":"seasonId","r":true,"sh":"Season ID.","t":"`$NUMBER`","key$":"seasonId","index$":5},"seriesEpisodeNumber":{"a":true,"h":"Series Episode Number","n":"seriesEpisodeNumber","r":true,"sh":"Episode number in the series.","t":"`$NUMBER`","key$":"seriesEpisodeNumber","index$":6},"summary":{"a":true,"h":"Summary","n":"summary","r":true,"sh":"Short summary of the episode.","t":"`$STRING`","key$":"summary","index$":7},"supportingCharacters":{"a":true,"h":"Supporting Characters","n":"supportingCharacters","r":false,"sh":"Supporting characters in the episode.","t":"`$ARRAY`","key$":"supportingCharacters","index$":8},"title":{"a":true,"h":"Title","n":"title","r":true,"sh":"Title of the episode.","t":"`$STRING`","key$":"title","index$":9}},"id":{"field":"id","name":"id"},"name":"episode","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /episodes","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":"false","k":"query","n":"include_character","or":"includeCharacters","r":false,"t":"`$STRING`","index$":0},{"a":true,"ex":10,"k":"query","n":"limit","or":"limit","r":false,"t":"`$NUMBER`","index$":1},{"a":true,"ex":1,"k":"query","n":"page","or":"page","r":false,"t":"`$NUMBER`","index$":2},{"a":true,"k":"query","n":"season","or":"season","r":false,"t":"`$NUMBER`","index$":3}]},"k":"http","m":"GET","o":"/episodes","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"episodes"}],"t":{"req":"`reqdata`","res":"`body.results`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"episode","name__orig":"episode","Name":"Episode","name_":"episode","name-":"episode","NAME":"EPISODE","index$":1}, {"active":true,"entity":"episode","key$":"BasicEpisodeFlow","kind":"basic","name":"BasicEpisodeFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"episode_ref01"}}],"index$":0}]}, 'Episode', {"GET /episodes":{"protocol":"http","parameters":[{"name":"includeCharacters","in":"query","description":"Include characters in the response.","schema":{"default":"false","type":"string","enum":["false","true"]},"index$":0},{"name":"season","in":"query","description":"The season number.","schema":{"type":"number","nullable":true},"index$":1},{"name":"limit","in":"query","description":"The number of items to return","schema":{"default":10,"type":"number","minimum":1},"index$":2},{"name":"page","in":"query","description":"The page number to return.","schema":{"default":1,"type":"number","minimum":1},"index$":3}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +130,12 @@ describe('EpisodeEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

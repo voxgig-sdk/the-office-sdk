@@ -49,6 +49,10 @@ main: kit: entity: season: {
           }
           m: "GET"
           o: "/seasons"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "seasons"

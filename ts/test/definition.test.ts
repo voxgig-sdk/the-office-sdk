@@ -16,49 +16,67 @@ const PLAN: any[] = [
     "path": "/characters",
     "args": [],
     "select": {
-      "include_episode": "v1",
-      "limit": "v1",
-      "page": "v1"
+      "include_episode": "false",
+      "limit": 10,
+      "page": 1
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "includeEpisodes",
       "limit",
       "page"
+    ],
+    "queryArgs": [
+      {
+        "name": "include_episode",
+        "wire": "includeEpisodes"
+      },
+      {
+        "name": "limit",
+        "wire": "limit"
+      },
+      {
+        "name": "page",
+        "wire": "page"
+      }
     ],
     "auth": null,
     "status": 200,
     "sample": {
       "results": [
         {
-          "actor": "x",
-          "episodes": [
-            {
-              "episode": {
-                "id": 1,
-                "title": "x"
-              },
-              "type": "RECURRING"
-            }
-          ],
-          "firstAppearance": "x",
-          "gender": "x",
           "id": 1,
+          "name": "x",
+          "gender": "x",
+          "marital": "x",
           "job": [
             "x"
           ],
-          "lastAppearance": "x",
-          "marital": "x",
-          "name": "x",
           "workplace": [
             "x"
+          ],
+          "firstAppearance": "x",
+          "lastAppearance": "x",
+          "actor": "x",
+          "episodes": [
+            {
+              "type": "RECURRING",
+              "episode": {
+                "id": 1,
+                "title": "x"
+              }
+            }
           ]
         }
       ],
       "meta": {
-        "currentPage": 1,
         "isFirstPage": true,
         "isLastPage": true,
+        "currentPage": 1,
         "nextPage": 1,
         "pageCount": 1,
         "previousPage": 1,
@@ -81,11 +99,21 @@ const PLAN: any[] = [
       }
     ],
     "select": {
-      "include_episode": "v1"
+      "include_episode": "false"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "includeEpisodes"
+    ],
+    "queryArgs": [
+      {
+        "name": "include_episode",
+        "wire": "includeEpisodes"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -114,27 +142,59 @@ const PLAN: any[] = [
     "path": "/episodes",
     "args": [],
     "select": {
-      "include_character": "v1",
-      "limit": "v1",
-      "page": "v1",
+      "include_character": "false",
+      "limit": 10,
+      "page": 1,
       "season": "v1"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "includeCharacters",
       "season",
       "limit",
       "page"
     ],
+    "queryArgs": [
+      {
+        "name": "include_character",
+        "wire": "includeCharacters"
+      },
+      {
+        "name": "limit",
+        "wire": "limit"
+      },
+      {
+        "name": "page",
+        "wire": "page"
+      },
+      {
+        "name": "season",
+        "wire": "season"
+      }
+    ],
     "auth": null,
     "status": 200,
     "sample": {
       "results": [
         {
+          "id": 1,
+          "title": "x",
+          "summary": "x",
           "airDate": "x",
           "episode": "x",
-          "id": 1,
+          "seriesEpisodeNumber": 1,
+          "seasonId": 1,
           "mainCharacters": [
+            {
+              "id": 1,
+              "name": "x"
+            }
+          ],
+          "supportingCharacters": [
             {
               "id": 1,
               "name": "x"
@@ -145,23 +205,13 @@ const PLAN: any[] = [
               "id": 1,
               "name": "x"
             }
-          ],
-          "seasonId": 1,
-          "seriesEpisodeNumber": 1,
-          "summary": "x",
-          "supportingCharacters": [
-            {
-              "id": 1,
-              "name": "x"
-            }
-          ],
-          "title": "x"
+          ]
         }
       ],
       "meta": {
-        "currentPage": 1,
         "isFirstPage": true,
         "isLastPage": true,
+        "currentPage": 1,
         "nextPage": 1,
         "pageCount": 1,
         "previousPage": 1,
@@ -179,7 +229,12 @@ const PLAN: any[] = [
     "args": [],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": [

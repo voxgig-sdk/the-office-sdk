@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { TheOfficeSDK, BaseFeature, stdutil } from '../../..'
+import { TheOfficeSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('SeasonEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('season hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of TheOfficeSDK.test(offline).Season().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of TheOfficeSDK.test(offline).Season()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = TheOfficeSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Season().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of TheOfficeSDK.test().Season().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new TheOfficeSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Season().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Season().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = TheOfficeSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Season().list({"endDate":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.THE_OFFICE_TEST_LIVE
@@ -51,7 +109,7 @@ describe('SeasonEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"endDate":{"a":true,"h":"End Date","n":"endDate","r":true,"t":"`$STRING`","key$":"endDate","index$":0},"id":{"a":true,"h":"Id","n":"id","r":true,"t":"`$NUMBER`","key$":"id","index$":1},"number":{"a":true,"h":"Number","n":"number","r":true,"t":"`$NUMBER`","key$":"number","index$":2},"startDate":{"a":true,"h":"Start Date","n":"startDate","r":true,"t":"`$STRING`","key$":"startDate","index$":3}},"id":{"field":"id","name":"id"},"name":"season","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /seasons","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/seasons","q":{},"r":{},"s":[{"lit":"seasons"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"season","name__orig":"season","Name":"Season","name_":"season","name-":"season","NAME":"SEASON","index$":2}, {"active":true,"entity":"season","key$":"BasicSeasonFlow","kind":"basic","name":"BasicSeasonFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"season_ref01"}}],"index$":0}]}, 'Season', {"GET /seasons":{"protocol":"http","parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"endDate":{"a":true,"h":"End Date","n":"endDate","r":true,"t":"`$STRING`","key$":"endDate","index$":0},"id":{"a":true,"h":"Id","n":"id","r":true,"t":"`$NUMBER`","key$":"id","index$":1},"number":{"a":true,"h":"Number","n":"number","r":true,"t":"`$NUMBER`","key$":"number","index$":2},"startDate":{"a":true,"h":"Start Date","n":"startDate","r":true,"t":"`$STRING`","key$":"startDate","index$":3}},"id":{"field":"id","name":"id"},"name":"season","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /seasons","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/seasons","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"seasons"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"season","name__orig":"season","Name":"Season","name_":"season","name-":"season","NAME":"SEASON","index$":2}, {"active":true,"entity":"season","key$":"BasicSeasonFlow","kind":"basic","name":"BasicSeasonFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"season_ref01"}}],"index$":0}]}, 'Season', {"GET /seasons":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +130,12 @@ describe('SeasonEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

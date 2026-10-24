@@ -123,12 +123,9 @@ main: kit: entity: character: {
           }
           m: "GET"
           o: "/characters"
-          q: {
-            exist: [
-              "include_episode"
-              "limit"
-              "page"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -177,8 +174,11 @@ main: kit: entity: character: {
           q: {
             exist: [
               "id"
-              "include_episode"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
